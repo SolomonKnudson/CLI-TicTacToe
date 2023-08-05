@@ -1,7 +1,4 @@
 #include "tictactoe.h"
-#include <vector>
-#include <numeric>
-
 
 int main(int argc, char *argv[])
 {
