@@ -20,7 +20,7 @@ class Board
     };
     using Table = std::vector<std::vector<int>>;
 public:
-    explicit Board(const int row = 0, const int colum = 0);
+    explicit Board(const int row = 0, const int column = 0);
     ~Board() = default;
 
     Board(const Board&) = delete;
@@ -31,22 +31,22 @@ public:
 public:
     //Table Logic
     void display(const int playerX, const int playerO) const;
-    void setBoard(const int rows, const int colums);
+    void setBoard(const int rows, const int columns);
     void coverBoardSlot(const int tablePosition, const int currentPlayer);
     int boardSize() const;
 
     //Not in use
     int rows() const;
-    int colums() const;
+    int columns() const;
     //
 
     static constexpr int maxRow{11};
-    static constexpr int maxColum{15};
-    static constexpr int maxSize{maxRow * maxColum};//11x15 soft cap
+    static constexpr int maxColumn{15};
+    static constexpr int maxSize{maxRow * maxColumn};//11x15 soft cap
 
     static constexpr int standardRow{3};
-    static constexpr int standardColum{3};
-    static constexpr int standardSize{standardRow * standardColum};
+    static constexpr int standardColumn{3};
+    static constexpr int standardSize{standardRow * standardColumn};
 
     //Win Logic
     //const for winningMove() is a lie; Object will change if true
@@ -61,16 +61,16 @@ public:
     //methods to set diff win conditions
 #ifdef BOARDDEBUG
     void setLateralWin(const int row, const int playerMark);
-    void setVerticalWin(const int colum, const int playerMark);
-//    void setDiagonalWin(const int colum, const int playerMark,
+    void setVerticalWin(const int column, const int playerMark);
+//    void setDiagonalWin(const int column, const int playerMark,
 //                        const bool reverseCase = false);//Not implemented yet
     void setTie(const int playerMark);
 #endif
     //Methods to help with display formatting
     //Positive ints only!
-    static bool isSingleDigit(const int colum);
-    static bool isDoubleDigit(const int colum);
-    static bool isTripleDigit(const int colum);
+    static bool isSingleDigit(const int column);
+    static bool isDoubleDigit(const int column);
+    static bool isTripleDigit(const int column);
 private:
     void dashLine() const;
 
@@ -82,12 +82,12 @@ private:
     //Diagonal subcases
     bool evenBoard(const int playerMark) const;
     bool lopSidedRow(const int playerMark) const;
-    bool lopSidedColum(const int playerMark) const;
+    bool lopSidedColumn(const int playerMark) const;
 private:
     Table m_table{};
     mutable WinCase m_winCase{};
     int m_rows{};
-    int m_colums{};
+    int m_columns{};
     int m_boardSize{};
     bool m_evenBoard{};
 };

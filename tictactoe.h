@@ -14,7 +14,7 @@ class TicTacToe
         std::string_view m_winCase{};
         int m_matchID{};
         int m_row{};
-        int m_colum{};
+        int m_column{};
         int m_moves{};
         bool m_tieGame{};
     };
@@ -72,7 +72,7 @@ private:
     MatchRecords m_matchRecords{};
 
     int m_previousRow{};
-    int m_previousColum{};
+    int m_previousColumn{};
     int m_tablePosition{};
 
     int m_firstPlayer{};

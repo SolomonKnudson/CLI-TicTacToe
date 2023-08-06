@@ -5,7 +5,7 @@ Board::Board(const int row, const int colum)
     : m_table{}
     , m_winCase{}
     , m_rows{}
-    , m_colums{}
+    , m_columns{}
     , m_boardSize{}
     , m_evenBoard{}
 {
@@ -77,9 +77,9 @@ int Board::rows() const
     return m_rows;
 }
 
-int Board::colums() const
+int Board::columns() const
 {
-    return m_colums;
+    return m_columns;
 }
 
 int Board::boardSize() const
@@ -87,13 +87,13 @@ int Board::boardSize() const
     return m_boardSize;
 }
 
-void Board::setBoard(int rows, int colums)
+void Board::setBoard(int rows, int columns)
 {
     m_rows = rows;
-    m_colums = colums;
-    m_boardSize = m_rows * m_colums;
+    m_columns = columns;
+    m_boardSize = m_rows * m_columns;
 
-    if(m_rows == m_colums)
+    if(m_rows == m_columns)
     {
         m_evenBoard = true;
     }
@@ -103,13 +103,13 @@ void Board::setBoard(int rows, int colums)
         m_table.push_back(std::vector<int>{});
     }
 
-    int colum{1};
+    int column{1};
 
     for(auto& row : m_table)
     {
-        for(int i{0}; i < m_colums; i++)
+        for(int i{0}; i < m_columns; i++)
         {
-            row.push_back(colum++);
+            row.push_back(column++);
         }
     }
 
@@ -156,14 +156,14 @@ bool Board::isLateralWin(const int playerMark) const
     int inARow{};
     for(const auto& row : m_table)
     {
-        for(const auto& colum : row)
+        for(const auto& column : row)
         {
-            if(colum == playerMark)
+            if(column == playerMark)
             {
                 inARow++;
             }
         }
-        if(inARow == m_colums)
+        if(inARow == m_columns)
         {
             return true;
         }
@@ -175,11 +175,11 @@ bool Board::isLateralWin(const int playerMark) const
 bool Board::isVerticalWin(const int playerMark) const
 {
     int inARow{};
-    for(int colum{0}; colum < m_colums; colum++)
+    for(int column{0}; column < m_columns; column++)
     {
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row][colum] == playerMark)
+            if(m_table[row][column] == playerMark)
             {
                 inARow++;
             }
@@ -199,13 +199,13 @@ bool Board::isDiagonalWin(const int playerMark) const
     {
         return this -> evenBoard(playerMark);
     }
-    else if(m_rows < m_colums)
+    else if(m_rows < m_columns)
     {
         return this -> lopSidedRow(playerMark);
     }
-    else if (m_colums < m_rows)
+    else if (m_columns < m_rows)
     {
-        return this -> lopSidedColum(playerMark);
+        return this -> lopSidedColumn(playerMark);
     }
     return false;
 }
@@ -214,9 +214,9 @@ bool Board::isDiagonalWin(const int playerMark) const
 bool Board::evenBoard(const int playerMark) const
 {
     int inARow{};
-    for(int row{0}, colum{0}; row < m_rows; row++, colum++)
+    for(int row{0}, column{0}; row < m_rows; row++, column++)
     {
-        if(m_table[row][colum] == playerMark)
+        if(m_table[row][column] == playerMark)
         {
             inARow++;
         }
@@ -228,9 +228,9 @@ bool Board::evenBoard(const int playerMark) const
     inARow = 0;
 
     //Reverse case
-    for(int row{0}, columOffSet{m_colums - 1}; row < m_rows; row++)
+    for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
     {
-        if(m_table[row].at(columOffSet - row) == playerMark)
+        if(m_table[row].at(columnOffSet - row) == playerMark)
         {
             inARow++;
         }
@@ -244,20 +244,20 @@ bool Board::evenBoard(const int playerMark) const
 
 
 /*
-    *NOTE: if rows < colums, colums - rows = only diagonal cases(Colum Based)
-    *ex. 4x8: Diagona cases: colum: 0, 1, 2, 3, 4 index based!
-    *10x11: Diagona cases: colum: 0, 1
+    *NOTE: if rows < columns, columns - rows = only diagonal cases(Column Based)
+    *ex. 4x8: Diagona cases: column: 0, 1, 2, 3, 4 index based!
+    *10x11: Diagona cases: column: 0, 1
     *
 */
 bool Board::lopSidedRow(const int playerMark) const
 {
     int inARow{};
-    int offSet{m_colums -  m_rows};
-    for(int colum{0}; colum <= offSet; colum++)
+    int offSet{m_columns -  m_rows};
+    for(int column{0}; column <= offSet; column++)
     {
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(colum + row) == playerMark)
+            if(m_table[row].at(column + row) == playerMark)
             {
                 inARow++;
             }
@@ -271,11 +271,12 @@ bool Board::lopSidedRow(const int playerMark) const
     inARow = 0;
 
     //Reverse case
-    for(int colum{m_colums - 1}; colum >= ((m_colums - 1) - offSet); colum--)
+    for(int column{m_columns - 1}; column >= ((m_columns - 1) - offSet);
+        column--)
     {
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(colum - row) == playerMark)
+            if(m_table[row].at(column - row) == playerMark)
             {
                 inARow++;
             }
@@ -290,15 +291,15 @@ bool Board::lopSidedRow(const int playerMark) const
 }
 
 /*
-    *NOTE: if colums < rows, rows -  colums = only diagonal cases(Row Based);
+    *NOTE: if columns < rows, rows -  columns = only diagonal cases(Row Based);
     *must account for a 'lower' row diagonal win
     *ex. 8x4: Diagona cases: row: 0, 1, 2, 3, 4 index based!
     *15x11: Diagona cases: row: 0, 1, 2, 3, 4
 */
-bool Board::lopSidedColum(const int playerMark) const
+bool Board::lopSidedColumn(const int playerMark) const
 {
     int inARow{};
-    int offSet{m_rows -  m_colums};
+    int offSet{m_rows -  m_columns};
     for(int loop{0}; loop <= offSet; loop++)
     {
         for(int row{0}; row < (m_rows - offSet); row++)
@@ -308,7 +309,7 @@ bool Board::lopSidedColum(const int playerMark) const
                 inARow++;
             }
         }
-        if(inARow == m_colums)
+        if(inARow == m_columns)
         {
             return true;
         }
@@ -319,14 +320,14 @@ bool Board::lopSidedColum(const int playerMark) const
     //Reverse case
     for(int loop{0}; loop <= offSet; loop++)
     {
-        for(int row{0}, colum{m_colums - 1}; row < (m_rows - offSet); row++)
+        for(int row{0}, column{m_columns - 1}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(row + loop).at(colum - row) == playerMark)
+            if(m_table.at(row + loop).at(column - row) == playerMark)
             {
                 inARow++;
             }
         }
-        if(inARow == m_colums)
+        if(inARow == m_columns)
         {
             return true;
         }
@@ -340,9 +341,9 @@ bool Board::isTie(const int playerX, const int playerO) const
     int totalPlayerMarks{};
     for(const auto& row : m_table)
     {
-        for(const auto& colum : row)
+        for(const auto& column : row)
         {
-            if(colum == playerX || colum == playerO)
+            if(column == playerX || column == playerO)
             {
                 totalPlayerMarks++;
             }
@@ -377,7 +378,7 @@ void Board::resetBoard()
 {
     m_table.clear();
     m_rows = 0;
-    m_colums = 0;
+    m_columns = 0;
     if(m_evenBoard)
     {
         m_evenBoard = false;
@@ -388,45 +389,45 @@ void Board::resetBoard()
 //methods to set diff win conditions
 void Board::setLateralWin(const int row, const int playerMark)
 {
-    for(int fill{row}, endColum{row + m_colums}; fill < endColum; fill++)
+    for(int fill{row}, endColumn{row + m_columns}; fill < endColumn; fill++)
     {
         this -> coverBoardSlot(fill, playerMark);
     }
 }
 
 /*
-    * NOTE: if rows < colums, colums - rows + 1 = only diagonal cases
-    * (Non-index, colum based)
-    * colum + (m_colums + 1) = next colum to set for a diagonal win
-    * ex. 4x8 Diagona cases: colum: 1, 10, 19, 28,
+    * NOTE: if rows < columns, columns - rows + 1 = only diagonal cases
+    * (Non-index, column based)
+    * column + (m_columns + 1) = next column to set for a diagonal win
+    * ex. 4x8 Diagona cases: column: 1, 10, 19, 28,
     * 10x11 Diaginal cases: colun:
 */
 //NOTE: not in use
-//void Board::setDiagonalWin(const int colum, const int playerMark,
+//void Board::setDiagonalWin(const int column, const int playerMark,
 //                           const bool reverseCase)
 //{
 //    if(m_evenBoard)
 //    {
 //        //Reverse case
 //    }
-//    else if(m_rows < m_colums)
+//    else if(m_rows < m_columns)
 //    {
 
 //        //Reverse case
 //    }
-//    else if (m_colums < m_rows)
+//    else if (m_columns < m_rows)
 //    {
 
 //        //Reverse case
 //    }
 //}
 
-void Board::setVerticalWin(const int colum, const int playerMark)
+void Board::setVerticalWin(const int column, const int playerMark)
 {
-    for(int row{0}, columOffset{colum}; row < m_rows;
-        row++, columOffset += m_colums)
+    for(int row{0}, columnOffset{column}; row < m_rows;
+        row++, columnOffset += m_columns)
     {
-        this -> coverBoardSlot(columOffset, playerMark);
+        this -> coverBoardSlot(columnOffset, playerMark);
     }
 }
 
@@ -442,24 +443,24 @@ void Board::setTie(const int playerMark)
 
 //Methods to help with display formatting
 //Positive ints only!
-bool Board::isSingleDigit(const int colum)
+bool Board::isSingleDigit(const int column)
 {
-    return colum < 10;
+    return column < 10;
 }
 
-bool Board::isDoubleDigit(const int colum)
+bool Board::isDoubleDigit(const int column)
 {
-    return colum >= 10 && colum < 100;
+    return column >= 10 && column < 100;
 }
 
-bool Board::isTripleDigit(const int colum)
+bool Board::isTripleDigit(const int column)
 {
-    return colum >= 100 && colum < 1000;
+    return column >= 100 && column < 1000;
 }
 
 void Board::dashLine() const
 {
-    for(int dashLine{0}; dashLine < m_colums; dashLine++)
+    for(int dashLine{0}; dashLine < m_columns; dashLine++)
     {
         if(dashLine == 0)
         {

@@ -10,7 +10,7 @@ TicTacToe::TicTacToe()
     , m_matchRecords{}
 
     , m_previousRow{}
-    , m_previousColum{}
+    , m_previousColumn{}
     , m_tablePosition{}
 
     , m_firstPlayer{}
@@ -33,10 +33,10 @@ void TicTacToe::setupGame()
 {
     char userResponse{};
     std::cout << "|Press (S) for a standard " << Board::standardRow << "x"
-              << Board::standardColum
+              << Board::standardColumn
               << " board || (V) for a variable board{Row * Colum}{"
-              <<  Board::standardRow << "x" << Board::standardColum
-              <<" up to " << Board::maxRow << "x" << Board::maxColum
+              <<  Board::standardRow << "x" << Board::standardColumn
+              <<" up to " << Board::maxRow << "x" << Board::maxColumn
               << ((!m_isFirstGame) ? "}  || (P) for previous board: "
                                   :"}: ");
     std::cin >> userResponse;
@@ -46,7 +46,7 @@ void TicTacToe::setupGame()
         case 's':
         case 'S':
             m_previousRow = Board::standardRow;
-            m_previousColum = Board::standardColum;
+            m_previousColumn = Board::standardColumn;
             this -> displayBoardConfiguration();
             this -> setBoard();
             break;
@@ -55,8 +55,8 @@ void TicTacToe::setupGame()
             std::cout << "|Enter # of rows: ";
             std::cin >> m_previousRow;
             this -> flushCin();
-            std::cout << "|Enter # of colums: ";
-            std::cin >> m_previousColum;
+            std::cout << "|Enter # of columns: ";
+            std::cin >> m_previousColumn;
             this -> flushCin();
             this -> checkBoardSize();
             this -> displayBoardConfiguration();
@@ -73,7 +73,7 @@ void TicTacToe::setupGame()
         default:
             std::cout << "|Not one of the options listed!\n";
             m_previousRow = Board::standardRow;
-            m_previousColum = Board::standardColum;
+            m_previousColumn = Board::standardColumn;
             this -> displayBoardConfiguration();
             this -> setBoard();
             break;
@@ -108,7 +108,7 @@ void TicTacToe::setupGame()
 
 void TicTacToe::setBoard()
 {
-    m_board.setBoard(m_previousRow, m_previousColum);
+    m_board.setBoard(m_previousRow, m_previousColumn);
 }
 
 //Board Logic
@@ -361,37 +361,37 @@ void TicTacToe::flushCin() const
 void TicTacToe::checkBoardSize()
 {
     if(m_previousRow < Board::standardRow
-            && m_previousColum < Board::standardColum)
+            && m_previousColumn < Board::standardColumn)
     {
         std::cout << "|Invalid board size!\n";
         m_previousRow = Board::standardRow;
-        m_previousColum = Board::standardColum;
+        m_previousColumn = Board::standardColumn;
     }
     else if(m_previousRow < Board::standardRow)
     {
         std::cout << "|Invalid row size!\n";
         m_previousRow = Board::standardRow;
     }
-    else if(m_previousColum < Board::standardColum)
+    else if(m_previousColumn < Board::standardColumn)
     {
-        std::cout << "|Invalid colum size!\n";
-        m_previousColum = Board::standardColum;
+        std::cout << "|Invalid column size!\n";
+        m_previousColumn = Board::standardColumn;
     }
 
-    if((m_previousRow * m_previousColum) > Board::maxSize)
+    if((m_previousRow * m_previousColumn) > Board::maxSize)
     {
         std::cout << "|Exceeded max board size!\n";
         if(m_previousRow > Board::maxRow)
         {
             m_previousRow = Board::maxRow;
-            if((m_previousRow * m_previousColum) > Board::maxSize)
+            if((m_previousRow * m_previousColumn) > Board::maxSize)
             {
-                m_previousColum = Board::maxColum;
+                m_previousColumn = Board::maxColumn;
             }
         }
-        else if(m_previousColum > Board::maxColum)
+        else if(m_previousColumn > Board::maxColumn)
         {
-            m_previousColum = Board::maxColum;
+            m_previousColumn = Board::maxColumn;
         }
     }
 }
@@ -399,7 +399,7 @@ void TicTacToe::checkBoardSize()
 void TicTacToe::displayBoardConfiguration() const
 {
     std::cout << "|Match will be played on a "
-              << m_previousRow << "x" << m_previousColum
+              << m_previousRow << "x" << m_previousColumn
               << " Board!\n";
 }
 void TicTacToe::displayMatchRecords() const
@@ -407,7 +407,7 @@ void TicTacToe::displayMatchRecords() const
     for(const auto& record : m_matchRecords)
     {
         std::cout << "\n|Match: " << record.m_matchID << '\n';
-        std::cout << "|Played on a " << record.m_row << "x" << record.m_colum
+        std::cout << "|Played on a " << record.m_row << "x" << record.m_column
                   << " Board\n";
         if(!record.m_tieGame)
         {
@@ -430,7 +430,7 @@ void TicTacToe::createMatchRecord()
     MatchRecord matchRecord{};
     matchRecord.m_matchID = numberOfGames++;
     matchRecord.m_row = m_previousRow;
-    matchRecord.m_colum = m_previousColum;
+    matchRecord.m_column = m_previousColumn;
     if(m_hasWon)
     {
         matchRecord.m_winner = this -> currentPlayer().name();
