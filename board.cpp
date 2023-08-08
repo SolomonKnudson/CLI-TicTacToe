@@ -1,7 +1,7 @@
 #include "board.h"
 
 //Constructors
-Board::Board(const int row, const int colum)
+Board::Board(const int row, const int column)
     : m_table{}
     , m_winCase{}
     , m_rows{}
@@ -9,9 +9,9 @@ Board::Board(const int row, const int colum)
     , m_boardSize{}
     , m_evenBoard{}
 {
-    if(row >= 3 && colum >= 3)
+    if(row >= 3 && column >= 3)
     {
-        this -> setBoard(row, colum);
+        this -> setBoard(row, column);
     }
 }
 //END CONSTRUCTORS
