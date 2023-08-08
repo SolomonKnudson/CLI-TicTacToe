@@ -35,35 +35,35 @@ void Board::display(const int playerX, const int playerO) const
     for(const auto& row : m_table)
     {
         std::cout << "|";
-        for(const auto& colum : row)
+        for(const auto& column : row)
         {
-            if(colum == playerX)
+            if(column == playerX)
             {
                 std::cout << " X  |";
-//                std::cout << " " << colum << " |";
+//                std::cout << " " << column << " |";
             }
-            else if(colum == playerO)
+            else if(column == playerO)
             {
                 std::cout << " O  |";
-//                std::cout << " " << colum << " |";
+//                std::cout << " " << column << " |";
             }
             else
             {//  |1   |2   |3   |
-                if(this -> isSingleDigit(colum))
+                if(this -> isSingleDigit(column))
                 {
-                    std::cout << " " << colum << "  |";
+                    std::cout << " " << column << "  |";
                 }//  |14  |15  |16  |
-                else if(this -> isDoubleDigit(colum))
+                else if(this -> isDoubleDigit(column))
                 {
-                    std::cout << " " << colum << " |";
+                    std::cout << " " << column << " |";
                 }//|700 |800 |900 |
-                else if(this -> isTripleDigit(colum))
+                else if(this -> isTripleDigit(column))
                 {
-                    std::cout << " " << colum << "|";
+                    std::cout << " " << column << "|";
                 }//1000|2000|3000
                 else
                 {
-                    std::cout << colum << "|";
+                    std::cout << column << "|";
                 }
             }
         }
@@ -119,11 +119,11 @@ void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
 {
     for(auto& row : m_table)
     {
-        for(auto& colum : row)
+        for(auto& column : row)
         {
-            if(colum == tablePosition)
+            if(column == tablePosition)
             {
-                colum = currentPlayer;
+                column = currentPlayer;
                 return;
             }
         }
