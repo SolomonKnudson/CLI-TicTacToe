@@ -63,7 +63,7 @@ private:
     void createMatchRecord();
     void displayMatchRecords() const;
     void quit() const;
-private:
+
     Board m_board{};
 
     Player m_playerX{};

@@ -28,7 +28,7 @@ public:
 
     Board& operator=(const Board&) = delete;
     Board& operator=(const Board&&) = delete;
-public:
+
     //Table Logic
     void display(const int playerX, const int playerO) const;
     void setBoard(const int rows, const int columns);
