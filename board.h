@@ -83,7 +83,7 @@ private:
     bool evenBoard(const int playerMark) const;
     bool lopSidedRow(const int playerMark) const;
     bool lopSidedColumn(const int playerMark) const;
-private:
+
     Table m_table{};
     mutable WinCase m_winCase{};
     int m_rows{};
