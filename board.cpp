@@ -395,95 +395,6 @@ void Board::setLateralWin(const int row, const int playerMark)
     }
 }
 
-
-//NOTE: not in use
-//TODO: break into smaller funcs once finished
-void Board::setDiagonalWin(int startColumn, const int playerMark,
-                           const bool reverseCase)
-{
-    if(m_evenBoard)//setDiagonalWinEvenBoard()
-    {
-        if(!reverseCase)
-        {
-            for(int row{0}, column{0}; row < m_rows; row++, column++)
-            {
-                this -> coverBoardSlot(m_table[row][column], playerMark);
-            }
-        }
-        else
-        {
-            //Reverse case
-            for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
-            {
-                this -> coverBoardSlot(m_table[row].at(columnOffSet - row),
-                                       playerMark);
-            }
-        }
-    }//setDiagonalWinLopSidedRow()
-    else if(m_rows < m_columns)
-    {
-        int offSet{m_columns -  m_rows};
-        --startColumn;
-        if(!reverseCase)
-        {
-            if( startColumn < 0 || startColumn > offSet)
-            {
-                return;
-            }
-            for(int row{0}, column{startColumn}; row < m_rows; row++)
-            {
-                this -> coverBoardSlot(m_table[row].at(column + row),
-                                       playerMark);
-            }
-        }
-        else
-        {
-            //Reverse case
-            offSet = (m_columns - 1) - offSet;
-            if(startColumn < offSet || startColumn > (m_columns - 1))
-            {
-                return;
-            }
-            for(int row{0}, column{startColumn}; row < m_rows; row++)
-            {
-                this -> coverBoardSlot(m_table[row].at(column - row),
-                                       playerMark);
-            }
-        }
-    }//setDiagonalWinLopSidedColumn()
-    else if (m_columns < m_rows)
-    {
-        int offSet{m_rows -  m_columns};
-        if(startColumn < 1 || startColumn > ((m_boardSize - (m_columns - 1))
-                                             - offSet))
-        {
-            return;
-        }
-        if(!reverseCase)
-        {
-            for(int column{0}; column < m_columns; ++column,
-                startColumn += (m_columns + 1))
-            {
-                this -> coverBoardSlot(startColumn, playerMark);
-            }
-        }
-        else
-        {
-            //Reverse case
-            if(startColumn < m_columns || startColumn > (m_boardSize
-                                                         - m_columns))
-            {
-                return;
-            }
-            for(int column{0}; column < m_columns; ++column,
-                startColumn += (m_columns - 1))
-            {
-                this -> coverBoardSlot(startColumn, playerMark);
-            }
-        }
-    }
-}
-
 void Board::setVerticalWin(const int column, const int playerMark)
 {
     if(column < 1 || column > m_columns)
@@ -502,6 +413,111 @@ void Board::setTie(const int playerMark)
     for(int fill{1}; fill <= m_boardSize; fill++)
     {
         this -> coverBoardSlot(fill, playerMark);
+    }
+}
+
+void Board::setDiagonalWin(int startColumn, const int playerMark,
+                           const bool reverseCase)
+{
+    if(m_evenBoard)
+    {
+        return this -> setDiagonalWinEvenBoard(playerMark, reverseCase);
+    }
+    else if(m_rows < m_columns)
+    {
+        return this -> setDiagonalWinLopSidedRow(startColumn, playerMark,
+        reverseCase);
+    }
+    else if (m_columns < m_rows)
+    {
+        return this -> setDiagonalWinLopSidedColumn(startColumn, playerMark,
+                                                    reverseCase);
+    }
+}
+
+void Board::setDiagonalWinEvenBoard(const int playerMark, bool reverseCase)
+{
+    if(!reverseCase)
+    {
+        for(int row{0}, column{0}; row < m_rows; row++, column++)
+        {
+            this -> coverBoardSlot(m_table[row][column], playerMark);
+        }
+    }
+    else
+    {
+        //Reverse case
+        for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
+        {
+            this -> coverBoardSlot(m_table[row].at(columnOffSet - row),
+                                   playerMark);
+        }
+    }
+}
+
+void Board::setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
+                               const bool reverseCase)
+{
+    int offSet{m_columns -  m_rows};
+    --startColumn;
+    if(!reverseCase)
+    {
+        if( startColumn < 0 || startColumn > offSet)
+        {
+            return;
+        }
+        for(int row{0}, column{startColumn}; row < m_rows; row++)
+        {
+            this -> coverBoardSlot(m_table[row].at(column + row),
+                                   playerMark);
+        }
+    }
+    else
+    {
+        //Reverse case
+        offSet = (m_columns - 1) - offSet;
+        if(startColumn < offSet || startColumn > (m_columns - 1))
+        {
+            return;
+        }
+        for(int row{0}, column{startColumn}; row < m_rows; row++)
+        {
+            this -> coverBoardSlot(m_table[row].at(column - row),
+                                   playerMark);
+        }
+    }
+}
+
+void Board::setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
+                               const bool reverseCase)
+{
+    int offSet{m_rows -  m_columns};
+    if(startColumn < 1 || startColumn > ((m_boardSize - (m_columns - 1))
+                                         - offSet))
+    {
+        return;
+    }
+    if(!reverseCase)
+    {
+        for(int column{0}; column < m_columns; ++column,
+            startColumn += (m_columns + 1))
+        {
+            this -> coverBoardSlot(startColumn, playerMark);
+        }
+    }
+    else
+    {
+        //Reverse case
+        if(startColumn < m_columns || startColumn > (m_boardSize
+                                                     - m_columns))
+        {
+            return;
+        }
+        for(int column{0}; column < m_columns; ++column,
+            startColumn += (m_columns - 1))
+        {
+            this -> coverBoardSlot(startColumn, playerMark);
+        }
     }
 }
 #endif

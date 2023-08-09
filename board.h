@@ -5,10 +5,10 @@
 #include <string_view>
 
 //NOTE!: max board size that I can display is 63x63
-//TODO: Implement setDiagonalWin()|prolly won't be do, tbh|
+//TODO: break setDiagonalWin() into smaller funcs
 
 //uncomment for automated win conditions
-#define BOARDDEBUG
+//#define BOARDDEBUG
 
 class Board
 {
@@ -63,8 +63,16 @@ public:
     void setLateralWin(const int row, const int playerMark);
     void setVerticalWin(const int column, const int playerMark);
     void setDiagonalWin(int startColumn, const int playerMark,
-                        const bool reverseCase = false);//Not implemented yet
+                        const bool reverseCase = false);
     void setTie(const int playerMark);
+
+    //util methods for setDiagonalWin()
+    void setDiagonalWinEvenBoard(const int playerMark,
+                                 const bool reverseCase);
+    void setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
+                                   const bool reverseCase);
+    void setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
+                                   const bool reverseCase);
 #endif
     //Methods to help with display formatting
     //Positive ints only!
