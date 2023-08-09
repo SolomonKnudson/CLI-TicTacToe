@@ -8,7 +8,7 @@
 //TODO: Implement setDiagonalWin()|prolly won't be do, tbh|
 
 //uncomment for automated win conditions
-//#define BOARDDEBUG
+#define BOARDDEBUG
 
 class Board
 {
@@ -62,8 +62,8 @@ public:
 #ifdef BOARDDEBUG
     void setLateralWin(const int row, const int playerMark);
     void setVerticalWin(const int column, const int playerMark);
-//    void setDiagonalWin(const int column, const int playerMark,
-//                        const bool reverseCase = false);//Not implemented yet
+    void setDiagonalWin(int startColumn, const int playerMark,
+                        const bool reverseCase = false);//Not implemented yet
     void setTie(const int playerMark);
 #endif
     //Methods to help with display formatting
@@ -92,4 +92,3 @@ private:
     bool m_evenBoard{};
 };
 #endif // BOARD_H
-

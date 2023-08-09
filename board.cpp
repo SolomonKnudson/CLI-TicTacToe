@@ -304,7 +304,7 @@ bool Board::lopSidedColumn(const int playerMark) const
     {
         for(int row{0}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(loop + row).at(row) == playerMark)
+            if(m_table.at(loop + row)[row] == playerMark)
             {
                 inARow++;
             }
@@ -395,35 +395,101 @@ void Board::setLateralWin(const int row, const int playerMark)
     }
 }
 
-/*
-    * NOTE: if rows < columns, columns - rows + 1 = only diagonal cases
-    * (Non-index, column based)
-    * column + (m_columns + 1) = next column to set for a diagonal win
-    * ex. 4x8 Diagona cases: column: 1, 10, 19, 28,
-    * 10x11 Diaginal cases: colun:
-*/
+
 //NOTE: not in use
-//void Board::setDiagonalWin(const int column, const int playerMark,
-//                           const bool reverseCase)
-//{
-//    if(m_evenBoard)
-//    {
-//        //Reverse case
-//    }
-//    else if(m_rows < m_columns)
-//    {
-
-//        //Reverse case
-//    }
-//    else if (m_columns < m_rows)
-//    {
-
-//        //Reverse case
-//    }
-//}
+//TODO: break into smaller funcs once finished
+void Board::setDiagonalWin(int startColumn, const int playerMark,
+                           const bool reverseCase)
+{
+    if(m_evenBoard)//setDiagonalWinEvenBoard()
+    {
+        if(!reverseCase)
+        {
+            for(int row{0}, column{0}; row < m_rows; row++, column++)
+            {
+                this -> coverBoardSlot(m_table[row][column], playerMark);
+            }
+        }
+        else
+        {
+            //Reverse case
+            for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
+            {
+                this -> coverBoardSlot(m_table[row].at(columnOffSet - row),
+                                       playerMark);
+            }
+        }
+    }//setDiagonalWinLopSidedRow()
+    else if(m_rows < m_columns)
+    {
+        int offSet{m_columns -  m_rows};
+        --startColumn;
+        if(!reverseCase)
+        {
+            if( startColumn < 0 || startColumn > offSet)
+            {
+                return;
+            }
+            for(int row{0}, column{startColumn}; row < m_rows; row++)
+            {
+                this -> coverBoardSlot(m_table[row].at(column + row),
+                                       playerMark);
+            }
+        }
+        else
+        {
+            //Reverse case
+            offSet = (m_columns - 1) - offSet;
+            if(startColumn < offSet || startColumn > (m_columns - 1))
+            {
+                return;
+            }
+            for(int row{0}, column{startColumn}; row < m_rows; row++)
+            {
+                this -> coverBoardSlot(m_table[row].at(column - row),
+                                       playerMark);
+            }
+        }
+    }//setDiagonalWinLopSidedColumn()
+    else if (m_columns < m_rows)
+    {
+        int offSet{m_rows -  m_columns};
+        if(startColumn < 1 || startColumn > ((m_boardSize - (m_columns - 1))
+                                             - offSet))
+        {
+            return;
+        }
+        if(!reverseCase)
+        {
+            for(int column{0}; column < m_columns; ++column,
+                startColumn += (m_columns + 1))
+            {
+                this -> coverBoardSlot(startColumn, playerMark);
+            }
+        }
+        else
+        {
+            //Reverse case
+            if(startColumn < m_columns || startColumn > (m_boardSize
+                                                         - m_columns))
+            {
+                return;
+            }
+            for(int column{0}; column < m_columns; ++column,
+                startColumn += (m_columns - 1))
+            {
+                this -> coverBoardSlot(startColumn, playerMark);
+            }
+        }
+    }
+}
 
 void Board::setVerticalWin(const int column, const int playerMark)
 {
+    if(column < 1 || column > m_columns)
+    {
+        return;
+    }
     for(int row{0}, columnOffset{column}; row < m_rows;
         row++, columnOffset += m_columns)
     {
