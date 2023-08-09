@@ -5,7 +5,6 @@
 #include <string_view>
 
 //NOTE!: max board size that I can display is 63x63
-//TODO: break setDiagonalWin() into smaller funcs
 
 //uncomment for automated win conditions
 //#define BOARDDEBUG
