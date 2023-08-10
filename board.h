@@ -5,9 +5,11 @@
 #include <string_view>
 
 //NOTE!: max board size that I can display is 63x63
+//TODO: create func to find all vaild diagonal indexes to enforce.
+//(use offSet; see board.cpp)
 
 //uncomment for automated win conditions
-//#define BOARDDEBUG
+#define BOARDDEBUG
 
 class Board
 {
@@ -57,6 +59,12 @@ public:
     std::string_view winCase() const;
     void resetBoard();
 
+    //Methods to help with display formatting
+    //Positive ints only!
+    static bool isSingleDigit(const int column);
+    static bool isDoubleDigit(const int column);
+    static bool isTripleDigit(const int column);
+
     //methods to set diff win conditions
 #ifdef BOARDDEBUG
     void setLateralWin(const int row, const int playerMark);
@@ -64,7 +72,7 @@ public:
     void setDiagonalWin(int startColumn, const int playerMark,
                         const bool reverseCase = false);
     void setTie(const int playerMark);
-
+private:
     //util methods for setDiagonalWin()
     void setDiagonalWinEvenBoard(const int playerMark,
                                  const bool reverseCase);
@@ -73,11 +81,6 @@ public:
     void setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
                                    const bool reverseCase);
 #endif
-    //Methods to help with display formatting
-    //Positive ints only!
-    static bool isSingleDigit(const int column);
-    static bool isDoubleDigit(const int column);
-    static bool isTripleDigit(const int column);
 private:
     void dashLine() const;
 

@@ -112,7 +112,9 @@ void Board::setBoard(int rows, int columns)
             row.push_back(column++);
         }
     }
-
+#ifdef BOARDDEBUG
+    //find all valid indexes to enforce for setting win conditions(Lat/Vert/Dia)
+#endif
 }
 
 void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
@@ -492,13 +494,12 @@ void Board::setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
                                const bool reverseCase)
 {
     int offSet{m_rows -  m_columns};
-    if(startColumn < 1 || startColumn > ((m_boardSize - (m_columns - 1))
-                                         - offSet))
-    {
-        return;
-    }
     if(!reverseCase)
     {
+        if(startColumn < 1 || startColumn > m_table.at(offSet)[0])
+        {
+            return;
+        }
         for(int column{0}; column < m_columns; ++column,
             startColumn += (m_columns + 1))
         {
@@ -508,8 +509,8 @@ void Board::setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
     else
     {
         //Reverse case
-        if(startColumn < m_columns || startColumn > (m_boardSize
-                                                     - m_columns))
+        if(startColumn < m_columns || startColumn > m_table.at(offSet)
+                [m_columns - 1])
         {
             return;
         }
