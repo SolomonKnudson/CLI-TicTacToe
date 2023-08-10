@@ -5,7 +5,7 @@
 #include <string_view>
 
 //NOTE!: max board size that I can display is 63x63
-//TODO: create func to find all vaild diagonal indexes to enforce.
+//TODO: create func to find all vaild indexes to enforce.
 //(use offSet; see board.cpp)
 
 //uncomment for automated win conditions
@@ -73,6 +73,13 @@ public:
                         const bool reverseCase = false);
     void setTie(const int playerMark);
 private:
+    struct VaildWinCases
+    {
+        std::vector<int> m_lateralCases{};
+        std::vector<int> m_verticalCases{};
+        std::vector<int> m_diagonalCases{};
+    };
+
     //util methods for setDiagonalWin()
     void setDiagonalWinEvenBoard(const int playerMark,
                                  const bool reverseCase);
@@ -80,8 +87,9 @@ private:
                                    const bool reverseCase);
     void setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
                                    const bool reverseCase);
-#endif
+#else
 private:
+#endif
     void dashLine() const;
 
     //Win subcases

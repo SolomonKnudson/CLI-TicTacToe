@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     test.display(-1, -2);
 //    test.setLateralWin(1, -2);
 //    test.setVerticalWin(9, -2);
-    test.setDiagonalWin(4, -2);
+    test.setDiagonalWin(14, -2, true);
 //    test.setTie(-2);
     test.display(-1, -2);
 

@@ -112,9 +112,6 @@ void Board::setBoard(int rows, int columns)
             row.push_back(column++);
         }
     }
-#ifdef BOARDDEBUG
-    //find all valid indexes to enforce for setting win conditions(Lat/Vert/Dia)
-#endif
 }
 
 void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
@@ -389,8 +386,28 @@ void Board::resetBoard()
 
 #ifdef BOARDDEBUG
 //methods to set diff win conditions
+/*
+ * isVaildWinCase(startPoint, winCase)
+ * {
+ *      static constexpr VaildWinCases winCases{vaildLateralCase(),
+ *      vaildVerticalCase(), vaildDiagonalCase()};
+ *      switch(winCase)
+ *      {
+ *          case Lat:
+ *              return isVaildLateralWin(m_lateralCases, startPoint);
+ *          case Vert:
+ *              return isVaildVerticalWin(m_verticalCases, startPoint);
+ *          case Dia:
+ *              return isDiagonalWin(m_diagonalCases, startPoint);
+ *      }
+ * }
+ * return vec of all cases vaildLateralCases()
+ * return vec of all cases vaildVerticalCases()
+ * return vec of all cases vaildDiagonalCases()
+*/
 void Board::setLateralWin(const int row, const int playerMark)
 {
+    //if(isVaildWinCase(startPoint, winCase))
     for(int fill{row}, endColumn{row + m_columns}; fill < endColumn; fill++)
     {
         this -> coverBoardSlot(fill, playerMark);
