@@ -385,8 +385,10 @@ void Board::resetBoard()
 }
 
 #ifdef BOARDDEBUG
+//TODO: bug fixes
 //methods to set diff win conditions
-bool Board::isValidWinCase(int startPoint, WinCase winCase) const
+bool Board::isValidWinCase(int startPoint, WinCase winCase,
+                           bool reverseCase) const
 {
     static const ValidWinCases winCases{validLateralWinCases(),
     validVerticalWinCases(), validDiagonalWinCases()};
@@ -397,7 +399,8 @@ bool Board::isValidWinCase(int startPoint, WinCase winCase) const
         case Board::WinCase::Vertical:
             return isValidWin(winCases.m_verticalCases, startPoint);
         case Board::WinCase::Diagonal:
-            return isValidWin(winCases.m_diagonalCases, startPoint);
+            return isValidDiagonalWin(winCases.m_diagonalCases, startPoint,
+                              reverseCase);
     }
     return false;
 }
@@ -415,6 +418,36 @@ bool Board::isValidWin(const std::vector<int>& winCases,
     return false;
 }
 
+bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
+                               const int startPoint,
+                               const bool reverseCase) const
+{
+    static int n{static_cast<int>(winCases.size())};
+    static int offSet{n / 2};
+    if(!reverseCase)
+    {
+        for(int i{0}; i < offSet; ++i)
+        {
+            if(winCases[i] == startPoint)
+            {
+                return true;
+            }
+        }
+    }
+    //reverse cases will always be the last [offset] number of elements in vec
+    // offset to (vec size - 1)
+    else
+    {
+        for(int i{offSet}; i <= (n - 1); ++i)
+        {
+            if(winCases[i] == startPoint)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 const std::vector<int> Board::validLateralWinCases() const
 {
     std::vector<int> winCases{};
@@ -507,7 +540,7 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
     {
         return this -> setDiagonalWinEvenBoard(playerMark, reverseCase);
     }
-    else if(this -> isValidWinCase(startColumn, WinCase::Diagonal))
+    else if(this -> isValidWinCase(startColumn, WinCase::Diagonal, reverseCase))
     {
         if(m_rows < m_columns)
         {

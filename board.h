@@ -87,10 +87,14 @@ private:
     void setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
                                    const bool reverseCase);
 
-    bool isValidWinCase(int startPoint, WinCase winCase) const;
+    bool isValidWinCase(int startPoint, WinCase winCase,
+                        bool reverseCase = false) const;
 
     bool isValidWin(const std::vector<int>& winCases,
                            const int startPoint) const;
+    bool isValidDiagonalWin(const std::vector<int>& winCases,
+                            const int startPoint,
+                            const bool reverseCase = false) const;
 
     const std::vector<int> validLateralWinCases() const;
     const std::vector<int> validVerticalWinCases() const;
