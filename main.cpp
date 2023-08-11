@@ -6,12 +6,11 @@
 
 int main(int argc, char *argv[])
 {
-    Board test{14, 17};
-
+    Board test{30, 12};
     test.display(-1, -2);
-//    test.setLateralWin(1, -2);
-//    test.setVerticalWin(9, -2);
-    test.setDiagonalWin(14, -2, true);
+    test.setLateralWin(241, -2);
+    test.setVerticalWin(1, -2);
+    test.setDiagonalWin(217, -2);
 //    test.setTie(-2);
     test.display(-1, -2);
 

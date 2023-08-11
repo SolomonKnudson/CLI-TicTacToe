@@ -5,8 +5,6 @@
 #include <string_view>
 
 //NOTE!: max board size that I can display is 63x63
-//TODO: create func to find all vaild indexes to enforce.
-//(use offSet; see board.cpp)
 
 //uncomment for automated win conditions
 #define BOARDDEBUG
@@ -72,21 +70,31 @@ public:
     void setDiagonalWin(int startColumn, const int playerMark,
                         const bool reverseCase = false);
     void setTie(const int playerMark);
+
 private:
-    struct VaildWinCases
+    struct ValidWinCases
     {
         std::vector<int> m_lateralCases{};
         std::vector<int> m_verticalCases{};
         std::vector<int> m_diagonalCases{};
     };
 
-    //util methods for setDiagonalWin()
+    //util methods for board debugging
     void setDiagonalWinEvenBoard(const int playerMark,
                                  const bool reverseCase);
     void setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
                                    const bool reverseCase);
     void setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
                                    const bool reverseCase);
+
+    bool isValidWinCase(int startPoint, WinCase winCase) const;
+
+    bool isValidWin(const std::vector<int>& winCases,
+                           const int startPoint) const;
+
+    const std::vector<int> validLateralWinCases() const;
+    const std::vector<int> validVerticalWinCases() const;
+    const std::vector<int> validDiagonalWinCases() const;
 #else
 private:
 #endif
