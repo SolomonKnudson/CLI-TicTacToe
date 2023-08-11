@@ -387,117 +387,6 @@ void Board::resetBoard()
 #ifdef BOARDDEBUG
 //TODO: bug fixes
 //methods to set diff win conditions
-bool Board::isValidWinCase(int startPoint, WinCase winCase,
-                           bool reverseCase) const
-{
-    static const ValidWinCases winCases{validLateralWinCases(),
-    validVerticalWinCases(), validDiagonalWinCases()};
-    switch(winCase)
-    {
-        case Board::WinCase::Lateral:
-            return isValidWin(winCases.m_lateralCases, startPoint);
-        case Board::WinCase::Vertical:
-            return isValidWin(winCases.m_verticalCases, startPoint);
-        case Board::WinCase::Diagonal:
-            return isValidDiagonalWin(winCases.m_diagonalCases, startPoint,
-                              reverseCase);
-    }
-    return false;
-}
-
-bool Board::isValidWin(const std::vector<int>& winCases,
-                       const int startPoint) const
-{
-    for(const int winCase: winCases)
-    {
-        if(winCase == startPoint)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
-                               const int startPoint,
-                               const bool reverseCase) const
-{
-    static int n{static_cast<int>(winCases.size())};
-    static int offSet{n / 2};
-    if(!reverseCase)
-    {
-        for(int i{0}; i < offSet; ++i)
-        {
-            if(winCases[i] == startPoint)
-            {
-                return true;
-            }
-        }
-    }
-    //reverse cases will always be the last [offset] number of elements in vec
-    // offset to (vec size - 1)
-    else
-    {
-        for(int i{offSet}; i <= (n - 1); ++i)
-        {
-            if(winCases[i] == startPoint)
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-const std::vector<int> Board::validLateralWinCases() const
-{
-    std::vector<int> winCases{};
-    for(int row{0}; row < m_rows; ++row)
-    {
-        winCases.push_back(m_table[row][0]);
-    }
-    return winCases;
-}
-
-const std::vector<int> Board::validVerticalWinCases() const
-{
-    return m_table[0];
-}
-
-const std::vector<int> Board::validDiagonalWinCases() const
-{
-    std::vector<int> winCases{};
-    int offSet{};
-    if(m_rows < m_columns)
-    {
-        offSet = m_columns - m_rows;
-        for(int i{0}; i <= offSet; ++i)
-        {
-            winCases.push_back(m_table[0].at(i));
-        }
-        //reverse cases
-        for(int i{0}; i <= offSet; ++i)
-        {
-            winCases.push_back(m_table[0].at((m_columns - 1) - i));
-        }
-        return winCases;
-    }
-    else if(m_columns < m_rows)
-    {
-        offSet = m_rows - m_columns;
-        for(int i{0}; i <= offSet; ++i)
-        {
-            winCases.push_back(m_table.at(i)[0]);
-        }
-        //reverseCases
-        for(int i{0}; i <= offSet; ++i)
-        {
-            winCases.push_back(m_table.at(i)[m_columns - 1]);
-        }
-        return winCases;
-    }
-    return winCases;
-}
-
 void Board::setLateralWin(const int row, const int playerMark)
 {
     if(!this -> isValidWinCase(row, WinCase::Lateral))
@@ -619,6 +508,117 @@ void Board::setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
             this -> coverBoardSlot(startColumn, playerMark);
         }
     }
+}
+
+bool Board::isValidWinCase(int startPoint, WinCase winCase,
+                           bool reverseCase) const
+{
+    static const ValidWinCases winCases{validLateralWinCases(),
+    validVerticalWinCases(), validDiagonalWinCases()};
+    switch(winCase)
+    {
+        case Board::WinCase::Lateral:
+            return isValidWin(winCases.m_lateralCases, startPoint);
+        case Board::WinCase::Vertical:
+            return isValidWin(winCases.m_verticalCases, startPoint);
+        case Board::WinCase::Diagonal:
+            return isValidDiagonalWin(winCases.m_diagonalCases, startPoint,
+                              reverseCase);
+    }
+    return false;
+}
+
+bool Board::isValidWin(const std::vector<int>& winCases,
+                       const int startPoint) const
+{
+    for(const int winCase: winCases)
+    {
+        if(winCase == startPoint)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
+                               const int startPoint,
+                               const bool reverseCase) const
+{
+    static int n{static_cast<int>(winCases.size())};
+    static int offSet{n / 2};
+    if(!reverseCase)
+    {
+        for(int i{0}; i < offSet; ++i)
+        {
+            if(winCases[i] == startPoint)
+            {
+                return true;
+            }
+        }
+    }
+    //reverse cases will always be the last [offset] number of elements in vec
+    // offset to (vec size - 1)
+    else
+    {
+        for(int i{offSet}; i <= (n - 1); ++i)
+        {
+            if(winCases[i] == startPoint)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+const std::vector<int> Board::validLateralWinCases() const
+{
+    std::vector<int> winCases{};
+    for(int row{0}; row < m_rows; ++row)
+    {
+        winCases.push_back(m_table[row][0]);
+    }
+    return winCases;
+}
+
+const std::vector<int> Board::validVerticalWinCases() const
+{
+    return m_table[0];
+}
+
+const std::vector<int> Board::validDiagonalWinCases() const
+{
+    std::vector<int> winCases{};
+    int offSet{};
+    if(m_rows < m_columns)
+    {
+        offSet = m_columns - m_rows;
+        for(int i{0}; i <= offSet; ++i)
+        {
+            winCases.push_back(m_table[0].at(i));
+        }
+        //reverse cases
+        for(int i{0}; i <= offSet; ++i)
+        {
+            winCases.push_back(m_table[0].at((m_columns - 1) - i));
+        }
+        return winCases;
+    }
+    else if(m_columns < m_rows)
+    {
+        offSet = m_rows - m_columns;
+        for(int i{0}; i <= offSet; ++i)
+        {
+            winCases.push_back(m_table.at(i)[0]);
+        }
+        //reverseCases
+        for(int i{0}; i <= offSet; ++i)
+        {
+            winCases.push_back(m_table.at(i)[m_columns - 1]);
+        }
+        return winCases;
+    }
+    return winCases;
 }
 #endif
 //Private Methods

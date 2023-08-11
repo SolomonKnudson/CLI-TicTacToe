@@ -8,9 +8,9 @@ int main(int argc, char *argv[])
 {
     Board test{17, 14};
     test.display(-1, -2);
-//    test.setLateralWin(241, -2);
+    test.setLateralWin(225, -2);
 //    test.setVerticalWin(1, -2);
-    test.setDiagonalWin(56, -2);
+//    test.setDiagonalWin(35, -2);
 //    test.setTie(-2);
     test.display(-1, -2);
 
@@ -22,6 +22,6 @@ int main(int argc, char *argv[])
     {
         std::cout << "Win case: " << test.winCase() << '\n';
     }
-//    TicTacToe ticTacToe{};
+    TicTacToe ticTacToe{};
     return 0;
 }
