@@ -2,7 +2,7 @@
 
 
 
-//TODO: continue testing different board size.
+//TODO: continue testing different board sizes.
 
 int main(int argc, char *argv[])
 {
