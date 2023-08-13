@@ -33,9 +33,6 @@ private:
     void setupGame();
     void setBoard();
 
-    //Board Logic
-    void displayBoard() const;
-
     //Game logic
     void gameLoop();
     void endGame();
@@ -57,6 +54,7 @@ private:
     Player& currentPlayer();
 
     //Util Methods
+    void displayBoard() const;
     void flushCin() const;
     void checkBoardSize();
     void displayBoardConfiguration() const;

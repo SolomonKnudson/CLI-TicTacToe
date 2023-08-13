@@ -14,7 +14,7 @@ Board::Board(const int row, const int column)
         this -> setBoard(row, column);
     }
 }
-//END CONSTRUCTORS
+
 
 
 //Table Logic

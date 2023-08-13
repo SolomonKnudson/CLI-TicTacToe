@@ -149,7 +149,7 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
     m_winCase = WinCase::Diagonal;
 }
 
-//Util funcs for setDiaWin
+//Util methods for setDiaWin
 void Board::setDiagonalWinEvenBoard(const int playerMark, bool reverseCase)
 {
     if(!reverseCase)
@@ -216,11 +216,12 @@ void Board::setDiagonalWinLopSidedColumn(int startRow, const int playerMark,
     }
 }
 
+//Util methods for all win case set'ers
 bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
                            const bool reverseCase) const
 {
     //static so winCases aren't re-calculated every func call
-    static const ValidWinCases winCases{validLateralWinCases(),
+    static  const ValidWinCases winCases{validLateralWinCases(),
     validVerticalWinCases(), validDiagonalWinCases()};
     switch(winCase)
     {
@@ -237,7 +238,7 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
     return false;
 }
 
-//Util funcs for isValidWinCase
+//Util methods for isValidWinCase
 bool Board::isValidWin(const std::vector<int>& winCases,
                        const int startPoint) const
 {
@@ -331,7 +332,7 @@ const std::vector<int> Board::validDiagonalWinCases() const
     return winCases;
 }
 
-//Util func for clearWinConfig()
+//Util methods for clearWinConfig()
 bool Board::multipleWinCases(const int playerMark) const
 {
     int winCaseCount{};
@@ -342,6 +343,11 @@ bool Board::multipleWinCases(const int playerMark) const
     if(this -> isVerticalWin(playerMark))
     {
         ++winCaseCount;
+    }
+    //isDia does a lot of looping; only call if you have to.
+    if(winCaseCount > 1)
+    {
+        return true;
     }
     if(this -> isDiagonalWin(playerMark))
     {
