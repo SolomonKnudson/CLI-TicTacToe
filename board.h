@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string_view>
-
+//TODO: implement clearDiaWin
 //NOTE!: max board size that I can display is 63x63
 
 //uncomment for automated win conditions
@@ -15,7 +15,8 @@ class Board
     {
         Lateral,
         Vertical,
-        Diagonal
+        Diagonal,
+        NoWinCase
     };
     using Table = std::vector<std::vector<int>>;
 public:
@@ -56,6 +57,7 @@ public:
     //Util
     std::string_view winCase() const;
     void resetBoard();
+    bool isEmpty() const;
 
     //Methods to help with display formatting
     //Positive ints only!
@@ -63,13 +65,17 @@ public:
     static bool isDoubleDigit(const int column);
     static bool isTripleDigit(const int column);
 
-    //methods to set diff win conditions
 #ifdef BOARDDEBUG
+    //methods to set diff win conditions
     void setLateralWin(const int row, const int playerMark);
     void setVerticalWin(const int column, const int playerMark);
     void setDiagonalWin(int startColumn, const int playerMark,
                         const bool reverseCase = false);
     void setTie(const int playerMark);
+
+    void clearWinConfiguration(const int playerMark);
+
+    void clearDiagonalWin(const int playerMark);
 
 private:
     struct ValidWinCases
@@ -99,6 +105,9 @@ private:
     const std::vector<int> validLateralWinCases() const;
     const std::vector<int> validVerticalWinCases() const;
     const std::vector<int> validDiagonalWinCases() const;
+
+    void clearLateralWin(const int playerMark);
+    void clearVerticalWin(const int playerMark);
 #else
 private:
 #endif

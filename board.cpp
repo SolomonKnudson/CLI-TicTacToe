@@ -3,7 +3,7 @@
 //Constructors
 Board::Board(const int row, const int column)
     : m_table{}
-    , m_winCase{}
+    , m_winCase{WinCase::NoWinCase}
     , m_rows{}
     , m_columns{}
     , m_boardSize{}
@@ -361,13 +361,12 @@ std::string_view Board::winCase() const
     {
         case WinCase::Lateral:
             return "Lateral";
-            break;
         case WinCase::Vertical:
             return "Vertical";
-            break;
         case WinCase::Diagonal:
             return "Diagonal";
-            break;
+        case WinCase::NoWinCase:
+            return "";
     }
     return "";
 }
@@ -382,11 +381,90 @@ void Board::resetBoard()
     {
         m_evenBoard = false;
     }
+    m_winCase = WinCase::NoWinCase;
 }
 
 #ifdef BOARDDEBUG
-//TODO: bug fixes
+//TODO: implement clearDiaWin
 //methods to set diff win conditions
+
+//Will not work if multiple win conditions are set
+void Board::clearWinConfiguration(const int playerMark)
+{
+    if(!this -> isWinningMove(playerMark))
+    {
+        return;
+    }
+    //m_winCase is only valid after isWinningMove is called
+    //it will be set to NoWinCase otherwise
+    switch(m_winCase)
+    {
+        case WinCase::Lateral:
+            this -> clearLateralWin(playerMark);
+            break;
+        case WinCase::Vertical:
+            this -> clearVerticalWin(playerMark);
+            break;
+        case WinCase::Diagonal:
+            break;
+        case WinCase::NoWinCase:
+            return;
+    }
+    m_winCase = WinCase::NoWinCase;
+}
+
+void Board::clearLateralWin(const int playerMark)
+{
+    int offSet{};
+    for(int row{0}; row < m_rows; ++row)
+    {
+        for(int column{0}; column < m_columns; ++column)
+        {
+            if(m_table[row][column] == playerMark)
+            {
+                if(row == 0)
+                {
+                    for(int i{0}; i <= m_columns; ++i)
+                    {
+                        m_table[row][i] = i + 1;
+                    }
+                }
+                else
+                {
+                    offSet = m_table[row - 1][m_columns -1] + 1;
+                    for(int i{0}; i < m_columns; ++i)
+                    {
+                        m_table[row][i] = offSet++;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Board::clearVerticalWin(const int playerMark)
+{
+    for(int row{0}; row < m_rows; ++row)
+    {
+        for(int column{0}; column < m_columns; ++column)
+        {
+            if(column == 0)
+            {
+                if(m_table[row][column] == playerMark)
+                {
+                    m_table[row][column] = m_table[row][column + 1] - 1;
+                }
+            }
+            else
+            {
+                if(m_table[row][column] == playerMark)
+                {
+                    m_table[row][column] = m_table[row][column - 1] + 1;
+                }
+            }
+        }
+    }
+}
 void Board::setLateralWin(const int row, const int playerMark)
 {
     if(!this -> isValidWinCase(row, WinCase::Lateral))
@@ -524,6 +602,8 @@ bool Board::isValidWinCase(int startPoint, WinCase winCase,
         case Board::WinCase::Diagonal:
             return isValidDiagonalWin(winCases.m_diagonalCases, startPoint,
                               reverseCase);
+        case Board::WinCase::NoWinCase:
+            return false;
     }
     return false;
 }
@@ -654,6 +734,11 @@ void Board::dashLine() const
         }
     }
     std::cout << '\n';
+}
+
+bool Board::isEmpty() const
+{
+    return m_table.empty();
 }
 //END PRIVATE METHODS
 //END PUBLIC METHODS

@@ -108,6 +108,10 @@ void TicTacToe::setupGame()
 
 void TicTacToe::setBoard()
 {
+    if(!m_board.isEmpty())
+    {
+        m_board.resetBoard();
+    }
     m_board.setBoard(m_previousRow, m_previousColumn);
 }
 
@@ -221,7 +225,6 @@ void TicTacToe::endGame()
 
 void TicTacToe::resetGame()
 {
-    m_board.resetBoard();
     this -> setupGame();
     if(m_hasWon)
     {
