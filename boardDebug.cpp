@@ -2,11 +2,18 @@
 
 #ifdef BOARDDEBUG
 //TODO: implement clearDiaWin
-//methods to set diff win conditions
 
-//Will not work if multiple win conditions are set
+
 void Board::clearWinConfiguration(const int playerMark)
 {
+    if(this -> multipleWinCases(playerMark))
+    {
+        int row{m_rows};
+        int column{m_columns};
+        this -> resetBoard();
+        this -> setBoard(row, column);
+        return;
+    }
     switch(m_winCase)
     {
         case WinCase::Lateral:
@@ -76,6 +83,7 @@ void Board::clearVerticalWin(const int playerMark)
     }
 }
 
+//methods to set diff win conditions
 void Board::setLateralWin(const int row, const int playerMark)
 {
     if(!this -> isValidWinCase(row, WinCase::Lateral))
@@ -321,5 +329,24 @@ const std::vector<int> Board::validDiagonalWinCases() const
         return winCases;
     }
     return winCases;
+}
+
+//Util func for clearWinConfig()
+bool Board::multipleWinCases(const int playerMark) const
+{
+    int winCaseCount{};
+    if(this -> isLateralWin(playerMark))
+    {
+        ++winCaseCount;
+    }
+    if(this -> isVerticalWin(playerMark))
+    {
+        ++winCaseCount;
+    }
+    if(this -> isDiagonalWin(playerMark))
+    {
+        ++winCaseCount;
+    }
+    return ((winCaseCount > 1) ? true : false);
 }
 #endif

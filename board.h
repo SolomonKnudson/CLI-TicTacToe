@@ -108,6 +108,7 @@ private:
 
     void clearLateralWin(const int playerMark);
     void clearVerticalWin(const int playerMark);
+    bool multipleWinCases(const int playerMark) const;
 #else
 private:
 #endif
