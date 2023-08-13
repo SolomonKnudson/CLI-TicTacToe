@@ -124,23 +124,23 @@ void TicTacToe::gameLoop()
         this -> getMove();
         if(!this -> isLegalMove())
         {
-            this -> currentPlayer().addInValidMove();
-            while(this -> currentPlayer().inValidMoves()
+            this -> currentPlayer().addInvalidMove();
+            while(this -> currentPlayer().invalidMoves()
                   <= m_totalInvalidMovesAllowed)
             {
                 std::cout << "|Watch it, " << this -> currentPlayer().name()
                           << " that's an invalid table position,"
                           << " you have " << m_totalInvalidMovesAllowed
-                             - this -> currentPlayer().inValidMoves()
+                             - this -> currentPlayer().invalidMoves()
                           << " left!\n";
                 this -> getMove();
                 if(this -> isLegalMove())
                 {
                     break;
                 }
-                this -> currentPlayer().addInValidMove();
+                this -> currentPlayer().addInvalidMove();
             }
-            if(this -> currentPlayer().inValidMoves()
+            if(this -> currentPlayer().invalidMoves()
                     > m_totalInvalidMovesAllowed)
             {
                 std::cout << "|" << this -> currentPlayer().name()
@@ -274,8 +274,8 @@ bool TicTacToe::isLegalMove() const
 {
     if(this -> isValidPosition())
     {
-        if(m_playerO.inMoves(m_tablePosition)
-                || m_playerX.inMoves(m_tablePosition))
+        if(m_playerO.isOccupying(m_tablePosition)
+                || m_playerX.isOccupying(m_tablePosition))
         {
             return false;
         }

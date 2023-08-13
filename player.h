@@ -11,14 +11,14 @@ public:
 
     //Move Logic
     int moves() const;
-    bool inMoves(const int move) const;
+    bool isOccupying(const int move) const;
     void addMove(const int move);
     void clearMoves();
 
     //Invalid Move
-    int inValidMoves() const;
-    void addInValidMove();
-    void resetInValidMoves();
+    int invalidMoves() const;
+    void addInvalidMove();
+    void resetInvalidMoves();
 
     //Mark Logic
     int mark() const;

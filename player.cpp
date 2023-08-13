@@ -16,7 +16,7 @@ int Player::moves() const
     return m_moves.size();
 }
 
-bool Player::inMoves(const int move) const
+bool Player::isOccupying(const int move) const
 {
     for(const auto& m_move : m_moves)
     {
@@ -39,17 +39,17 @@ void Player::clearMoves()
 }
 
 //Invalid Move
-int Player::inValidMoves() const
+int Player::invalidMoves() const
 {
     return m_inValidMoves;
 }
 
-void Player::addInValidMove()
+void Player::addInvalidMove()
 {
     m_inValidMoves++;
 }
 
-void Player::resetInValidMoves()
+void Player::resetInvalidMoves()
 {
     m_inValidMoves = 0;
 }
