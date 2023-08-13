@@ -17,6 +17,7 @@ add_executable(TicTacToeRepo
   tictactoe.cpp
   board.h
   board.cpp
+  boardDebug.cpp
   player.h
   player.cpp
 )

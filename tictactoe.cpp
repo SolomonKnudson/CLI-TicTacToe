@@ -25,9 +25,8 @@ TicTacToe::TicTacToe()
 {
     this -> setupGame();
 }
-//END CONSTRUCTORS
 
-//Private Methods
+
 //Setup Logic
 void TicTacToe::setupGame()
 {
@@ -115,11 +114,6 @@ void TicTacToe::setBoard()
     m_board.setBoard(m_previousRow, m_previousColumn);
 }
 
-//Board Logic
-void TicTacToe::displayBoard() const
-{
-    m_board.display(m_playerX.mark(), m_playerO.mark());
-}
 
 //Game Logic
 void TicTacToe::gameLoop()
@@ -399,32 +393,16 @@ void TicTacToe::checkBoardSize()
     }
 }
 
+void TicTacToe::displayBoard() const
+{
+    m_board.display(m_playerX.mark(), m_playerO.mark());
+}
+
 void TicTacToe::displayBoardConfiguration() const
 {
     std::cout << "|Match will be played on a "
               << m_previousRow << "x" << m_previousColumn
               << " Board!\n";
-}
-void TicTacToe::displayMatchRecords() const
-{
-    for(const auto& record : m_matchRecords)
-    {
-        std::cout << "\n|Match: " << record.m_matchID << '\n';
-        std::cout << "|Played on a " << record.m_row << "x" << record.m_column
-                  << " Board\n";
-        if(!record.m_tieGame)
-        {
-            std::cout << "|Winner: " << record.m_winner << '\n';
-            std::cout << "|Match won in: " << record.m_moves
-                      << " moves\n";
-            std::cout << "|Win Case: " << record.m_winCase << '\n';
-        }
-        else
-        {
-            std::cout << "|No winner: match was a tie\n";
-            std::cout << "|Total moves played: " << record.m_moves << '\n';
-        }
-    }
 }
 
 void TicTacToe::createMatchRecord()
@@ -447,6 +425,28 @@ void TicTacToe::createMatchRecord()
         matchRecord.m_moves = m_playerX.moves() + m_playerO.moves();
     }
     m_matchRecords.push_back(matchRecord);
+}
+
+void TicTacToe::displayMatchRecords() const
+{
+    for(const auto& record : m_matchRecords)
+    {
+        std::cout << "\n|Match: " << record.m_matchID << '\n';
+        std::cout << "|Played on a " << record.m_row << "x" << record.m_column
+                  << " Board\n";
+        if(!record.m_tieGame)
+        {
+            std::cout << "|Winner: " << record.m_winner << '\n';
+            std::cout << "|Match won in: " << record.m_moves
+                      << " moves\n";
+            std::cout << "|Win Case: " << record.m_winCase << '\n';
+        }
+        else
+        {
+            std::cout << "|No winner: match was a tie\n";
+            std::cout << "|Total moves played: " << record.m_moves << '\n';
+        }
+    }
 }
 
 bool TicTacToe::isValidPosition() const
@@ -480,4 +480,4 @@ void TicTacToe::quit() const
               << "Tic-Tac-Toe,\n|and for helping to test the game logic.";
     std::cout << "\n|GoodBye!\n\n";
 }
-//END PRIVATE METHODS
+

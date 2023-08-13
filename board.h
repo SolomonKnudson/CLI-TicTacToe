@@ -69,7 +69,7 @@ public:
     //methods to set diff win conditions
     void setLateralWin(const int row, const int playerMark);
     void setVerticalWin(const int column, const int playerMark);
-    void setDiagonalWin(int startColumn, const int playerMark,
+    void setDiagonalWin(int startPoint, const int playerMark,
                         const bool reverseCase = false);
     void setTie(const int playerMark);
 
@@ -90,11 +90,11 @@ private:
                                  const bool reverseCase);
     void setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
                                    const bool reverseCase);
-    void setDiagonalWinLopSidedColumn(int startColumn, const int playerMark,
+    void setDiagonalWinLopSidedColumn(int startRow, const int playerMark,
                                    const bool reverseCase);
 
-    bool isValidWinCase(int startPoint, WinCase winCase,
-                        bool reverseCase = false) const;
+    bool isValidWinCase(const int startPoint, const WinCase winCase,
+                        const bool reverseCase = false) const;
 
     bool isValidWin(const std::vector<int>& winCases,
                            const int startPoint) const;

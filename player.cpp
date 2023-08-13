@@ -8,11 +8,8 @@ Player::Player(const int mark, const std::string_view name)
     , m_wins{}
     , m_inValidMoves{}
 {}
-//END CONSTRUCTORS
 
 
-
-//Public Methods
 //Move Logic
 int Player::moves() const
 {
@@ -89,4 +86,4 @@ std::string_view Player::name() const
 {
     return m_name;
 }
-//END PUBLIC METHODS
+

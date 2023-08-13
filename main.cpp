@@ -10,13 +10,14 @@ int main(int argc, char *argv[])
     int playerO {-2};
     Board test{19,  3};
     test.display(playerX, playerO);
-    test.setLateralWin(55, playerO);
+//    test.setLateralWin(55, playerO);
+    test.setDiagonalWin(1, playerO);
     test.display(playerX, playerO);
-    test.clearWinConfiguration(playerO);
-    test.setVerticalWin(3, playerO);
+//    test.clearWinConfiguration(playerO);
+//    test.setVerticalWin(3, playerO);
     test.display(playerX, playerO);
-    test.clearWinConfiguration(playerO);
-    test.display(playerX, playerO);
+//    test.clearWinConfiguration(playerO);
+//    test.display(playerX, playerO);
     if(test.isTie(-1, -2))
     {
         std::cout << "Tie!\n";
