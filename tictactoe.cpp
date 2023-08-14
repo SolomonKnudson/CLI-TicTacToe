@@ -114,7 +114,6 @@ void TicTacToe::setBoard()
     m_board.setBoard(m_previousRow, m_previousColumn);
 }
 
-
 //Game Logic
 void TicTacToe::gameLoop()
 {
@@ -244,10 +243,10 @@ void TicTacToe::resetGame()
 
     }
     m_playerX.clearMoves();
-    m_playerX.resetInValidMoves();
+    m_playerX.resetInvalidMoves();
 
     m_playerO.clearMoves();
-    m_playerO.resetInValidMoves();
+    m_playerO.resetInvalidMoves();
 
     m_tablePosition = 0;
     this -> gameLoop();

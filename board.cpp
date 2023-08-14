@@ -149,6 +149,7 @@ bool Board::isWinningMove(const int playerMark) const
     return false;
 }
 
+//Util methods for isWinningMove
 bool Board::isLateralWin(const int playerMark) const
 {
     int inARow{};
@@ -208,7 +209,7 @@ bool Board::isDiagonalWin(const int playerMark) const
     return false;
 }
 
-//Diagonal subcases
+//Util methods for isDiaWin
 bool Board::evenBoard(const int playerMark) const
 {
     int inARow{};
@@ -239,7 +240,6 @@ bool Board::evenBoard(const int playerMark) const
     }
     return false;
 }
-
 
 /*
     *NOTE: if rows < columns, columns - rows = only diagonal cases(Column Based)
@@ -354,6 +354,7 @@ bool Board::isTie(const int playerX, const int playerO) const
     return false;
 }
 
+//Util
 std::string_view Board::winCase() const
 {
     switch(m_winCase)
@@ -365,12 +366,11 @@ std::string_view Board::winCase() const
         case WinCase::Diagonal:
             return "Diagonal";
         case WinCase::NoWinCase:
-            return "";
+            return "NoWinCase";
     }
     return "";
 }
 
-//Util
 void Board::resetBoard()
 {
     m_table.clear();
