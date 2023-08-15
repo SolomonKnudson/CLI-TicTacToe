@@ -41,7 +41,6 @@ void Board::setLateralWin(const int row, const int playerMark)
     if(!this -> isValidWinCase(row, WinCase::Lateral))
     {
         std::cout << "Invalid row!\n";
-        m_winCase = WinCase::NoWinCase;
         return;
     }
     for(int fill{row}, endColumn{row + m_columns}; fill < endColumn; fill++)
@@ -56,7 +55,6 @@ void Board::setVerticalWin(const int column, const int playerMark)
     if(!this -> isValidWinCase(column, WinCase::Vertical))
     {
         std::cout << "Invalid column!\n";
-        m_winCase = WinCase::NoWinCase;
         return;
     }
     for(int row{0}, columnOffset{column}; row < m_rows;
@@ -102,7 +100,6 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
     {
         std::cout << ((m_rows < m_columns) ? "Invalid Column!\n"
                                            : "Invalid Row!\n");
-        m_winCase = WinCase::NoWinCase;
         return;
     }
     m_winCase = WinCase::Diagonal;

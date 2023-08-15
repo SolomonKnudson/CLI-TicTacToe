@@ -9,13 +9,13 @@ int main(int argc, char *argv[])
     int playerX{-1};
     int playerO {-2};
     Board test{19,  19};
-    test.display(playerX, playerO);
+//    test.display(playerX, playerO);
 //    test.setLateralWin(1, playerO);
 //    test.display(playerX, playerO);
-    test.setDiagonalWin(37, playerO);
-//    test.display(playerX, playerO);
+//    test.setDiagonalWin(37, playerO);
+    test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
-//    test.setVerticalWin(1, playerO);
+    test.setVerticalWin(111, playerO);
 //    test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
     test.display(playerX, playerO);
