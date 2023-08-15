@@ -8,11 +8,11 @@ int main(int argc, char *argv[])
 {
     int playerX{-1};
     int playerO {-2};
-    Board test{19,  19};
+    Board test{19,  18};
 //    test.display(playerX, playerO);
-//    test.setLateralWin(1, playerO);
+    test.setLateralWin(11, playerO);
 //    test.display(playerX, playerO);
-//    test.setDiagonalWin(37, playerO);
+    test.setDiagonalWin(37, playerO);
     test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
     test.setVerticalWin(111, playerO);
@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
     {
         std::cout << "Win case: " << test.winCase() << '\n';
     }
-//    TicTacToe ticTacToe{};
+    TicTacToe ticTacToe{};
     return 0;
 }
