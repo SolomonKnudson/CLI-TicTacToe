@@ -69,9 +69,9 @@ void Board::setVerticalWin(const int column, const int playerMark)
 
 void Board::setTie(const int playerMark)
 {
-    for(int fill{1}; fill <= m_boardSize; fill++)
+    for(int tablePosition{1}; tablePosition <= m_boardSize; tablePosition++)
     {
-        this -> coverBoardSlot(fill, playerMark);
+        this -> coverBoardSlot(tablePosition, playerMark);
     }
 }
 

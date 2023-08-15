@@ -233,11 +233,7 @@ bool Board::evenBoard(const int playerMark) const
             inARow++;
         }
     }
-    if(inARow == m_rows)
-    {
-        return true;
-    }
-    return false;
+    return (inARow == m_rows);
 }
 
 /*
@@ -346,11 +342,7 @@ bool Board::isTie(const int playerX, const int playerO) const
             }
         }
     }
-    if(totalPlayerMarks == m_boardSize)
-    {
-        return true;
-    }
-    return false;
+    return (totalPlayerMarks == m_boardSize);
 }
 
 //Util

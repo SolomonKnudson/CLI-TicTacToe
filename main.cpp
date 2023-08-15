@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     test.setDiagonalWin(37, playerO);
 //    test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
-    test.setVerticalWin(1, playerO);
+//    test.setVerticalWin(1, playerO);
 //    test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
     test.display(playerX, playerO);
