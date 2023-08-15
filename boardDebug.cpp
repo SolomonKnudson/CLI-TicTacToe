@@ -78,11 +78,7 @@ void Board::setTie(const int playerMark)
 void Board::setDiagonalWin(int startColumn, const int playerMark,
                            const bool reverseCase)
 {
-    if(m_evenBoard)
-    {
-        this -> setDiagonalWinEvenBoard(playerMark, reverseCase);
-    }
-    else if(this -> isValidWinCase(startColumn, WinCase::Diagonal, reverseCase))
+    if(this -> isValidWinCase(startColumn, WinCase::Diagonal, reverseCase))
     {
         if(m_rows < m_columns)
         {
@@ -94,6 +90,12 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
             this -> setDiagonalWinLopSidedColumn(startColumn, playerMark,
                                                         reverseCase);
         }
+    }
+    //if winCase is invalid but board is even, winCase isn't needed only reverse
+    //case
+    else if(m_evenBoard)
+    {
+        this -> setDiagonalWinEvenBoard(playerMark, reverseCase);
     }
     else
     {
@@ -189,7 +191,7 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
             return this -> isValidDiagonalWin(winCases.m_diagonalCases,
                                               startPoint, reverseCase);
         case Board::WinCase::NoWinCase:
-            return false;
+           break;
     }
     return false;
 }
@@ -351,7 +353,7 @@ bool Board::multipleWinCases(const int playerMark) const
     {
         ++winCaseCount;
     }
-    //isDia does a lot of looping; only call if you have to.
+    //isDia does a lot of looping, only call if you have to.
     if(winCaseCount > 1)
     {
         return true;
@@ -360,6 +362,6 @@ bool Board::multipleWinCases(const int playerMark) const
     {
         ++winCaseCount;
     }
-    return ((winCaseCount > 1) ? true : false);
+    return (winCaseCount > 1);
 }
 #endif

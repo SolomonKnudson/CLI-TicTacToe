@@ -8,17 +8,17 @@ int main(int argc, char *argv[])
 {
     int playerX{-1};
     int playerO {-2};
-    Board test{19,  3};
+    Board test{19,  19};
     test.display(playerX, playerO);
-    test.setLateralWin(555, playerO);
-    test.display(playerX, playerO);
-    test.setDiagonalWin(112, playerO);
-    test.display(playerX, playerO);
-//    test.clearWinConfiguration(playerO);
-    test.setVerticalWin(33, playerO);
-    test.display(playerX, playerO);
-//    test.clearWinConfiguration(playerO);
+//    test.setLateralWin(1, playerO);
 //    test.display(playerX, playerO);
+    test.setDiagonalWin(37, playerO);
+//    test.display(playerX, playerO);
+//    test.clearWinConfiguration(playerO);
+    test.setVerticalWin(1, playerO);
+//    test.display(playerX, playerO);
+//    test.clearWinConfiguration(playerO);
+    test.display(playerX, playerO);
     if(test.isTie(-1, -2))
     {
         std::cout << "Tie!\n";

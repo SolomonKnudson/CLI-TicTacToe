@@ -16,7 +16,6 @@ Board::Board(const int row, const int column)
 }
 
 
-
 //Table Logic
 void Board::display(const int playerX, const int playerO) const
 {
@@ -366,9 +365,9 @@ std::string_view Board::winCase() const
         case WinCase::Diagonal:
             return "Diagonal";
         case WinCase::NoWinCase:
-            return "NoWinCase";
+            break;
     }
-    return "";
+    return "NoWinCase";
 }
 
 void Board::resetBoard()
@@ -415,6 +414,7 @@ void Board::dashLine() const
     }
     std::cout << '\n';
 }
+//
 
 bool Board::isEmpty() const
 {
