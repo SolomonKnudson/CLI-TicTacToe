@@ -98,8 +98,9 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
     }
     else
     {
-        std::cout << "setDiaWin(): " << ((m_rows < m_columns) ? "Invalid Column!\n"
-                                           : "Invalid Row!\n");
+        std::cout << "setDiaWin(): " << ((m_rows < m_columns)
+                                         ? "Invalid Column!\n"
+                                         : "Invalid Row!\n");
         return;
     }
     m_winCase = WinCase::Diagonal;

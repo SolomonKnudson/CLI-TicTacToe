@@ -152,18 +152,24 @@ void TicTacToe::gameLoop()
             }
         }
         this -> move();
-        if(this -> isWinningMove())
+        //isWinningMove does a lot of looping. Only call once current player has
+        //made the minimum number of moves to have a win
+        if(this -> currentPlayer().moves() >=
+                ((m_previousRow < m_previousColumn) ? m_previousRow
+                 : m_previousColumn))
         {
-            m_hasWon = true;
+            if(this -> isWinningMove())
+            {
+                m_hasWon = true;
+                break;
+            }
+            else if(this -> isTieGame())
+            {
+                m_tie = true;
+                break;
+            }
         }
-        else if(this -> isTieGame())
-        {
-            m_tie = true;
-        }
-        else
-        {
-            this -> nextPlayer();
-        }
+        this -> nextPlayer();
     }
    this -> displayBoard();
    this -> createMatchRecord();
