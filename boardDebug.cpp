@@ -12,9 +12,7 @@ void Board::clearWinConfiguration(const int playerMark)
     }
     if(this -> multipleWinCases(playerMark))
     {
-        int row{m_rows};
-        int column{m_columns};
-        this -> setBoard(row, column);
+        this -> setBoard(m_rows, m_columns);
         return;
     }
     switch(m_winCase)
