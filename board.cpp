@@ -87,6 +87,10 @@ int Board::boardSize() const
 
 void Board::setBoard(int rows, int columns)
 {
+    if(!this -> isEmpty())
+    {
+        this -> resetBoard();
+    }
     m_rows = rows;
     m_columns = columns;
     m_boardSize = m_rows * m_columns;
