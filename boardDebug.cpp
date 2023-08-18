@@ -88,8 +88,8 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
                                                         reverseCase);
         }
     }
-    //if winCase is invalid but board is even, winCase isn't needed only reverse
-    //case
+    //if winCase is invalid but board is even, winCase isn't needed
+    //only reverse case
     else if(m_evenBoard)
     {
         this -> setDiagonalWinEvenBoard(playerMark, reverseCase);

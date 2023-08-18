@@ -85,7 +85,7 @@ int Board::boardSize() const
     return m_boardSize;
 }
 
-void Board::setBoard(int rows, int columns)
+void Board::setBoard(const int rows, const int columns)
 {
     if(!this -> isEmpty())
     {
