@@ -96,13 +96,13 @@ void Board::setBoard(int rows, int columns)
         m_evenBoard = true;
     }
 
+    m_table.reserve(m_rows);
     for(int row{0}; row < m_rows; row++)
     {
         m_table.push_back(std::vector<int>{});
     }
 
     int column{1};
-
     for(auto& row : m_table)
     {
         for(int i{0}; i < m_columns; i++)
