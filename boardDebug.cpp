@@ -14,7 +14,6 @@ void Board::clearWinConfiguration(const int playerMark)
     {
         int row{m_rows};
         int column{m_columns};
-        this -> resetBoard();
         this -> setBoard(row, column);
         return;
     }
@@ -43,9 +42,10 @@ void Board::setLateralWin(const int row, const int playerMark)
         std::cout << "setLatWin(): Invalid row!\n";
         return;
     }
-    for(int fill{row}, endColumn{row + m_columns}; fill < endColumn; fill++)
+    for(int tablePosition{row}, endColumn{row + m_columns}; tablePosition <
+        endColumn; tablePosition++)
     {
-        this -> coverBoardSlot(fill, playerMark);
+        this -> coverBoardSlot(tablePosition, playerMark);
     }
     m_winCase = WinCase::Lateral;
 }
@@ -353,7 +353,11 @@ bool Board::multipleWinCases(const int playerMark) const
         ++winCaseCount;
     }
     //isDia does a lot of looping, only call if you have to.
-    if(winCaseCount > 1)
+    if(winCaseCount == 0)
+    {
+        return false;
+    }
+    else if(winCaseCount > 1)
     {
         return true;
     }
