@@ -176,7 +176,7 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
                            const bool reverseCase) const
 {
     //static so winCases aren't re-calculated every func call
-    static  const ValidWinCases winCases{validLateralWinCases(),
+    const static  ValidWinCases winCases{validLateralWinCases(),
     validVerticalWinCases(), validDiagonalWinCases()};
     switch(winCase)
     {
@@ -211,8 +211,8 @@ bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
                                const int startPoint,
                                const bool reverseCase) const
 {
-    static int n{static_cast<int>(winCases.size())};
-    static int offSet{n / 2};
+    const static int n{static_cast<int>(winCases.size())};
+    const static int offSet{n / 2};
     if(!reverseCase)
     {
         for(int i{0}; i < offSet; ++i)
