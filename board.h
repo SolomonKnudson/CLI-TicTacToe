@@ -88,9 +88,9 @@ private:
     //util methods for board debugging
     void setDiagonalWinEvenBoard(const int playerMark,
                                  const bool reverseCase);
-    void setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
+    void setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
                                    const bool reverseCase);
-    void setDiagonalWinLopSidedColumn(int startRow, const int playerMark,
+    void setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
                                    const bool reverseCase);
 
     bool isValidWinCase(const int startPoint, const WinCase winCase,
@@ -121,8 +121,8 @@ private:
 
     //Diagonal subcases
     bool evenBoard(const int playerMark) const;
-    bool lopSidedRow(const int playerMark) const;
-    bool lopSidedColumn(const int playerMark) const;
+    bool lopsidedRow(const int playerMark) const;
+    bool lopsidedColumn(const int playerMark) const;
 
     Table m_table{};
     mutable WinCase m_winCase{};

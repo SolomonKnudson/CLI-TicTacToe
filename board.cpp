@@ -87,6 +87,7 @@ int Board::boardSize() const
 
 void Board::setBoard(const int rows, const int columns)
 {
+    //O(n) + O(nm) = O(nm + n)
     if(!this -> isEmpty())
     {
         this -> resetBoard();
@@ -101,14 +102,18 @@ void Board::setBoard(const int rows, const int columns)
     }
 
     m_table.reserve(m_rows);
+    //O(n)
     for(int row{0}; row < m_rows; row++)
     {
         m_table.push_back(std::vector<int>{});
     }
 
     int column{1};
+    //if n == m || n > m, O(n^2)
+    //O(nm) || O(n^2)
     for(auto& row : m_table)
     {
+        //O(m)
         for(int i{0}; i < m_columns; i++)
         {
             row.push_back(column++);
@@ -118,8 +123,12 @@ void Board::setBoard(const int rows, const int columns)
 
 void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
 {
+    //if n == m || n > m, O(n^2)
+    //O(n) * O(m) = O(nm)
+    //O(n)
     for(auto& row : m_table)
     {
+        //O(m)
         for(auto& column : row)
         {
             if(column == tablePosition)
@@ -134,17 +143,17 @@ void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
 //Win Logic
 bool Board::isWinningMove(const int playerMark) const
 {
-    if(this -> isLateralWin(playerMark))
+    if(this -> isLateralWin(playerMark))//O(nm) || O(n^2)
     {
         m_winCase = WinCase::Lateral;
         return true;
     }
-    else if(this -> isVerticalWin(playerMark))
+    else if(this -> isVerticalWin(playerMark))//O(nm) || O(n^2)
     {
         m_winCase = WinCase::Vertical;
         return true;
     }
-    else if (this -> isDiagonalWin(playerMark))
+    else if (this -> isDiagonalWin(playerMark))//O(n) || O(nm) || O(n^2)
     {
         m_winCase = WinCase::Diagonal;
         return true;
@@ -155,15 +164,21 @@ bool Board::isWinningMove(const int playerMark) const
 //Util methods for isWinningMove
 bool Board::isLateralWin(const int playerMark) const
 {
+    //if n == m || n > m, O(n^2)
+    //O(n) * O(m) = O(nm)
     int inARow{};
+    //O(n)
     for(const auto& row : m_table)
     {
+        //O(m)
         for(const auto& column : row)
         {
             if(column == playerMark)
             {
                 inARow++;
+                continue;
             }
+            break;
         }
         if(inARow == m_columns)
         {
@@ -176,15 +191,21 @@ bool Board::isLateralWin(const int playerMark) const
 
 bool Board::isVerticalWin(const int playerMark) const
 {
+    //if n == m || n > m, O(n^2)
+    //O(n) * O(m) = O(nm)
     int inARow{};
+    //O(n)
     for(int column{0}; column < m_columns; column++)
     {
+        //O(m)
         for(int row{0}; row < m_rows; row++)
         {
             if(m_table[row][column] == playerMark)
             {
                 inARow++;
+                continue;
             }
+            break;
         }
         if(inARow == m_rows)
         {
@@ -197,17 +218,21 @@ bool Board::isVerticalWin(const int playerMark) const
 
 bool Board::isDiagonalWin(const int playerMark) const
 {
+    //O(n)
     if(m_evenBoard)
     {
         return this -> evenBoard(playerMark);
     }
+    //For both lopsided methods:
+    //O(n * m) + O(n * m) = O(2nm) = O(nm)
+    //if n == m || n > m, O(n^2)
     else if(m_rows < m_columns)
     {
-        return this -> lopSidedRow(playerMark);
+        return this -> lopsidedRow(playerMark);
     }
     else if (m_columns < m_rows)
     {
-        return this -> lopSidedColumn(playerMark);
+        return this -> lopsidedColumn(playerMark);
     }
     return false;
 }
@@ -215,13 +240,17 @@ bool Board::isDiagonalWin(const int playerMark) const
 //Util methods for isDiaWin
 bool Board::evenBoard(const int playerMark) const
 {
+    //O(n) + O(n) = O(2n) = O(n)
     int inARow{};
+    //O(n)
     for(int row{0}, column{0}; row < m_rows; row++, column++)
     {
         if(m_table[row][column] == playerMark)
         {
             inARow++;
+            continue;
         }
+        break;
     }
     if(inARow == m_rows)
     {
@@ -230,12 +259,15 @@ bool Board::evenBoard(const int playerMark) const
     inARow = 0;
 
     //Reverse case
+    //O(n)
     for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
     {
         if(m_table[row].at(columnOffSet - row) == playerMark)
         {
             inARow++;
+            continue;
         }
+        break;
     }
     return (inARow == m_rows);
 }
@@ -246,18 +278,24 @@ bool Board::evenBoard(const int playerMark) const
     *10x11: Diagona cases: column: 0, 1
     *
 */
-bool Board::lopSidedRow(const int playerMark) const
+bool Board::lopsidedRow(const int playerMark) const
 {
+    //O(n * m) + O(n * m) = O(2nm) = O(nm)
+    //if n == m || n > m, O(n^2)
     int inARow{};
     int offSet{m_columns -  m_rows};
+    //O(n)
     for(int column{0}; column <= offSet; column++)
     {
+        //O(m)
         for(int row{0}; row < m_rows; row++)
         {
             if(m_table[row].at(column + row) == playerMark)
             {
                 inARow++;
+                continue;
             }
+            break;
         }
         if(inARow == m_rows)
         {
@@ -268,15 +306,19 @@ bool Board::lopSidedRow(const int playerMark) const
     inARow = 0;
 
     //Reverse case
+    //O(n)
     for(int column{m_columns - 1}; column >= ((m_columns - 1) - offSet);
         column--)
     {
+        //O(m)
         for(int row{0}; row < m_rows; row++)
         {
             if(m_table[row].at(column - row) == playerMark)
             {
                 inARow++;
+                continue;
             }
+            break;
         }
         if(inARow == m_rows)
         {
@@ -293,18 +335,24 @@ bool Board::lopSidedRow(const int playerMark) const
     *ex. 8x4: Diagona cases: row: 0, 1, 2, 3, 4 index based!
     *15x11: Diagona cases: row: 0, 1, 2, 3, 4
 */
-bool Board::lopSidedColumn(const int playerMark) const
+bool Board::lopsidedColumn(const int playerMark) const
 {
+    //O(n * m) + O(n * m) = O(2nm) = O(nm)
+    //if n == m || n > m, O(n^2)
     int inARow{};
     int offSet{m_rows -  m_columns};
+    //O(n)
     for(int loop{0}; loop <= offSet; loop++)
     {
+        //O(m)
         for(int row{0}; row < (m_rows - offSet); row++)
         {
             if(m_table.at(loop + row)[row] == playerMark)
             {
                 inARow++;
+                continue;
             }
+            break;
         }
         if(inARow == m_columns)
         {
@@ -315,14 +363,18 @@ bool Board::lopSidedColumn(const int playerMark) const
     inARow = 0;
 
     //Reverse case
+    //O(n)
     for(int loop{0}; loop <= offSet; loop++)
     {
+        //O(m)
         for(int row{0}, column{m_columns - 1}; row < (m_rows - offSet); row++)
         {
             if(m_table.at(row + loop).at(column - row) == playerMark)
             {
                 inARow++;
+                continue;
             }
+            break;
         }
         if(inARow == m_columns)
         {
@@ -335,15 +387,20 @@ bool Board::lopSidedColumn(const int playerMark) const
 
 bool Board::isTie(const int playerX, const int playerO) const
 {
+    //O(n * m) = O(nm)
     int totalPlayerMarks{};
+    //O(n)
     for(const auto& row : m_table)
     {
+        //O(m)
         for(const auto& column : row)
         {
             if(column == playerX || column == playerO)
             {
                 totalPlayerMarks++;
+                continue;
             }
+            return false;
         }
     }
     return (totalPlayerMarks == m_boardSize);
@@ -397,6 +454,7 @@ bool Board::isTripleDigit(const int column)
 
 void Board::dashLine() const
 {
+    //O(n)
     for(int dashLine{0}; dashLine < m_columns; dashLine++)
     {
         if(dashLine == 0)

@@ -33,29 +33,29 @@ void Board::clearWinConfiguration(const int playerMark)
 }
 
 //methods to set diff win conditions
-void Board::setLateralWin(const int row, const int playerMark)
+void Board::setLateralWin(const int startRow, const int playerMark)
 {
-    if(!this -> isValidWinCase(row, WinCase::Lateral))
+    if(!this -> isValidWinCase(startRow, WinCase::Lateral))
     {
         std::cout << "setLatWin(): Invalid row!\n";
         return;
     }
-    for(int tablePosition{row}, endColumn{row + m_columns}; tablePosition <
-        endColumn; tablePosition++)
+    for(int tablePosition{startRow}, endColumn{startRow + m_columns};
+        tablePosition < endColumn; tablePosition++)
     {
         this -> coverBoardSlot(tablePosition, playerMark);
     }
     m_winCase = WinCase::Lateral;
 }
 
-void Board::setVerticalWin(const int column, const int playerMark)
+void Board::setVerticalWin(const int startColumn, const int playerMark)
 {
-    if(!this -> isValidWinCase(column, WinCase::Vertical))
+    if(!this -> isValidWinCase(startColumn, WinCase::Vertical))
     {
         std::cout << "setVertWin(): Invalid column!\n";
         return;
     }
-    for(int row{0}, columnOffset{column}; row < m_rows;
+    for(int row{0}, columnOffset{startColumn}; row < m_rows;
         row++, columnOffset += m_columns)
     {
         this -> coverBoardSlot(columnOffset, playerMark);
@@ -79,12 +79,12 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
     {
         if(m_rows < m_columns)
         {
-            this -> setDiagonalWinLopSidedRow(startColumn, playerMark,
+            this -> setDiagonalWinLopsidedRow(startColumn, playerMark,
                                                      reverseCase);
         }
         else if (m_columns < m_rows)
         {
-            this -> setDiagonalWinLopSidedColumn(startColumn, playerMark,
+            this -> setDiagonalWinLopsidedColumn(startColumn, playerMark,
                                                         reverseCase);
         }
     }
@@ -125,7 +125,7 @@ void Board::setDiagonalWinEvenBoard(const int playerMark, bool reverseCase)
     }
 }
 
-void Board::setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
+void Board::setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
                                const bool reverseCase)
 {
     //convert to index as columns in the rows are not 0 indexed
@@ -149,7 +149,7 @@ void Board::setDiagonalWinLopSidedRow(int startColumn, const int playerMark,
     }
 }
 
-void Board::setDiagonalWinLopSidedColumn(int startRow, const int playerMark,
+void Board::setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
                                const bool reverseCase)
 {
     if(!reverseCase)
@@ -180,14 +180,14 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
     validVerticalWinCases(), validDiagonalWinCases()};
     switch(winCase)
     {
-        case Board::WinCase::Lateral:
+        case WinCase::Lateral:
             return this -> isValidWin(winCases.m_lateralCases, startPoint);
-        case Board::WinCase::Vertical:
+        case WinCase::Vertical:
             return this -> isValidWin(winCases.m_verticalCases, startPoint);
-        case Board::WinCase::Diagonal:
+        case WinCase::Diagonal:
             return this -> isValidDiagonalWin(winCases.m_diagonalCases,
                                               startPoint, reverseCase);
-        case Board::WinCase::NoWinCase:
+        case WinCase::NoWinCase:
            break;
     }
     return false;
