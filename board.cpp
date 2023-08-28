@@ -87,7 +87,8 @@ int Board::boardSize() const
 
 void Board::setBoard(const int rows, const int columns)
 {
-    //O(n) + O(nm) = O(nm + n)
+    //O(n) + O(nm) = O(nm + n) ||
+    //O(n) + O(n^2)
     if(!this -> isEmpty())
     {
         this -> resetBoard();
