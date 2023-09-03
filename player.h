@@ -35,6 +35,7 @@ public:
     //Util
     void setWins(int wins) { m_wins = wins; }
 private:
+    //Member Vars
     Moves m_moves{};
     std::string m_name{};
     int m_mark{};

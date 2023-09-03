@@ -178,18 +178,10 @@ void TicTacToe::endGame()
     {
         std::cout << "|Tic-Tac-Toe!\n|Congrats, "
                   << this -> currentPlayer().name() << "! You Win!\n";
-        if(m_currentPlayerMark == m_playerX.mark())
-        {
-            std::cout << "|You beat " << m_playerO.name() << " in "
-                      << m_playerX.moves() << " moves!\n";
-            m_playerX.addWin();
-        }
-        else
-        {
-            std::cout << "|You beat " << m_playerX.name() << " in "
-                      << m_playerO.moves() << " moves!\n";
-            m_playerO.addWin();
-        }
+        std::cout << "|You beat " << ((m_currentPlayerMark == m_playerX.mark())
+                                      ? m_playerO.name() : m_playerX.name())
+                                  << " in " << this -> currentPlayer().moves();
+        this -> currentPlayer().addWin();
     }
     else if(m_tie)
     {
@@ -230,16 +222,9 @@ void TicTacToe::resetGame()
     else if(m_tie)
     {
         m_tie = false;
-        if(m_firstPlayer == m_playerX.mark())
-        {
-            m_firstPlayer = m_playerO.mark();
-            m_currentPlayerMark = m_firstPlayer;
-        }
-        else
-        {
-            m_firstPlayer = m_playerX.mark();
-            m_currentPlayerMark = m_firstPlayer;
-        }
+        m_firstPlayer = ((m_firstPlayer == m_playerX.mark()) ? m_playerO.mark()
+                                                            : m_playerX.mark());
+        m_currentPlayerMark = m_firstPlayer;
         std::cout << "|Last game was a tie; "
                   << this -> currentPlayer().name() << " will start!\n";
 
@@ -459,22 +444,19 @@ void TicTacToe::quit() const
 {
     this -> displayStats();
     this -> displayMatchRecords();
-    if(m_playerX.wins() > m_playerO.wins())
+    if(m_playerX.wins() != m_playerO.wins())
     {
-        std::cout << "\n|Congrats, " << m_playerX.name()
+        std::cout << "\n|Congrats, " << ((m_playerX.wins() > m_playerO.wins())
+                                     ? m_playerX.name() : m_playerO.name())
                   << "!\n|You had the most wins with: "
-                  << m_playerX.wins() << "!\n";
-    }
-    else if(m_playerO.wins() > m_playerX.wins())
-    {
-        std::cout << "\n|Congrats, " << m_playerO.name()
-                  << "!\n|You had the most wins with: "
-                  << m_playerO.wins() << "!\n";
+                  << ((m_playerX.wins() > m_playerO.wins()) ?
+                      m_playerX.name() : m_playerO.name()) << "!\n";
     }
     else
     {
         std::cout << "\n|Tie Game! No Winner.\n";
     }
+
     std::cout << "\n|Thank you for playing! Have a lovely rest of your "
               << "day/night!\n";
     std::cout << "|Thank you, CJ, for challenging me to create "

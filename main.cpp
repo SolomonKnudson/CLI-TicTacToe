@@ -5,11 +5,11 @@ int main(int argc, char *argv[])
 {
     int playerX{-1};
     int playerO {-2};
-    Board test{13,  14};
+    Board test{11,  15};
 //    test.setBoard(63, 63);
     test.display(playerX, playerO);
-//    test.setLateralWin(505, playerO);
-    test.coverBoardSlot(1, -2);
+    test.setLateralWin(90, playerO);
+//    test.coverBoardSlot(1, -2);
 //    test.display(playerX, playerO);
 //    test.setDiagonalWin(1, playerO);
 //    test.display(playerX, playerO);

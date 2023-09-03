@@ -124,6 +124,7 @@ private:
     bool lopsidedRow(const int playerMark) const;
     bool lopsidedColumn(const int playerMark) const;
 
+    //Member Vars
     Table m_table{};
     mutable WinCase m_winCase{};
     int m_rows{};

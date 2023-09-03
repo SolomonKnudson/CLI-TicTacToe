@@ -69,6 +69,7 @@ void Board::setTie(const int playerMark)
     {
         this -> coverBoardSlot(tablePosition, playerMark);
     }
+    m_winCase = WinCase::NoWinCase;
 }
 
 void Board::setDiagonalWin(int startColumn, const int playerMark,

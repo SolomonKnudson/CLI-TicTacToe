@@ -33,7 +33,7 @@ private:
     void setupGame();
     void setBoard();
 
-    //Game logic
+    //Game Logic
     void gameLoop();
     void endGame();
     void resetGame();
@@ -62,6 +62,7 @@ private:
     void displayMatchRecords() const;
     void quit() const;
 
+    //Member Vars
     Board m_board{};
 
     Player m_playerX{};
