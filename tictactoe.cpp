@@ -250,9 +250,7 @@ void TicTacToe::getMove()
 
 void TicTacToe::move()
 {
-    (m_currentPlayerMark == m_playerX.mark())
-            ? m_playerX.addMove(m_tablePosition)
-            : m_playerO.addMove(m_tablePosition);
+    this -> currentPlayer().addMove(m_tablePosition);
     m_board.coverBoardSlot(m_tablePosition, m_currentPlayerMark);
 }
 
