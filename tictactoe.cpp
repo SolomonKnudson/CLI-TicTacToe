@@ -448,7 +448,7 @@ void TicTacToe::quit() const
                                      ? m_playerX.name() : m_playerO.name())
                   << "!\n|You had the most wins with: "
                   << ((m_playerX.wins() > m_playerO.wins()) ?
-                      m_playerX.name() : m_playerO.name()) << "!\n";
+                      m_playerX.wins() : m_playerO.wins()) << "!\n";
     }
     else
     {
