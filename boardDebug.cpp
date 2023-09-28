@@ -24,7 +24,9 @@ void Board::clearWinConfiguration(const int playerMark)
             this -> clearVerticalWin(playerMark);
             break;
         case WinCase::Diagonal:
-//            this -> clearDiagonalWin(playerMark);
+            //The work required to undo a single diagonal win case isn't worth
+            //the headache.
+            this -> setBoard(m_rows, m_columns);
             break;
         case WinCase::NoWinCase:
             return;
@@ -306,6 +308,7 @@ void Board::clearLateralWin(const int playerMark)
                     {
                         m_table[row][i] = i + 1;
                     }
+                    return;
                 }
                 else
                 {
@@ -314,6 +317,7 @@ void Board::clearLateralWin(const int playerMark)
                     {
                         m_table[row][i] = offSet++;
                     }
+                    return;
                 }
             }
         }

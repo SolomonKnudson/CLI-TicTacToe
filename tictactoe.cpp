@@ -180,7 +180,8 @@ void TicTacToe::endGame()
                   << this -> currentPlayer().name() << "! You Win!\n";
         std::cout << "|You beat " << ((m_currentPlayerMark == m_playerX.mark())
                                       ? m_playerO.name() : m_playerX.name())
-                                  << " in " << this -> currentPlayer().moves();
+                                  << " in " << this -> currentPlayer().moves()
+                                  << " moves!";
         this -> currentPlayer().addWin();
     }
     else if(m_tie)

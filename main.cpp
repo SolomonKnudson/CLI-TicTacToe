@@ -5,18 +5,18 @@ int main(int argc, char *argv[])
 {
     int playerX{-1};
     int playerO {-2};
-    Board test{11,  15};
-//    test.setBoard(63, 63);
+    Board test{3,  3};
+//    test.setsBoard(53, 53);
     test.display(playerX, playerO);
-    test.setLateralWin(1, playerO);
+//    test.setLateralWin(1, playerO);
 //    test.coverBoardSlot(1, -2);
 //    test.display(playerX, playerO);
-//    test.setDiagonalWin(1, playerO);
+    test.setDiagonalWin(1, playerO);
 //    test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
 //    test.setVerticalWin(2, playerO);
-    test.display(playerX, playerO);
-    test.clearWinConfiguration(playerO);
+//    test.display(playerX, playerO);
+//    test.clearWinConfiguration(playerO);
     test.display(playerX, playerO);
     if(test.isTie(-1, -2))
     {
@@ -26,6 +26,6 @@ int main(int argc, char *argv[])
     {
         std::cout << "Win case: " << test.winCase() << '\n';
     }
-//    TicTacToe ticTacToe{};
+    TicTacToe ticTacToe{};
     return 0;
 }
