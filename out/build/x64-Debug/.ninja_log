@@ -1,0 +1,18 @@
+# ninja log v5
+11	286	7222466061105018	CMakeFiles/TicTacToeRepo.dir/player.cpp.obj	f76c640f6b6d0e67
+2	293	7222466061195014	CMakeFiles/TicTacToeRepo.dir/main.cpp.obj	f28eb1f0cf8b434e
+9	291	7222466061175025	CMakeFiles/TicTacToeRepo.dir/boardDebug.cpp.obj	3871ac7b5fcd9999
+7	295	7222466061205010	CMakeFiles/TicTacToeRepo.dir/board.cpp.obj	24d255582bf0d3cd
+4	307	7222466061335012	CMakeFiles/TicTacToeRepo.dir/tictactoe.cpp.obj	89307011f98f174e
+294	414	7222466604704205	TicTacToeRepo.exe	e40378f8a974d87a
+10	182	7222466602804207	CMakeFiles/TicTacToeRepo.dir/Src/player.cpp.obj	36cd7c144aacb96c
+8	274	7222466603704223	CMakeFiles/TicTacToeRepo.dir/Src/boardDebug.cpp.obj	8151e2dfe7e4c1ca
+1	280	7222466603774228	CMakeFiles/TicTacToeRepo.dir/Src/main.cpp.obj	2016fabb1da96a8b
+6	284	7222466603814223	CMakeFiles/TicTacToeRepo.dir/Src/board.cpp.obj	e95c13dea9360383
+3	294	7222466603924206	CMakeFiles/TicTacToeRepo.dir/Src/tictactoe.cpp.obj	74e50b8dc38a529d
+12	283	7222467503069274	CMakeFiles/TicTacToeRepo.dir/src/player.cpp.obj	42c51774f0535c6c
+9	287	7222467503129263	CMakeFiles/TicTacToeRepo.dir/src/boardDebug.cpp.obj	81e222407027147d
+1	287	7222467503129263	CMakeFiles/TicTacToeRepo.dir/src/main.cpp.obj	6cc2d1023c6623f7
+6	288	7222467503149274	CMakeFiles/TicTacToeRepo.dir/src/board.cpp.obj	eca9050ac71a3cda
+4	309	7222467503359242	CMakeFiles/TicTacToeRepo.dir/src/tictactoe.cpp.obj	40fbb1f019eb800f
+309	408	7222467504019253	TicTacToeRepo.exe	35b08d5645b56195

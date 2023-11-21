@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
     int playerX{-1};
     int playerO {-2};
-    Board test{3,  3};
+    Board test{45,  7};
 //    test.setsBoard(53, 53);
     test.display(playerX, playerO);
 //    test.setLateralWin(1, playerO);

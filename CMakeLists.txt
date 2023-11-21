@@ -12,12 +12,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 add_executable(TicTacToeRepo
-  main.cpp
-  tictactoe.h
-  tictactoe.cpp
-  board.h
-  board.cpp
-  boardDebug.cpp
-  player.h
-  player.cpp
+  "Src/main.cpp"
+  "Src/tictactoe.h"
+  "Src/tictactoe.cpp"
+  "Src/board.h"
+  "Src/board.cpp"
+  "Src/boardDebug.cpp"
+  "Src/player.h"
+  "Src/player.cpp"
 )

@@ -178,7 +178,7 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
                            const bool reverseCase) const
 {
     //static so winCases aren't re-calculated every func call
-    const static  ValidWinCases winCases
+    const static ValidWinCases winCases
     {
         this -> validLateralWinCases(),
         this -> validVerticalWinCases(),

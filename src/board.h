@@ -74,9 +74,6 @@ public:
     void setTie(const int playerMark);
 
     void clearWinConfiguration(const int playerMark);
-
-    void clearDiagonalWin(const int playerMark);
-
 private:
     struct ValidWinCases
     {
@@ -108,8 +105,7 @@ private:
 
     void clearLateralWin(const int playerMark);
     void clearVerticalWin(const int playerMark);
-
-    void clearEvenWin(const int playerMark);
+    void clearDiagonalWin(const int playerMark);
     bool multipleWinCases(const int playerMark) const;
 #else
 private:
