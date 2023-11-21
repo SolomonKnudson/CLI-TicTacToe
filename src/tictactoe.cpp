@@ -112,7 +112,6 @@ void TicTacToe::setBoard()
 }
 
 //Game Logic
-#pragma region GameLogic
 void TicTacToe::gameLoop()
 {
     while(!m_hasWon && !m_tie)
@@ -241,7 +240,7 @@ void TicTacToe::resetGame()
     m_tablePosition = 0;
     this -> gameLoop();
 }
-#pragma endregion
+
 
 //Move Logic
 void TicTacToe::getMove()

@@ -3,12 +3,12 @@
 
 int main(int argc, char *argv[])
 {
-    //int playerX{-1};
-    //int playerO {-2};
+    int playerX{-1};
+    int playerO {-2};
 
-    Board test{45,  7};
+    Board test{55,  55};
 //    test.setsBoard(53, 53);
-    //test.display(playerX, playerO);
+    test.display(playerX, playerO);
 //    test.setLateralWin(1, playerO);
 //    test.coverBoardSlot(1, -2);
 //    test.display(playerX, playerO);
