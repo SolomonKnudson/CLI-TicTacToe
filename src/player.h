@@ -33,7 +33,7 @@ public:
     std::string_view name() const;
 
     //Util
-    void setWins(int wins) { m_wins = wins; }
+    //void setWins(int wins) { m_wins = wins; }
 private:
     //Member Vars
     Moves m_moves{};

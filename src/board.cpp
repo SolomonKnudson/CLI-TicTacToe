@@ -17,7 +17,6 @@ Board::Board(const int row, const int column)
 
 
 //Table Logic
-#pragma region TableLogic
 void Board::display(const int playerX, const int playerO) const
 {
 /*
@@ -141,11 +140,10 @@ void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
         }
     }
 }
-#pragma endregion
+
 
 
 //Win Logic
-#pragma region WinLogic
 bool Board::isWinningMove(const int playerMark) const
 {
     if(this -> isLateralWin(playerMark))//O(nm) || O(n^2)
@@ -410,10 +408,10 @@ bool Board::isTie(const int playerX, const int playerO) const
     }
     return (totalPlayerMarks == m_boardSize);
 }
-#pragma endregion
+
 
 //Util Logic
-#pragma region UtilLogic
+
 std::string_view Board::winCase() const
 {
     switch(m_winCase)
@@ -481,4 +479,3 @@ bool Board::isEmpty() const
 {
     return m_table.empty();
 }
-#pragma endregion
