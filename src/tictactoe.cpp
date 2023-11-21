@@ -69,6 +69,7 @@ void TicTacToe::setupGame()
                 this -> setBoard();
                 break;
             }
+       [[fallthrough]];
         default:
             std::cout << "|Not one of the options listed!\n";
             m_previousRow = Board::standardRow;
@@ -111,6 +112,7 @@ void TicTacToe::setBoard()
 }
 
 //Game Logic
+#pragma region GameLogic
 void TicTacToe::gameLoop()
 {
     while(!m_hasWon && !m_tie)
@@ -239,6 +241,7 @@ void TicTacToe::resetGame()
     m_tablePosition = 0;
     this -> gameLoop();
 }
+#pragma endregion
 
 //Move Logic
 void TicTacToe::getMove()
@@ -287,34 +290,27 @@ void TicTacToe::displayStats() const
     std::cout << "----------------------\n";
     if(Board::isSingleDigit(m_playerX.wins()))
     {
-        std::cout << "|Player X: " << m_playerX.wins() << "   || "
+        std::cout << m_playerX.name() << ": " << m_playerX.wins() << "   || "
                   << m_playerO.wins() <<'\n';
+        std::cout << "----------------------\n";
+        std::cout << m_playerO.name() << ": " << m_playerO.wins() << "   || "
+            << m_playerX.wins() << '\n';
     }
     else if(Board::isDoubleDigit(m_playerX.wins()))
     {
-        std::cout << "|Player X: " << m_playerX.wins() << "  || "
+        std::cout << m_playerX.name() << ": " << m_playerX.wins() << "  || "
                   << m_playerO.wins() <<'\n';
+        std::cout << "----------------------\n";
+        std::cout << m_playerO.name() << ": " << m_playerO.wins() << "  || "
+            << m_playerX.wins() << '\n';
     }
     else if(Board::isTripleDigit(m_playerX.wins()))
     {
-        std::cout << "|Player X: " << m_playerX.wins() << " || "
+        std::cout << m_playerX.name() << ": " << m_playerX.wins() << " || "
                   << m_playerO.wins() <<'\n';
-    }
-    std::cout << "----------------------\n";
-    if(Board::isSingleDigit(m_playerO.wins()))
-    {
-        std::cout << "|Player O: " << m_playerO.wins() << "   || "
-                  << m_playerX.wins() <<'\n';
-    }
-    else if(Board::isDoubleDigit(m_playerO.wins()))
-    {
-        std::cout << "|Player O: " << m_playerO.wins() << "  || "
-                  << m_playerX.wins() <<'\n';
-    }
-    else if(Board::isTripleDigit(m_playerO.wins()))
-    {
-        std::cout << "|Player O: " << m_playerO.wins() << " || "
-                  << m_playerX.wins() <<'\n';
+        std::cout << "----------------------\n";
+        std::cout << m_playerO.name() << ": " << m_playerO.wins() << " || "
+            << m_playerX.wins() << '\n';
     }
     std::cout << "----------------------\n";
     std::cout << "|Ties    : " << m_tieGames << '\n';

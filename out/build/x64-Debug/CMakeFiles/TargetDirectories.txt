@@ -1,3 +1,0 @@
-C:/Users/Solomon/Documents/Qt/TicTacToeRepo/out/build/x64-Debug/CMakeFiles/TicTacToeRepo.dir
-C:/Users/Solomon/Documents/Qt/TicTacToeRepo/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/Solomon/Documents/Qt/TicTacToeRepo/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
