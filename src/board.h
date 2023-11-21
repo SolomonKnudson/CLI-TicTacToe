@@ -40,13 +40,16 @@ public:
     int columns() const;
     //
 
-    static constexpr int maxRow{11};
-    static constexpr int maxColumn{15};
-    static constexpr int maxSize{maxRow * maxColumn};//11x15 soft cap
+    enum  BoardSize
+    {
+        standardRow = 3,
+        standardColumn = 3,
+        standardSize = standardRow * standardColumn,
 
-    static constexpr int standardRow{3};
-    static constexpr int standardColumn{3};
-    static constexpr int standardSize{standardRow * standardColumn};
+        maxRow = 11,
+        maxColumn = 15,
+        maxSize = maxRow * maxColumn  
+    };
 
     //Win Logic
     //const for winningMove() is a lie; Object will change if true
@@ -131,3 +134,4 @@ private:
     bool m_evenBoard{};
 };
 #endif // BOARD_H
+
