@@ -46,9 +46,9 @@ public:
         standardColumn = 3,
         standardSize = standardRow * standardColumn,
 
-        maxRow = 11,
-        maxColumn = 15,
-        maxSize = maxRow * maxColumn  
+        maxRow = 55,
+        maxColumn = 55,
+        maxSize = maxRow * maxColumn //55x55 hard cap  
     };
 
     //Win Logic
