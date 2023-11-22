@@ -47,15 +47,15 @@ void Board::display(const int playerX, const int playerO) const
             }
             else
             {//  |1   |2   |3   |
-                if(this -> isSingleDigit(column))
+                if(isSingleDigit(column))
                 {
                     std::cout << " " << column << "  |";
                 }//  |14  |15  |16  |
-                else if(this -> isDoubleDigit(column))
+                else if(isDoubleDigit(column))
                 {
                     std::cout << " " << column << " |";
                 }//|700 |800 |900 |
-                else if(this -> isTripleDigit(column))
+                else if(isTripleDigit(column))
                 {
                     std::cout << " " << column << "|";
                 }//1000|2000|3000
@@ -277,8 +277,8 @@ bool Board::evenBoard(const int playerMark) const
 
 /*
     *NOTE: if rows < columns, columns - rows = only diagonal cases(Column Based)
-    *ex. 4x8: Diagona cases: column: 0, 1, 2, 3, 4 index based!
-    *10x11: Diagona cases: column: 0, 1
+    *ex. 4x8: Diagonal cases: column: 0, 1, 2, 3, 4 index based!
+    *10x11: Diagonal cases: column: 0, 1
     *
 */
 bool Board::lopsidedRow(const int playerMark) const
@@ -335,8 +335,8 @@ bool Board::lopsidedRow(const int playerMark) const
 /*
     *NOTE: if columns < rows, rows -  columns = only diagonal cases(Row Based);
     *must account for a 'lower' row diagonal win
-    *ex. 8x4: Diagona cases: row: 0, 1, 2, 3, 4 index based!
-    *15x11: Diagona cases: row: 0, 1, 2, 3, 4
+    *ex. 8x4: Diagonal cases: row: 0, 1, 2, 3, 4 index based!
+    *15x11: Diagonal cases: row: 0, 1, 2, 3, 4
 */
 bool Board::lopsidedColumn(const int playerMark) const
 {

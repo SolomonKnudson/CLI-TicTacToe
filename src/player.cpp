@@ -13,7 +13,7 @@ Player::Player(const int mark, const std::string_view name)
 //Move Logic
 int Player::moves() const
 {
-    return m_moves.size();
+    return static_cast<int>(m_moves.size());
 }
 
 bool Player::isOccupying(const int move) const

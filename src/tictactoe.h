@@ -55,7 +55,7 @@ private:
 
     //Util Methods
     void displayBoard() const;
-    void flushCin() const;
+    static void flushCin();
     void checkBoardSize();
     void displayBoardConfiguration() const;
     void createMatchRecord();

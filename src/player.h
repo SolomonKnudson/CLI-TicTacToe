@@ -7,12 +7,12 @@ class Player
 {
     using Moves = std::vector<int>;
 public:
-    explicit Player(const int mark = 0, const std::string_view name = "");
+    explicit Player(int mark = 0, std::string_view name = "");
 
     //Move Logic
     int moves() const;
-    bool isOccupying(const int move) const;
-    void addMove(const int move);
+    bool isOccupying(int move) const;
+    void addMove(int move);
     void clearMoves();
 
     //Invalid Move
@@ -22,7 +22,7 @@ public:
 
     //Mark Logic
     int mark() const;
-    void setMark(const int mark);
+    void setMark(int mark);
 
     //Win Count Logic
     int wins() const;

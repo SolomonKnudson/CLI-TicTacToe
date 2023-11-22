@@ -189,11 +189,11 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
     switch(winCase)
     {
         case WinCase::Lateral:
-            return this -> isValidWin(winCases.m_lateralCases, startPoint);
+            return isValidWin(winCases.m_lateralCases, startPoint);
         case WinCase::Vertical:
-            return this -> isValidWin(winCases.m_verticalCases, startPoint);
+            return isValidWin(winCases.m_verticalCases, startPoint);
         case WinCase::Diagonal:
-            return this -> isValidDiagonalWin(winCases.m_diagonalCases,
+            return isValidDiagonalWin(winCases.m_diagonalCases,
                                               startPoint, reverseWin);
         case WinCase::NoWinCase:
            break;
@@ -203,7 +203,7 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
 
 //Util methods for isValidWinCase
 bool Board::isValidWin(const std::vector<int>& winCases,
-                       const int startPoint) const
+                       const int startPoint)
 {
     for(const int winCase: winCases)
     {
@@ -217,7 +217,7 @@ bool Board::isValidWin(const std::vector<int>& winCases,
 
 bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
                                const int startPoint,
-                               const bool reverseWin) const
+                               const bool reverseWin)
 {
     const static int n{static_cast<int>(winCases.size())};
     const static int offSet{n / 2};
@@ -246,7 +246,7 @@ bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
     return false;
 }
 
-const std::vector<int> Board::validLateralWinCases() const
+std::vector<int> Board::validLateralWinCases() const
 {
     std::vector<int> winCases{};
     for(int row{0}; row < m_rows; ++row)
@@ -256,12 +256,12 @@ const std::vector<int> Board::validLateralWinCases() const
     return winCases;
 }
 
-const std::vector<int> Board::validVerticalWinCases() const
+std::vector<int> Board::validVerticalWinCases() const
 {
     return m_table[0];
 }
 
-const std::vector<int> Board::validDiagonalWinCases() const
+std::vector<int> Board::validDiagonalWinCases() const
 {
     std::vector<int> winCases{};
     int offSet{};
@@ -364,11 +364,11 @@ void Board::clearDiagonalWin(const int playerMark)
     }
     else if (m_evenBoard)
     {
-        this -> clearDiagonalWinEvenBoard(playerMark, m_diagonalReverseWin);
+        this -> clearDiagonalWinEvenBoard(m_diagonalReverseWin);
     }
 }
 
-void Board::clearDiagonalWinEvenBoard(const int playerMark, const bool reverseWin)
+void Board::clearDiagonalWinEvenBoard(const bool reverseWin)
 {
     int startPoint{};
     if (!reverseWin)

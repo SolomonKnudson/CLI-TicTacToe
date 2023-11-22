@@ -39,7 +39,7 @@ void TicTacToe::setupGame()
               << ((!m_isFirstGame) ? "}  || (P) for previous board: "
                                   :"}: ");
     std::cin >> userResponse;
-    this -> flushCin();
+    flushCin();
     switch(userResponse)
     {
         case 's':
@@ -53,10 +53,10 @@ void TicTacToe::setupGame()
         case 'V':
             std::cout << "|Enter # of rows: ";
             std::cin >> m_previousRow;
-            this -> flushCin();
+            flushCin();
             std::cout << "|Enter # of columns: ";
             std::cin >> m_previousColumn;
-            this -> flushCin();
+            flushCin();
             this -> checkBoardSize();
             this -> displayBoardConfiguration();
             this -> setBoard();
@@ -83,7 +83,7 @@ void TicTacToe::setupGame()
         m_isFirstGame = false;
         std::cout << "|Who goes first!?! (X) || (O): ";
         std::cin >> userResponse;
-        this -> flushCin();
+        flushCin();
         switch(userResponse)
         {
             case 'o':
@@ -141,7 +141,7 @@ void TicTacToe::gameLoop()
             {
                 std::cout << "|" << this -> currentPlayer().name()
                           << ", you have exceeded the max # of "
-                          << "invalid moves allowed!\n|You will now forfit "
+                          << "invalid moves allowed!\n|You will now forfeit "
                           << "your current turn and future turns upon "
                           << "detection of an invalid move!\n";
                 this -> nextPlayer();
@@ -194,7 +194,7 @@ void TicTacToe::endGame()
     char userResponse{};
     std::cout << "|(P) to play again || (Q) to quit: ";
     std::cin >> userResponse;
-    this -> flushCin();
+    flushCin();
     switch(userResponse)
     {
         case 'P':
@@ -310,7 +310,7 @@ Player& TicTacToe::currentPlayer()
 }
 
 //Util
-void TicTacToe::flushCin() const
+void TicTacToe::flushCin()
 {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -382,7 +382,7 @@ void TicTacToe::createMatchRecord()
     else
     {
         matchRecord.m_tieGame = true;
-        //keep track of total moves played to diplay later if theres a tie
+        //keep track of total moves played to display later if there's a tie
         matchRecord.m_moves = m_playerX.moves() + m_playerO.moves();
     }
     m_matchRecords.push_back(matchRecord);
