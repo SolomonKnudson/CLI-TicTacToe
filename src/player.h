@@ -8,6 +8,7 @@ class Player
     using Moves = std::vector<int>;
 public:
     explicit Player(int mark = 0, std::string_view name = "");
+    ~Player() = default;
 
     //Move Logic
     int moves() const;

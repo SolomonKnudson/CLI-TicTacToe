@@ -11,7 +11,7 @@ Board::Board(const int row, const int column)
 {
     if(row >= 3 && column >= 3)
     {
-        this -> setBoard(row, column);
+        setBoard(row, column);
     }
 }
 
@@ -29,7 +29,7 @@ void Board::display(const int playerX, const int playerO) const
     *  |700|800|900|
     *  |---|---|---|
 */
-    this -> dashLine();
+    _dashLine();
     for(const auto& row : m_table)
     {
         std::cout << "|";
@@ -47,15 +47,15 @@ void Board::display(const int playerX, const int playerO) const
             }
             else
             {//  |1   |2   |3   |
-                if(isSingleDigit(column))
+                if(_isSingleDigit(column))
                 {
                     std::cout << " " << column << "  |";
                 }//  |14  |15  |16  |
-                else if(isDoubleDigit(column))
+                else if(_isDoubleDigit(column))
                 {
                     std::cout << " " << column << " |";
                 }//|700 |800 |900 |
-                else if(isTripleDigit(column))
+                else if(_isTripleDigit(column))
                 {
                     std::cout << " " << column << "|";
                 }//1000|2000|3000
@@ -66,7 +66,7 @@ void Board::display(const int playerX, const int playerO) const
             }
         }
         std::cout << '\n';
-        this -> dashLine();
+        _dashLine();
     }
 }
 
@@ -89,9 +89,9 @@ void Board::setBoard(const int rows, const int columns)
 {
     //O(n) + O(nm) = O(nm + n) ||
     //O(n) + O(n^2)
-    if(!this -> isEmpty())
+    if(!isEmpty())
     {
-        this -> resetBoard();
+        resetBoard();
     }
     m_rows = rows;
     m_columns = columns;
@@ -146,17 +146,17 @@ void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
 //Win Logic
 bool Board::isWinningMove(const int playerMark) const
 {
-    if(this -> isLateralWin(playerMark))//O(nm) || O(n^2)
+    if(_isLateralWin(playerMark))//O(nm) || O(n^2)
     {
         m_winCase = WinCase::Lateral;
         return true;
     }
-    else if(this -> isVerticalWin(playerMark))//O(nm) || O(n^2)
+    else if(_isVerticalWin(playerMark))//O(nm) || O(n^2)
     {
         m_winCase = WinCase::Vertical;
         return true;
     }
-    else if (this -> isDiagonalWin(playerMark))//O(n) || O(nm) || O(n^2)
+    else if (_isDiagonalWin(playerMark))//O(n) || O(nm) || O(n^2)
     {
         m_winCase = WinCase::Diagonal;
         return true;
@@ -165,7 +165,7 @@ bool Board::isWinningMove(const int playerMark) const
 }
 
 //Util methods for isWinningMove
-bool Board::isLateralWin(const int playerMark) const
+bool Board::_isLateralWin(const int playerMark) const
 {
     //if n == m || n > m, O(n^2)
     //O(n) * O(m) = O(nm)
@@ -192,7 +192,7 @@ bool Board::isLateralWin(const int playerMark) const
     return false;
 }
 
-bool Board::isVerticalWin(const int playerMark) const
+bool Board::_isVerticalWin(const int playerMark) const
 {
     //if n == m || n > m, O(n^2)
     //O(n) * O(m) = O(nm)
@@ -219,29 +219,29 @@ bool Board::isVerticalWin(const int playerMark) const
     return false;
 }
 
-bool Board::isDiagonalWin(const int playerMark) const
+bool Board::_isDiagonalWin(const int playerMark) const
 {
     //O(n)
     if(m_evenBoard)
     {
-        return this -> evenBoard(playerMark);
+        return _evenBoard(playerMark);
     }
     //For both lopsided methods:
     //O(n * m) + O(n * m) = O(2nm) = O(nm)
     //if n == m || n > m, O(n^2)
     else if(m_rows < m_columns)
     {
-        return this -> lopsidedRow(playerMark);
+        return _lopsidedRow(playerMark);
     }
     else if (m_columns < m_rows)
     {
-        return this -> lopsidedColumn(playerMark);
+        return _lopsidedColumn(playerMark);
     }
     return false;
 }
 
 //Util methods for isDiaWin
-bool Board::evenBoard(const int playerMark) const
+bool Board::_evenBoard(const int playerMark) const
 {
     //O(n) + O(n) = O(2n) = O(n)
     int inARow{};
@@ -281,7 +281,7 @@ bool Board::evenBoard(const int playerMark) const
     *10x11: Diagonal cases: column: 0, 1
     *
 */
-bool Board::lopsidedRow(const int playerMark) const
+bool Board::_lopsidedRow(const int playerMark) const
 {
     //O(n * m) + O(n * m) = O(2nm) = O(nm)
     //if n == m || n > m, O(n^2)
@@ -338,7 +338,7 @@ bool Board::lopsidedRow(const int playerMark) const
     *ex. 8x4: Diagonal cases: row: 0, 1, 2, 3, 4 index based!
     *15x11: Diagonal cases: row: 0, 1, 2, 3, 4
 */
-bool Board::lopsidedColumn(const int playerMark) const
+bool Board::_lopsidedColumn(const int playerMark) const
 {
     //O(n * m) + O(n * m) = O(2nm) = O(nm)
     //if n == m || n > m, O(n^2)
@@ -442,22 +442,22 @@ void Board::resetBoard()
 
 //Methods to help with display formatting
 //Positive ints only!
-bool Board::isSingleDigit(const int column)
+bool Board::_isSingleDigit(const int column)
 {
     return column < 10;
 }
 
-bool Board::isDoubleDigit(const int column)
+bool Board::_isDoubleDigit(const int column)
 {
     return column >= 10 && column < 100;
 }
 
-bool Board::isTripleDigit(const int column)
+bool Board::_isTripleDigit(const int column)
 {
     return column >= 100 && column < 1000;
 }
 
-void Board::dashLine() const
+void Board::_dashLine() const
 {
     //O(n)
     for(int dashLine{0}; dashLine < m_columns; dashLine++)

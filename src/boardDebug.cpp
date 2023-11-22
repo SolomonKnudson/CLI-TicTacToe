@@ -10,7 +10,7 @@ void Board::clearWinConfiguration(const int playerMark)
     {
         return;
     }
-    if(this -> multipleWinCases(playerMark))
+    if(_multipleWinCases(playerMark))
     {
         this -> setBoard(m_rows, m_columns);
         return;
@@ -18,16 +18,16 @@ void Board::clearWinConfiguration(const int playerMark)
     switch(m_winCase)
     {
         case WinCase::Lateral:
-            this -> clearLateralWin(playerMark);
+            _clearLateralWin(playerMark);
             break;
         case WinCase::Vertical:
-            this -> clearVerticalWin(playerMark);
+            _clearVerticalWin(playerMark);
             break;
         case WinCase::Diagonal:
             //The work required to undo a single diagonal win case isn't worth
             //the headache. <----- I lied.
             //this -> setBoard(m_rows, m_columns);
-            this -> clearDiagonalWin(playerMark);
+            _clearDiagonalWin(playerMark);
             break;
         case WinCase::NoWinCase:
             return;
@@ -38,7 +38,7 @@ void Board::clearWinConfiguration(const int playerMark)
 //methods to set diff win conditions
 void Board::setLateralWin(const int startRow, const int playerMark)
 {
-    if(!this -> isValidWinCase(startRow, WinCase::Lateral))
+    if(!_isValidWinCase(startRow, WinCase::Lateral))
     {
         std::cout << "setLatWin(): Invalid row!\n";
         return;
@@ -53,7 +53,7 @@ void Board::setLateralWin(const int startRow, const int playerMark)
 
 void Board::setVerticalWin(const int startColumn, const int playerMark)
 {
-    if(!this -> isValidWinCase(startColumn, WinCase::Vertical))
+    if(!_isValidWinCase(startColumn, WinCase::Vertical))
     {
         std::cout << "setVertWin(): Invalid column!\n";
         return;
@@ -77,17 +77,17 @@ void Board::setTie(const int playerMark)
 void Board::setDiagonalWin(int startColumn, const int playerMark,
                            const bool reverseWin)
 {
-    if(this -> isValidWinCase(startColumn, WinCase::Diagonal, reverseWin) &&
+    if(_isValidWinCase(startColumn, WinCase::Diagonal, reverseWin) &&
             !m_evenBoard)
     {
         if(m_rows < m_columns)
         {
-            this -> setDiagonalWinLopsidedRow(startColumn, playerMark,
+            _setDiagonalWinLopsidedRow(startColumn, playerMark,
                                                      reverseWin);
         }
         else if (m_columns < m_rows)
         {
-            this -> setDiagonalWinLopsidedColumn(startColumn, playerMark,
+            _setDiagonalWinLopsidedColumn(startColumn, playerMark,
                                                         reverseWin);
         }
     }
@@ -95,7 +95,7 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
     //only reverse case
     else if(m_evenBoard)
     {
-        this -> setDiagonalWinEvenBoard(playerMark, reverseWin);
+        _setDiagonalWinEvenBoard(playerMark, reverseWin);
     }
     else
     {
@@ -109,7 +109,7 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
 }
 
 //Util methods for setDiaWin
-void Board::setDiagonalWinEvenBoard(const int playerMark, bool reverseWin)
+void Board::_setDiagonalWinEvenBoard(const int playerMark, bool reverseWin)
 {
     if(!reverseWin)
     {
@@ -129,7 +129,7 @@ void Board::setDiagonalWinEvenBoard(const int playerMark, bool reverseWin)
     }
 }
 
-void Board::setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
+void Board::_setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
                                const bool reverseWin)
 {
     //convert to index as columns in the rows are not 0 indexed
@@ -153,7 +153,7 @@ void Board::setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
     }
 }
 
-void Board::setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
+void Board::_setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
                                const bool reverseWin)
 {
     if(!reverseWin)
@@ -176,24 +176,24 @@ void Board::setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
 }
 
 //Util methods for all win case set'ers
-bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
+bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
                            const bool reverseWin) const
 {
     //static so winCases aren't re-calculated every func call
     const static ValidWinCases winCases
     {
-        this -> validLateralWinCases(),
-        this -> validVerticalWinCases(),
-        this -> validDiagonalWinCases()
+        _validLateralWinCases(),
+        _validVerticalWinCases(),
+        _validDiagonalWinCases()
     };
     switch(winCase)
     {
         case WinCase::Lateral:
-            return isValidWin(winCases.m_lateralCases, startPoint);
+            return _isValidWin(winCases.m_lateralCases, startPoint);
         case WinCase::Vertical:
-            return isValidWin(winCases.m_verticalCases, startPoint);
+            return _isValidWin(winCases.m_verticalCases, startPoint);
         case WinCase::Diagonal:
-            return isValidDiagonalWin(winCases.m_diagonalCases,
+            return _isValidDiagonalWin(winCases.m_diagonalCases,
                                               startPoint, reverseWin);
         case WinCase::NoWinCase:
            break;
@@ -202,7 +202,7 @@ bool Board::isValidWinCase(const int startPoint, const WinCase winCase,
 }
 
 //Util methods for isValidWinCase
-bool Board::isValidWin(const std::vector<int>& winCases,
+bool Board::_isValidWin(const std::vector<int>& winCases,
                        const int startPoint)
 {
     for(const int winCase: winCases)
@@ -215,7 +215,7 @@ bool Board::isValidWin(const std::vector<int>& winCases,
     return false;
 }
 
-bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
+bool Board::_isValidDiagonalWin(const std::vector<int>& winCases,
                                const int startPoint,
                                const bool reverseWin)
 {
@@ -246,7 +246,7 @@ bool Board::isValidDiagonalWin(const std::vector<int>& winCases,
     return false;
 }
 
-std::vector<int> Board::validLateralWinCases() const
+std::vector<int> Board::_validLateralWinCases() const
 {
     std::vector<int> winCases{};
     for(int row{0}; row < m_rows; ++row)
@@ -256,12 +256,12 @@ std::vector<int> Board::validLateralWinCases() const
     return winCases;
 }
 
-std::vector<int> Board::validVerticalWinCases() const
+std::vector<int> Board::_validVerticalWinCases() const
 {
     return m_table[0];
 }
 
-std::vector<int> Board::validDiagonalWinCases() const
+std::vector<int> Board::_validDiagonalWinCases() const
 {
     std::vector<int> winCases{};
     int offSet{};
@@ -295,7 +295,7 @@ std::vector<int> Board::validDiagonalWinCases() const
 }
 
 //Util methods for clearWinConfig
-void Board::clearLateralWin(const int playerMark)
+void Board::_clearLateralWin(const int playerMark)
 {
     int offSet{};
     for(int row{0}; row < m_rows; ++row)
@@ -326,7 +326,7 @@ void Board::clearLateralWin(const int playerMark)
     }
 }
 
-void Board::clearVerticalWin(const int playerMark)
+void Board::_clearVerticalWin(const int playerMark)
 {
     for(int row{0}; row < m_rows; ++row)
     {
@@ -350,25 +350,25 @@ void Board::clearVerticalWin(const int playerMark)
     }
 }
 
-void Board::clearDiagonalWin(const int playerMark)
+void Board::_clearDiagonalWin(const int playerMark)
 {
     if (m_rows < m_columns)
     {
-        this -> clearDiagonalWinLopsidedRow(playerMark,
+        _clearDiagonalWinLopsidedRow(playerMark,
             m_diagonalReverseWin);
     }
     else if (m_columns < m_rows)
     {
-        this -> clearDiagonalWinLopsidedColumn(playerMark,
+        _clearDiagonalWinLopsidedColumn(playerMark,                            
             m_diagonalReverseWin);
     }
     else if (m_evenBoard)
     {
-        this -> clearDiagonalWinEvenBoard(m_diagonalReverseWin);
+        _clearDiagonalWinEvenBoard(m_diagonalReverseWin);
     }
 }
 
-void Board::clearDiagonalWinEvenBoard(const bool reverseWin)
+void Board::_clearDiagonalWinEvenBoard(const bool reverseWin)
 {
     int startPoint{};
     if (!reverseWin)
@@ -391,26 +391,26 @@ void Board::clearDiagonalWinEvenBoard(const bool reverseWin)
 
 //When looping to find the startPoint, it will only be valid if the playerMark found is from a column of the first row
 //ReverseWin: When looping to find the startPoint, it will only be valid if the playerMark found is from a column of the first row
-void Board::clearDiagonalWinLopsidedRow(const int playerMark, const bool reverseWin)
+void Board::_clearDiagonalWinLopsidedRow(const int playerMark, const bool reverseWin)
 {
 
 }
 //When looping to find the startPoint, it will only be valid if the playerMark found is from the starting column of each row
 //ReverseWin: When looping to find the startPoint, it will only be valid if the playerMark found is from the ending column of each row
-void Board::clearDiagonalWinLopsidedColumn(const int playerMark, const bool reverseWin)
+void Board::_clearDiagonalWinLopsidedColumn(const int playerMark, const bool reverseWin)
 {
 
 }
 
 
-bool Board::multipleWinCases(const int playerMark) const
+bool Board::_multipleWinCases(const int playerMark) const
 {
     int winCaseCount{};
-    if(this -> isLateralWin(playerMark))
+    if(_isLateralWin(playerMark))
     {
         ++winCaseCount;
     }
-    if(this -> isVerticalWin(playerMark))
+    if(_isVerticalWin(playerMark))
     {
         ++winCaseCount;
     }
@@ -423,7 +423,7 @@ bool Board::multipleWinCases(const int playerMark) const
     {
         return true;
     }
-    if(this -> isDiagonalWin(playerMark))
+    if(_isDiagonalWin(playerMark))
     {
         ++winCaseCount;
     }

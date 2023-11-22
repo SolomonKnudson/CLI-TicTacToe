@@ -23,12 +23,12 @@ TicTacToe::TicTacToe()
 
     , m_isFirstGame{true}
 {
-    this -> setupGame();
+    _setupGame();
 }
 
 
 //Setup Logic
-void TicTacToe::setupGame()
+void TicTacToe::_setupGame()
 {
     char userResponse{};
     std::cout << "|Press (S) for a standard " << Board::standardRow << "x"
@@ -39,34 +39,34 @@ void TicTacToe::setupGame()
               << ((!m_isFirstGame) ? "}  || (P) for previous board: "
                                   :"}: ");
     std::cin >> userResponse;
-    flushCin();
+    _flushCin();
     switch(userResponse)
     {
         case 's':
         case 'S':
             m_previousRow = Board::standardRow;
             m_previousColumn = Board::standardColumn;
-            this -> displayBoardConfiguration();
-            this -> setBoard();
+            _displayBoardConfiguration();
+            _setBoard();
             break;
         case 'v':
         case 'V':
             std::cout << "|Enter # of rows: ";
             std::cin >> m_previousRow;
-            flushCin();
+            _flushCin();
             std::cout << "|Enter # of columns: ";
             std::cin >> m_previousColumn;
-            flushCin();
-            this -> checkBoardSize();
-            this -> displayBoardConfiguration();
-            this -> setBoard();
+            _flushCin();
+            _checkBoardSize();
+            _displayBoardConfiguration();
+            _setBoard();
             break;
         case 'p':
         case 'P':
             if(!m_isFirstGame)
             {
-                this -> displayBoardConfiguration();
-                this -> setBoard();
+                _displayBoardConfiguration();
+                _setBoard();
                 break;
             }
        [[fallthrough]];
@@ -74,8 +74,8 @@ void TicTacToe::setupGame()
             std::cout << "|Not one of the options listed!\n";
             m_previousRow = Board::standardRow;
             m_previousColumn = Board::standardColumn;
-            this -> displayBoardConfiguration();
-            this -> setBoard();
+            _displayBoardConfiguration();
+            _setBoard();
             break;
     }
     if(m_isFirstGame)
@@ -83,7 +83,7 @@ void TicTacToe::setupGame()
         m_isFirstGame = false;
         std::cout << "|Who goes first!?! (X) || (O): ";
         std::cin >> userResponse;
-        flushCin();
+        _flushCin();
         switch(userResponse)
         {
             case 'o':
@@ -102,119 +102,119 @@ void TicTacToe::setupGame()
                 m_currentPlayerMark = m_firstPlayer;
                 break;
         }
-        this -> gameLoop();
+        _gameLoop();
     }
 }
 
-void TicTacToe::setBoard()
+void TicTacToe::_setBoard()
 {
     m_board.setBoard(m_previousRow, m_previousColumn);
 }
 
 //Game Logic
-void TicTacToe::gameLoop()
+void TicTacToe::_gameLoop()
 {
     while(!m_hasWon && !m_tie)
     {
-        this -> displayBoard();
-        this -> getMove();
-        if(!this -> isLegalMove())
+        _displayBoard();
+        _getMove();
+        if(!_isLegalMove())
         {
-            this -> currentPlayer().addInvalidMove();
-            while(this -> currentPlayer().invalidMoves()
+            _currentPlayer().addInvalidMove();
+            while(_currentPlayer().invalidMoves()
                   <= m_totalInvalidMovesAllowed)
             {
-                std::cout << "|Watch it, " << this -> currentPlayer().name()
+                std::cout << "|Watch it, " << _currentPlayer().name()
                           << " that's an invalid table position,"
                           << " you have " << m_totalInvalidMovesAllowed
-                             - this -> currentPlayer().invalidMoves()
+                             - _currentPlayer().invalidMoves()
                           << " left!\n";
-                this -> getMove();
-                if(this -> isLegalMove())
+                _getMove();
+                if(_isLegalMove())
                 {
                     break;
                 }
-                this -> currentPlayer().addInvalidMove();
+                _currentPlayer().addInvalidMove();
             }
-            if(this -> currentPlayer().invalidMoves()
+            if(_currentPlayer().invalidMoves()
                     > m_totalInvalidMovesAllowed)
             {
-                std::cout << "|" << this -> currentPlayer().name()
+                std::cout << "|" << _currentPlayer().name()
                           << ", you have exceeded the max # of "
                           << "invalid moves allowed!\n|You will now forfeit "
                           << "your current turn and future turns upon "
                           << "detection of an invalid move!\n";
-                this -> nextPlayer();
+                _nextPlayer();
                 continue;
             }
         }
-        this -> move();
+        _move();
         //isWinningMove does a lot of looping. Only call once current player has
         //made the minimum number of moves to have a win
-        if(this -> currentPlayer().moves() >=
+        if(_currentPlayer().moves() >=
                 ((m_previousRow < m_previousColumn) ? m_previousRow
                  : m_previousColumn))
         {
-            if(this -> isWinningMove())
+            if(_isWinningMove())
             {
                 m_hasWon = true;
                 break;
             }
-            else if(this -> isTieGame())
+            else if(_isTieGame())
             {
                 m_tie = true;
                 break;
             }
         }
-        this -> nextPlayer();
+        _nextPlayer();
     }
-   this -> displayBoard();
-   this -> createMatchRecord();
-   this -> endGame();
+   _displayBoard();
+   _createMatchRecord();
+   _endGame();
 }
 
-void TicTacToe::endGame()
+void TicTacToe::_endGame()
 {
     if(m_hasWon)
     {
         std::cout << "|Tic-Tac-Toe!\n|Congrats, "
-                  << this -> currentPlayer().name() << "! You Win!\n";
+                  << _currentPlayer().name() << "! You Win!\n";
         std::cout << "|You beat " << ((m_currentPlayerMark == m_playerX.mark())
                                       ? m_playerO.name() : m_playerX.name())
-                                  << " in " << this -> currentPlayer().moves()
+                                  << " in " << _currentPlayer().moves()
                                   << " moves!";
-        this -> currentPlayer().addWin();
+        _currentPlayer().addWin();
     }
     else if(m_tie)
     {
         std::cout << "|Tie game! Well played, X, O!\n";
         m_tieGames++;
     }
-    this -> displayStats();
+    _displayStats();
     char userResponse{};
     std::cout << "|(P) to play again || (Q) to quit: ";
     std::cin >> userResponse;
-    flushCin();
+    _flushCin();
     switch(userResponse)
     {
         case 'P':
         case 'p':
-            this -> resetGame();
+            _resetGame();
             break;
         case 'q':
         case 'Q':
-            this -> quit();
+            _quit();
             break;
         default:
             std::cout << "|Gonna assume you want to play again!\n";
-            this -> resetGame();
+            _resetGame();
             break;
     }
 }
 
-void TicTacToe::resetGame()
+void TicTacToe::_resetGame()
 {
-    this -> setupGame();
+    _setupGame();
     if(m_hasWon)
     {
         m_hasWon = false;
@@ -228,7 +228,7 @@ void TicTacToe::resetGame()
                                                             : m_playerX.mark());
         m_currentPlayerMark = m_firstPlayer;
         std::cout << "|Last game was a tie; "
-                  << this -> currentPlayer().name() << " will start!\n";
+                  << _currentPlayer().name() << " will start!\n";
 
     }
     m_playerX.clearMoves();
@@ -238,28 +238,28 @@ void TicTacToe::resetGame()
     m_playerO.resetInvalidMoves();
 
     m_tablePosition = 0;
-    this -> gameLoop();
+    _gameLoop();
 }
 
 
 //Move Logic
-void TicTacToe::getMove()
+void TicTacToe::_getMove()
 {
-    std::cout << "|" << this -> currentPlayer().name()
+    std::cout << "|" << _currentPlayer().name()
               << ", please select a board number: ";
     std::cin >> m_tablePosition;
-    flushCin();
+    _flushCin();
 }
 
-void TicTacToe::move()
+void TicTacToe::_move()
 {
-    this -> currentPlayer().addMove(m_tablePosition);
+    _currentPlayer().addMove(m_tablePosition);
     m_board.coverBoardSlot(m_tablePosition, m_currentPlayerMark);
 }
 
-bool TicTacToe::isLegalMove() const
+bool TicTacToe::_isLegalMove() const
 {
-    if(this -> isValidPosition())
+    if(_isValidPosition())
     {
         if(m_playerO.isOccupying(m_tablePosition)
                 || m_playerX.isOccupying(m_tablePosition))
@@ -272,18 +272,18 @@ bool TicTacToe::isLegalMove() const
 }
 
 //Win Logic
-bool TicTacToe::isWinningMove() const
+bool TicTacToe::_isWinningMove() const
 {
     return m_board.isWinningMove(m_currentPlayerMark);
 }
 
-bool TicTacToe::isTieGame() const
+bool TicTacToe::_isTieGame() const
 {
     return m_board.isTie(m_playerX.mark(), m_playerO.mark());
 }
 
 //Player Logic
-void TicTacToe::displayStats() const
+void TicTacToe::_displayStats() const
 {
     std::cout << "\n         Win || Loss\n";
     std::cout << "----------------------\n";
@@ -297,26 +297,26 @@ void TicTacToe::displayStats() const
     std::cout << "----------------------\n";
 }
 
-void TicTacToe::nextPlayer()
+void TicTacToe::_nextPlayer()
 {
     (m_currentPlayerMark == m_playerX.mark())
             ? m_currentPlayerMark = m_playerO.mark()
             : m_currentPlayerMark = m_playerX.mark();
 }
 
-Player& TicTacToe::currentPlayer()
+Player& TicTacToe::_currentPlayer()
 {
     return ((m_currentPlayerMark == m_playerX.mark()) ? m_playerX : m_playerO);
 }
 
 //Util
-void TicTacToe::flushCin()
+void TicTacToe::_flushCin()
 {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-void TicTacToe::checkBoardSize()
+void TicTacToe::_checkBoardSize()
 {
     if(m_previousRow < Board::standardRow
             && m_previousColumn < Board::standardColumn)
@@ -354,19 +354,19 @@ void TicTacToe::checkBoardSize()
     }
 }
 
-void TicTacToe::displayBoard() const
+void TicTacToe::_displayBoard() const
 {
     m_board.display(m_playerX.mark(), m_playerO.mark());
 }
 
-void TicTacToe::displayBoardConfiguration() const
+void TicTacToe::_displayBoardConfiguration() const
 {
     std::cout << "|Match will be played on a "
               << m_previousRow << "x" << m_previousColumn
               << " Board!\n";
 }
 
-void TicTacToe::createMatchRecord()
+void TicTacToe::_createMatchRecord()
 {
     static int numberOfGames{1};
     MatchRecord matchRecord{};
@@ -375,8 +375,8 @@ void TicTacToe::createMatchRecord()
     matchRecord.m_column = m_previousColumn;
     if(m_hasWon)
     {
-        matchRecord.m_winner = this -> currentPlayer().name();
-        matchRecord.m_moves = this -> currentPlayer().moves();
+        matchRecord.m_winner = _currentPlayer().name();
+        matchRecord.m_moves = _currentPlayer().moves();
         matchRecord.m_winCase = m_board.winCase();
     }
     else
@@ -388,12 +388,12 @@ void TicTacToe::createMatchRecord()
     m_matchRecords.push_back(matchRecord);
 }
 
-void TicTacToe::displayMatchRecords() const
+void TicTacToe::_displayMatchRecords() const
 {
     for(const auto& record : m_matchRecords)
     {
         std::cout << "\n|Match: " << record.m_matchID << '\n';
-        std::cout << "|Played on a " << record.m_row << "x" << record.m_column
+        std::cout << "|Played: on a " << record.m_row << "x" << record.m_column
                   << " Board\n";
         if(!record.m_tieGame)
         {
@@ -410,15 +410,15 @@ void TicTacToe::displayMatchRecords() const
     }
 }
 
-bool TicTacToe::isValidPosition() const
+bool TicTacToe::_isValidPosition() const
 {
     return m_tablePosition > 0 && m_tablePosition <= m_board.boardSize();
 }
 
-void TicTacToe::quit() const
+void TicTacToe::_quit() const
 {
-    this -> displayStats();
-    this -> displayMatchRecords();
+    _displayStats();
+    _displayMatchRecords();
     if(m_playerX.wins() != m_playerO.wins())
     {
         std::cout << "\n|Congrats, " << ((m_playerX.wins() > m_playerO.wins())
@@ -438,4 +438,3 @@ void TicTacToe::quit() const
               << "Tic-Tac-Toe,\n|and for helping to test the game logic.";
     std::cout << "\n|GoodBye!\n\n";
 }
-

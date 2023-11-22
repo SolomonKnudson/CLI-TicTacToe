@@ -30,37 +30,37 @@ public:
     TicTacToe& operator=(const TicTacToe&&) = delete;
 private:
     //setup Logic
-    void setupGame();
-    void setBoard();
+    void _setupGame();
+    void _setBoard();
 
     //Game Logic
-    void gameLoop();
-    void endGame();
-    void resetGame();
+    void _gameLoop();
+    void _endGame();
+    void _resetGame();
 
     //Move Logic
-    void getMove();
-    void move();
-    bool isLegalMove() const;
-    bool isValidPosition() const;
+    void _getMove();
+    void _move();
+    bool _isLegalMove() const;
+    bool _isValidPosition() const;
 
     //Win Logic
-    bool isWinningMove() const;
-    bool isTieGame() const;
+    bool _isWinningMove() const;
+    bool _isTieGame() const;
 
     //Player Logic
-    void displayStats() const;
-    void nextPlayer();
-    Player& currentPlayer();
+    void _displayStats() const;
+    void _nextPlayer();
+    Player& _currentPlayer();
 
     //Util Methods
-    void displayBoard() const;
-    static void flushCin();
-    void checkBoardSize();
-    void displayBoardConfiguration() const;
-    void createMatchRecord();
-    void displayMatchRecords() const;
-    void quit() const;
+    void _displayBoard() const;
+    static void _flushCin();
+    void _checkBoardSize();
+    void _displayBoardConfiguration() const;
+    void _createMatchRecord();
+    void _displayMatchRecords() const;
+    void _quit() const;
 
     //Member Vars
     Board m_board{};

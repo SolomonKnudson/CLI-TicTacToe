@@ -62,12 +62,6 @@ public:
     void resetBoard();
     bool isEmpty() const;
 
-    //Methods to help with display formatting
-    //Positive ints only!
-    static bool isSingleDigit(int column);
-    static bool isDoubleDigit(int column);
-    static bool isTripleDigit(int column);
-
 #ifdef BOARD_DEBUG
     //methods to set diff win conditions
     void setLateralWin(int row, int playerMark);
@@ -88,49 +82,54 @@ public:
     };
 
     //util methods for board debugging
-    void setDiagonalWinEvenBoard(int playerMark,
+    void _setDiagonalWinEvenBoard(int playerMark,
                                  bool reverseWin);
-    void setDiagonalWinLopsidedRow(int startColumn, int playerMark,
+    void _setDiagonalWinLopsidedRow(int startColumn, int playerMark,
                                    bool reverseWin);
-    void setDiagonalWinLopsidedColumn(int startRow, int playerMark,
+    void _setDiagonalWinLopsidedColumn(int startRow, int playerMark,
                                    bool reverseWin);
 
-    bool isValidWinCase(int startPoint, WinCase winCase,
+    bool _isValidWinCase(int startPoint, WinCase winCase,
                         bool reverseWin = false) const;
 
-    static bool isValidWin(const std::vector<int>& winCases,
+    static bool _isValidWin(const std::vector<int>& winCases,
                            int startPoint);
-    static bool isValidDiagonalWin(const std::vector<int>& winCases,
+    static bool _isValidDiagonalWin(const std::vector<int>& winCases,
                             int startPoint,
                             bool reverseWin = false);
 
-    std::vector<int> validLateralWinCases() const;
-    std::vector<int> validVerticalWinCases() const;
-    std::vector<int> validDiagonalWinCases() const;
+    std::vector<int> _validLateralWinCases() const;
+    std::vector<int> _validVerticalWinCases() const;
+    std::vector<int> _validDiagonalWinCases() const;
 
-    void clearLateralWin(int playerMark);
-    void clearVerticalWin(int playerMark);
-    void clearDiagonalWin(int playerMark);
-    void clearDiagonalWinEvenBoard(bool reverseWin = false );
-    void clearDiagonalWinLopsidedRow(int playerMark, bool reverseWin = false);
-    void clearDiagonalWinLopsidedColumn(int playerMark, bool reverseWin = false);
-    bool multipleWinCases(int playerMark) const;
+    void _clearLateralWin(int playerMark);
+    void _clearVerticalWin(int playerMark);
+    void _clearDiagonalWin(int playerMark);
+    void _clearDiagonalWinEvenBoard(bool reverseWin = false );
+    void _clearDiagonalWinLopsidedRow(int playerMark, bool reverseWin = false);
+    void _clearDiagonalWinLopsidedColumn(int playerMark, bool reverseWin = false);
+    bool _multipleWinCases(int playerMark) const;
     //Util bool for clearDiaWin();
     bool m_diagonalReverseWin{};
 #else
 private:
 #endif //BOARD_DEBUG
-    void dashLine() const;
+    //Methods to help with display formatting
+//Positive ints only!
+    static bool _isSingleDigit(int column);
+    static bool _isDoubleDigit(int column);
+    static bool _isTripleDigit(int column);
+    void _dashLine() const;
 
     //Win subcases
-    bool isLateralWin(int playerMark) const;
-    bool isVerticalWin(int playerMark) const;
-    bool isDiagonalWin(int playerMark) const;
+    bool _isLateralWin(int playerMark) const;
+    bool _isVerticalWin(int playerMark) const;
+    bool _isDiagonalWin(int playerMark) const;
 
     //Diagonal subcases
-    bool evenBoard(int playerMark) const;
-    bool lopsidedRow(int playerMark) const;
-    bool lopsidedColumn(int playerMark) const;
+    bool _evenBoard(int playerMark) const;
+    bool _lopsidedRow(int playerMark) const;
+    bool _lopsidedColumn(int playerMark) const;
 
     //Member Vars
     Table m_table{};
