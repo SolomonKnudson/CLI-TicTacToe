@@ -7,7 +7,7 @@
 //NOTE!: max board size that I can display is 63x63
 
 //uncomment for automated win conditions
-#define BOARDDEBUG
+#define BOARD_DEBUG
 
 class Board
 {
@@ -68,39 +68,41 @@ public:
     static bool isDoubleDigit(const int column);
     static bool isTripleDigit(const int column);
 
-#ifdef BOARDDEBUG
+#ifdef BOARD_DEBUG
     //methods to set diff win conditions
     void setLateralWin(const int row, const int playerMark);
     void setVerticalWin(const int column, const int playerMark);
     void setDiagonalWin(int startPoint, const int playerMark,
-                        const bool reverseCase = false);
+                        const bool reverseWin = false);
     void setTie(const int playerMark);
 
     void clearWinConfiguration(const int playerMark);
-private:
+//private:
+ //Public Just for testing!
+public:
     struct ValidWinCases
     {
         std::vector<int> m_lateralCases{};
         std::vector<int> m_verticalCases{};
-        std::vector<int> m_diagonalCases{};
+        std::vector<int> m_diagonalCases{}; 
     };
 
     //util methods for board debugging
     void setDiagonalWinEvenBoard(const int playerMark,
-                                 const bool reverseCase);
+                                 const bool reverseWin);
     void setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
-                                   const bool reverseCase);
+                                   const bool reverseWin);
     void setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
-                                   const bool reverseCase);
+                                   const bool reverseWin);
 
     bool isValidWinCase(const int startPoint, const WinCase winCase,
-                        const bool reverseCase = false) const;
+                        const bool reverseWin = false) const;
 
     bool isValidWin(const std::vector<int>& winCases,
                            const int startPoint) const;
     bool isValidDiagonalWin(const std::vector<int>& winCases,
                             const int startPoint,
-                            const bool reverseCase = false) const;
+                            const bool reverseWin = false) const;
 
     const std::vector<int> validLateralWinCases() const;
     const std::vector<int> validVerticalWinCases() const;
@@ -109,10 +111,15 @@ private:
     void clearLateralWin(const int playerMark);
     void clearVerticalWin(const int playerMark);
     void clearDiagonalWin(const int playerMark);
+    void clearDiagonalWinEvenBoard(const int playerMark, const bool reverseWin = false );
+    void clearDiagonalWinLopsidedRow(const int playerMark, const bool reverseWin = false);
+    void clearDiagonalWinLopsidedColumn(const int playerMark, const bool reverseWin = false);
     bool multipleWinCases(const int playerMark) const;
+    //Util bool for clearDiaWin();
+    bool m_diagonalReverseWin{};
 #else
 private:
-#endif
+#endif //BOARD_DEBUG
     void dashLine() const;
 
     //Win subcases
