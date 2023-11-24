@@ -12,7 +12,7 @@ void Board::clearWinConfiguration(const int playerMark)
     }
     if(_multipleWinCases(playerMark))
     {
-        this -> setBoard(m_rows, m_columns);
+        setBoard(m_rows, m_columns);
         return;
     }
     switch(m_winCase)
@@ -26,7 +26,6 @@ void Board::clearWinConfiguration(const int playerMark)
         case WinCase::Diagonal:
             //The work required to undo a single diagonal win case isn't worth
             //the headache. <----- I lied.
-            //this -> setBoard(m_rows, m_columns);
             _clearDiagonalWin(playerMark);
             break;
         case WinCase::NoWinCase:
@@ -46,7 +45,7 @@ bool Board::setLateralWin(const int startRow, const int playerMark)
     for(int tablePosition{startRow}, endColumn{startRow + m_columns};
         tablePosition < endColumn; tablePosition++)
     {
-        this -> coverBoardSlot(tablePosition, playerMark);
+        coverBoardSlot(tablePosition, playerMark);
     }
     m_winCase = WinCase::Lateral;
     return true;
@@ -62,7 +61,7 @@ bool Board::setVerticalWin(const int startColumn, const int playerMark)
     for(int row{0}, columnOffset{startColumn}; row < m_rows;
         row++, columnOffset += m_columns)
     {
-        this -> coverBoardSlot(columnOffset, playerMark);
+        coverBoardSlot(columnOffset, playerMark);
     }
     m_winCase = WinCase::Vertical;
     return true;
@@ -72,7 +71,7 @@ bool Board::setTie(const int playerMark)
 {
     for(int tablePosition{1}; tablePosition <= m_boardSize; tablePosition++)
     {
-        this -> coverBoardSlot(tablePosition, playerMark);
+        coverBoardSlot(tablePosition, playerMark);
     }
     return true;
 }
@@ -119,7 +118,7 @@ void Board::_setDiagonalWinEvenBoard(const int playerMark, bool reverseWin)
     {
         for(int row{0}, column{0}; row < m_rows; row++, column++)
         {
-            this -> coverBoardSlot(m_table[row][column], playerMark);
+            coverBoardSlot(m_table[row][column], playerMark);
         }
     }
     else
@@ -127,7 +126,7 @@ void Board::_setDiagonalWinEvenBoard(const int playerMark, bool reverseWin)
         //Reverse case
         for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
         {
-            this -> coverBoardSlot(m_table[row].at(columnOffSet - row),
+            coverBoardSlot(m_table[row].at(columnOffSet - row),
                                    playerMark);
         }
     }
@@ -142,7 +141,7 @@ void Board::_setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
     {
         for(int row{0}, column{startColumn}; row < m_rows; row++)
         {
-            this -> coverBoardSlot(m_table[row].at(column + row),
+            coverBoardSlot(m_table[row].at(column + row),
                                    playerMark);
         }
     }
@@ -151,7 +150,7 @@ void Board::_setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
         //Reverse case
         for(int row{0}, column{startColumn}; row < m_rows; row++)
         {
-            this -> coverBoardSlot(m_table[row].at(column - row),
+            coverBoardSlot(m_table[row].at(column - row),
                                    playerMark);
         }
     }
@@ -165,7 +164,7 @@ void Board::_setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
         for(int column{0}; column < m_columns; ++column,
             startRow += (m_columns + 1))
         {
-            this -> coverBoardSlot(startRow, playerMark);
+            coverBoardSlot(startRow, playerMark);
         }
     }
     else
@@ -174,7 +173,7 @@ void Board::_setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
         for(int column{0}; column < m_columns; ++column,
             startRow += (m_columns - 1))
         {
-            this -> coverBoardSlot(startRow, playerMark);
+            coverBoardSlot(startRow, playerMark);
         }
     }
 }
