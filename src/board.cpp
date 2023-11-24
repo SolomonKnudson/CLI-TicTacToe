@@ -15,7 +15,6 @@ Board::Board(const int row, const int column)
     }
 }
 
-
 //Table Logic
 void Board::display(const int playerX, const int playerO) const
 {

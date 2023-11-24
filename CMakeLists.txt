@@ -4,16 +4,15 @@ project(TicTacToeRepo LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
+set(CMAKE_BUILD_TYPE Debug)
 
 add_executable(TicTacToeRepo
-  "Src/main.cpp"
-  "Src/tictactoe.h"
-  "Src/tictactoe.cpp"
-  "Src/board.h"
-  "Src/board.cpp"
-  "Src/boardDebug.cpp"
-  "Src/player.h"
-  "Src/player.cpp"
+  "src/main.cpp"
+  "src/tictactoe.h"
+  "src/tictactoe.cpp"
+  "src/board.h"
+  "src/board.cpp"
+  "src/boardDebug.cpp"
+  "src/player.h"
+  "src/player.cpp"
 )

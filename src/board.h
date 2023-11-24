@@ -71,9 +71,7 @@ public:
     void setTie(int playerMark);
 
     void clearWinConfiguration(int playerMark);
-//private:
- //Public Just for testing!
-public:
+private:
     struct ValidWinCases
     {
         std::vector<int> m_lateralCases{};
@@ -102,31 +100,33 @@ public:
     std::vector<int> _validVerticalWinCases() const;
     std::vector<int> _validDiagonalWinCases() const;
 
+    //Util Mehods for clearWinConFig()
     void _clearLateralWin(int playerMark);
     void _clearVerticalWin(int playerMark);
     void _clearDiagonalWin(int playerMark);
+    bool _multipleWinCases(int playerMark) const;
+
+    //Util for clearDiaWin();
     void _clearDiagonalWinEvenBoard(bool reverseWin = false );
     void _clearDiagonalWinLopsidedRow(int playerMark, bool reverseWin = false);
     void _clearDiagonalWinLopsidedColumn(int playerMark, bool reverseWin = false);
-    bool _multipleWinCases(int playerMark) const;
-    //Util bool for clearDiaWin();
     bool m_diagonalReverseWin{};
 #else
 private:
 #endif //BOARD_DEBUG
     //Methods to help with display formatting
-//Positive ints only!
+    //Positive ints only!
     static bool _isSingleDigit(int column);
     static bool _isDoubleDigit(int column);
     static bool _isTripleDigit(int column);
     void _dashLine() const;
 
-    //Win subcases
+    //Win subcases(Util methods for isWiningMove())
     bool _isLateralWin(int playerMark) const;
     bool _isVerticalWin(int playerMark) const;
     bool _isDiagonalWin(int playerMark) const;
 
-    //Diagonal subcases
+    //Diagonal subcases(Util methods for _isDiaWin)
     bool _evenBoard(int playerMark) const;
     bool _lopsidedRow(int playerMark) const;
     bool _lopsidedColumn(int playerMark) const;

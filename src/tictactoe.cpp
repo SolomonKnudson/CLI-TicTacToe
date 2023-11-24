@@ -247,9 +247,51 @@ void TicTacToe::_getMove()
 {
     std::cout << "|" << _currentPlayer().name()
               << ", please select a board number: ";
+    
+#ifndef BOARD_DEBUG
     std::cin >> m_tablePosition;
     _flushCin();
+#else
+    std::string command{};
+    std::getline(std::cin, command);
+    //If stoi doesn't blow up, user entered a number. Otherwise, check to see if its a debug command
+    //If not a debug command, do nothing as control will return to gameLoop
+    //(_runCommand --> _getMove() --> _gameLoop)
+    // Which will check to see if the m_tablePosition is valid
+    try
+    {
+        m_tablePosition = std::stoi(command);
+    }
+    catch (const std::exception& error)
+    {
+        m_tablePosition = 0;
+        std::istringstream stream{command};
+        stream >> m_debugCommand.m_commandString;
+        stream >> m_debugCommand.m_commandValue;
+        _runCommand();
+    }
+#endif // BOARD_DEBUG
 }
+
+#ifdef BOARD_DEBUG
+void TicTacToe::_runCommand()
+{
+    bool gameEndingCommand{};
+    if (m_debugCommand.m_commandString == "setL")
+    {
+        gameEndingCommand = true;
+        m_board.setLateralWin(m_debugCommand.m_commandValue, m_currentPlayerMark);
+    }
+    if (gameEndingCommand)
+    {
+        _displayBoard();
+        _endGame();
+    }
+}
+#endif // BOARD_DEBUG
+
+
+
 
 void TicTacToe::_move()
 {
@@ -437,4 +479,5 @@ void TicTacToe::_quit() const
     std::cout << "|Thank you, CJ, for challenging me to create "
               << "Tic-Tac-Toe,\n|and for helping to test the game logic.";
     std::cout << "\n|GoodBye!\n\n";
+    std::exit(0);
 }

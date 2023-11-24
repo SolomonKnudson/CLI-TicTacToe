@@ -3,8 +3,12 @@
 #include <iostream>
 #include <vector>
 #include <limits>
+#include <cctype>
+#include <sstream>
 #include "board.h"
 #include "player.h"
+
+//TODO: create move parser to set win conditions mid game/Create new git branch
 
 class TicTacToe
 {
@@ -29,6 +33,15 @@ public:
     TicTacToe& operator=(const TicTacToe&) = delete;
     TicTacToe& operator=(const TicTacToe&&) = delete;
 private:
+#ifdef BOARD_DEBUG
+    struct DebugCommand
+    {
+        std::string m_commandString{};
+        int m_commandValue{};
+    };
+    DebugCommand m_debugCommand{};
+    void _runCommand();
+#endif // BOARD_DEBUG
     //setup Logic
     void _setupGame();
     void _setBoard();
