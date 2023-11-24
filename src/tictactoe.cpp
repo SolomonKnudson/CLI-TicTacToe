@@ -264,10 +264,10 @@ void TicTacToe::_getMove()
     }
     catch (const std::exception& error)
     {
-        m_tablePosition = 0;
         std::istringstream stream{command};
         stream >> m_debugCommand.m_commandString;
         stream >> m_debugCommand.m_commandValue;
+        m_tablePosition = m_debugCommand.m_commandValue;
         _runCommand();
     }
 #endif // BOARD_DEBUG
