@@ -278,9 +278,32 @@ void TicTacToe::_runCommand()
 {
     bool gameEndingCommand{};
     if (m_debugCommand.m_commandString == "setL")
+    { 
+        if (m_board.setLateralWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
+        {
+            gameEndingCommand = true;
+        }
+    }
+    if (m_debugCommand.m_commandString == "setV")
     {
-        gameEndingCommand = true;
-        m_board.setLateralWin(m_debugCommand.m_commandValue, m_currentPlayerMark);
+        if (m_board.setVerticalWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
+        {
+            gameEndingCommand = true;
+        }
+    }
+    if (m_debugCommand.m_commandString == "setD")
+    {
+        if (m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
+        {
+            gameEndingCommand = true;
+        }
+    }
+    if (m_debugCommand.m_commandString == "setDr")
+    {
+        if (m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark, true))
+        {
+            gameEndingCommand = true;
+        }
     }
     if (gameEndingCommand)
     {

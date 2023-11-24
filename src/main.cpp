@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     Board test{5,  5};
 //    test.setsBoard(53, 53);
     test.display(playerX, playerO);
-    test.setLateralWin(2916, playerO);
+    //test.setLateralWin(2916, playerO);
 //    test.coverBoardSlot(1, -2);
     //test.setDiagonalWin(53, playerO, true);
     //test.setVerticalWin(55, playerO);
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 //    test.display(playerX, playerO);
 //    test.clearWinConfiguration(playerO);
 //    test.display(playerX, playerO);
-    test.clearWinConfiguration(playerO);
+    //test.clearWinConfiguration(playerO);
     test.display(playerX, playerO);
     if(test.isTie(-1, -2))
     {

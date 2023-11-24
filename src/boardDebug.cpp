@@ -36,12 +36,12 @@ void Board::clearWinConfiguration(const int playerMark)
 }
 
 //methods to set diff win conditions
-void Board::setLateralWin(const int startRow, const int playerMark)
+bool Board::setLateralWin(const int startRow, const int playerMark)
 {
     if(!_isValidWinCase(startRow, WinCase::Lateral))
     {
         std::cout << "setLatWin(): Invalid row!\n";
-        return;
+        return false;
     }
     for(int tablePosition{startRow}, endColumn{startRow + m_columns};
         tablePosition < endColumn; tablePosition++)
@@ -49,14 +49,15 @@ void Board::setLateralWin(const int startRow, const int playerMark)
         this -> coverBoardSlot(tablePosition, playerMark);
     }
     m_winCase = WinCase::Lateral;
+    return true;
 }
 
-void Board::setVerticalWin(const int startColumn, const int playerMark)
+bool Board::setVerticalWin(const int startColumn, const int playerMark)
 {
     if(!_isValidWinCase(startColumn, WinCase::Vertical))
     {
         std::cout << "setVertWin(): Invalid column!\n";
-        return;
+        return false;
     }
     for(int row{0}, columnOffset{startColumn}; row < m_rows;
         row++, columnOffset += m_columns)
@@ -64,17 +65,19 @@ void Board::setVerticalWin(const int startColumn, const int playerMark)
         this -> coverBoardSlot(columnOffset, playerMark);
     }
     m_winCase = WinCase::Vertical;
+    return true;
 }
 
-void Board::setTie(const int playerMark)
+bool Board::setTie(const int playerMark)
 {
     for(int tablePosition{1}; tablePosition <= m_boardSize; tablePosition++)
     {
         this -> coverBoardSlot(tablePosition, playerMark);
     }
+    return true;
 }
 
-void Board::setDiagonalWin(int startColumn, const int playerMark,
+bool Board::setDiagonalWin(int startColumn, const int playerMark,
                            const bool reverseWin)
 {
     if(_isValidWinCase(startColumn, WinCase::Diagonal, reverseWin) &&
@@ -102,10 +105,11 @@ void Board::setDiagonalWin(int startColumn, const int playerMark,
         std::cout << "setDiaWin(): " << ((m_rows < m_columns)
                                          ? "Invalid Column!\n"
                                          : "Invalid Row!\n");
-        return;
+        return false;
     }
     m_diagonalReverseWin = reverseWin;
     m_winCase = WinCase::Diagonal;
+    return true;
 }
 
 //Util methods for setDiaWin

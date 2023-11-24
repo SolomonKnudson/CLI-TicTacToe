@@ -64,11 +64,11 @@ public:
 
 #ifdef BOARD_DEBUG
     //methods to set diff win conditions
-    void setLateralWin(int row, int playerMark);
-    void setVerticalWin(int column, int playerMark);
-    void setDiagonalWin(int startPoint, int playerMark,
+    bool setLateralWin(int row, int playerMark);
+    bool setVerticalWin(int column, int playerMark);
+    bool setDiagonalWin(int startPoint, int playerMark,
                         bool reverseWin = false);
-    void setTie(int playerMark);
+    bool setTie(int playerMark);
 
     void clearWinConfiguration(int playerMark);
 private:
