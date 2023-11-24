@@ -305,6 +305,10 @@ void TicTacToe::_runCommand()
             gameEndingCommand = true;
         }
     }
+    if (m_debugCommand.m_commandString == "endGame")
+    {
+        _endGame();
+    }
     if (gameEndingCommand)
     {
         _displayBoard();
