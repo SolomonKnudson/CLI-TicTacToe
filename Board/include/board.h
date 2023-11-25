@@ -88,10 +88,11 @@ private:
                                    bool reverseWin);
 
     bool _isValidWinCase(int startPoint, WinCase winCase,
-                        bool reverseWin = false) const;
+                        bool reverseWin = false);
 
     static bool _isValidWin(const std::vector<int>& winCases,
                            int startPoint);
+    void _recalculateWinCases(ValidWinCases& winCases);
     static bool _isValidDiagonalWin(const std::vector<int>& winCases,
                             int startPoint,
                             bool reverseWin = false);

@@ -180,37 +180,23 @@ void Board::_setDiagonalWinLopsidedColumn(int startRow, const int playerMark,
 
 //Util methods for all win case set'ers
 bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
-                           const bool reverseWin) const
+                           const bool reverseWin)
 {
-    static int currentBoardSize{m_boardSize};
-    ValidWinCases winCases
+    //Static so win cases aren't re-calculated unless using a different size board
+    static ValidWinCases winCases
     {
         _validLateralWinCases(),
         _validVerticalWinCases(),
         _validDiagonalWinCases()
     };
 
-    if (currentBoardSize != m_boardSize)
+    static int previousRow{m_rows};
+    static int previousColumn{m_columns};
+    if (previousRow != m_rows && previousColumn != m_columns)
     {
-        currentBoardSize = m_boardSize;
-
-        winCases.m_lateralCases.clear();
-        winCases.m_verticalCases.clear();
-        winCases.m_diagonalCases.clear();
-
-        //Have to do this as you cannot assign a vector to an already made vector
-        for(int winCase : _validLateralWinCases())
-        {
-            winCases.m_lateralCases.push_back(winCase);
-        }
-        for (int winCase : _validVerticalWinCases())
-        {
-            winCases.m_verticalCases.push_back(winCase);
-        }
-        for (int winCase : _validDiagonalWinCases())
-        {
-            winCases.m_diagonalCases.push_back(winCase);
-        }  
+        previousRow = m_rows;
+        previousColumn = m_columns;
+        _recalculateWinCases(winCases);
     }
 
     switch(winCase)
@@ -229,6 +215,27 @@ bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
 }
 
 //Util methods for isValidWinCase
+void Board::_recalculateWinCases(ValidWinCases& winCases)
+{
+    winCases.m_lateralCases.clear();
+    winCases.m_verticalCases.clear();
+    winCases.m_diagonalCases.clear();
+
+    //Have to do this as you cannot assign a vector to an already made vector
+    for (int winCase : _validLateralWinCases())
+    {
+        winCases.m_lateralCases.push_back(winCase);
+    }
+    for (int winCase : _validVerticalWinCases())
+    {
+        winCases.m_verticalCases.push_back(winCase);
+    }
+    for (int winCase : _validDiagonalWinCases())
+    {
+        winCases.m_diagonalCases.push_back(winCase);
+    }
+}
+
 bool Board::_isValidWin(const std::vector<int>& winCases,
                        const int startPoint)
 {

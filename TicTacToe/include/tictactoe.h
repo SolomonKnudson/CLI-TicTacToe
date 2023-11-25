@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <limits>
-#include <cctype>
 #include <sstream>
 #include "board.h"
 #include "player.h"
