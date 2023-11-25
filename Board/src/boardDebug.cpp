@@ -1,7 +1,7 @@
 #include "board.h"
 
 #ifdef BOARD_DEBUG
-//TODO: implement clearDiaWin
+//TODO: implement both _clearDiagonalWinLopsided()
 
 //methods to set diff win conditions
 bool Board::setLateralWin(const int startRow, const int playerMark)
@@ -95,7 +95,7 @@ void Board::_setDiagonalWinEvenBoard(const int playerMark, bool reverseWin)
         //Reverse case
         for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
         {
-            coverBoardSlot(m_table[row].at(columnOffSet - row),
+            coverBoardSlot(m_table[row].at(static_cast<size_t>(columnOffSet - row)),
                                    playerMark);
         }
     }
@@ -110,7 +110,7 @@ void Board::_setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
     {
         for(int row{0}, column{startColumn}; row < m_rows; row++)
         {
-            coverBoardSlot(m_table[row].at(column + row),
+            coverBoardSlot(m_table[row].at(static_cast<size_t>(column + row)),
                                    playerMark);
         }
     }
@@ -119,7 +119,7 @@ void Board::_setDiagonalWinLopsidedRow(int startColumn, const int playerMark,
         //Reverse case
         for(int row{0}, column{startColumn}; row < m_rows; row++)
         {
-            coverBoardSlot(m_table[row].at(column - row),
+            coverBoardSlot(m_table[row].at(static_cast<size_t>(column - row)),
                                    playerMark);
         }
     }

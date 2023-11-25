@@ -264,7 +264,7 @@ bool Board::_evenBoard(const int playerMark) const
     //O(n)
     for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
     {
-        if(m_table[row].at(columnOffSet - row) == playerMark)
+        if(m_table[row].at(static_cast<size_t>(columnOffSet - row)) == playerMark)
         {
             inARow++;
             continue;
@@ -292,7 +292,7 @@ bool Board::_lopsidedRow(const int playerMark) const
         //O(m)
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(column + row) == playerMark)
+            if(m_table[row].at(static_cast<size_t>(column + row)) == playerMark)
             {
                 inARow++;
                 continue;
@@ -315,7 +315,7 @@ bool Board::_lopsidedRow(const int playerMark) const
         //O(m)
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(column - row) == playerMark)
+            if(m_table[row].at(static_cast<size_t>(column - row)) == playerMark)
             {
                 inARow++;
                 continue;
@@ -349,7 +349,7 @@ bool Board::_lopsidedColumn(const int playerMark) const
         //O(m)
         for(int row{0}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(loop + row)[row] == playerMark)
+            if(m_table.at(static_cast<size_t>(loop + row))[row] == playerMark)
             {
                 inARow++;
                 continue;
@@ -371,7 +371,7 @@ bool Board::_lopsidedColumn(const int playerMark) const
         //O(m)
         for(int row{0}, column{m_columns - 1}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(row + loop).at(column - row) == playerMark)
+            if(m_table.at(row + loop).at(static_cast<size_t>(column - row)) == playerMark)
             {
                 inARow++;
                 continue;
