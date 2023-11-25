@@ -3,37 +3,6 @@
 #ifdef BOARD_DEBUG
 //TODO: implement clearDiaWin
 
-//Currently working on:
-void Board::clearWinConfiguration(const int playerMark)
-{
-    if(m_winCase == WinCase::NoWinCase)
-    {
-        return;
-    }
-    if(_multipleWinCases(playerMark))
-    {
-        setBoard(m_rows, m_columns);
-        return;
-    }
-    switch(m_winCase)
-    {
-        case WinCase::Lateral:
-            _clearLateralWin(playerMark);
-            break;
-        case WinCase::Vertical:
-            _clearVerticalWin(playerMark);
-            break;
-        case WinCase::Diagonal:
-            //The work required to undo a single diagonal win case isn't worth
-            //the headache. <----- I lied.
-            _clearDiagonalWin(playerMark);
-            break;
-        case WinCase::NoWinCase:
-            return;
-    }
-    m_winCase = WinCase::NoWinCase;
-}
-
 //methods to set diff win conditions
 bool Board::setLateralWin(const int startRow, const int playerMark)
 {
@@ -328,6 +297,36 @@ std::vector<int> Board::_validDiagonalWinCases() const
     return winCases;
 }
 
+void Board::clearWinConfiguration(const int playerMark)
+{
+    if (m_winCase == WinCase::NoWinCase)
+    {
+        return;
+    }
+    if (_multipleWinCases(playerMark))
+    {
+        setBoard(m_rows, m_columns);
+        return;
+    }
+    switch (m_winCase)
+    {
+    case WinCase::Lateral:
+        _clearLateralWin(playerMark);
+        break;
+    case WinCase::Vertical:
+        _clearVerticalWin(playerMark);
+        break;
+    case WinCase::Diagonal:
+        //The work required to undo a single diagonal win case isn't worth
+        //the headache. <----- I lied.
+        _clearDiagonalWin(playerMark);
+        break;
+    case WinCase::NoWinCase:
+        return;
+    }
+    m_winCase = WinCase::NoWinCase;
+}
+
 //Util methods for clearWinConfig
 void Board::_clearLateralWin(const int playerMark)
 {
@@ -435,7 +434,6 @@ void Board::_clearDiagonalWinLopsidedColumn(const int playerMark, const bool rev
 {
 
 }
-
 
 bool Board::_multipleWinCases(const int playerMark) const
 {
