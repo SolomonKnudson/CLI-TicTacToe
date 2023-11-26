@@ -11,11 +11,13 @@ bool Board::setLateralWin(const int startRow, const int playerMark)
         std::cout << "setLatWin(): Invalid row!\n";
         return false;
     }
+
     for(int tablePosition{startRow}, endColumn{startRow + m_columns};
         tablePosition < endColumn; tablePosition++)
     {
         coverBoardSlot(tablePosition, playerMark);
     }
+
     m_winCase = WinCase::Lateral;
     return true;
 }
@@ -303,27 +305,30 @@ void Board::clearWinConfiguration(const int playerMark)
     {
         return;
     }
+
     if (_multipleWinCases(playerMark))
     {
         setBoard(m_rows, m_columns);
         return;
     }
+
     switch (m_winCase)
     {
-    case WinCase::Lateral:
-        _clearLateralWin(playerMark);
-        break;
-    case WinCase::Vertical:
-        _clearVerticalWin(playerMark);
-        break;
-    case WinCase::Diagonal:
-        //The work required to undo a single diagonal win case isn't worth
-        //the headache. <----- I lied.
-        _clearDiagonalWin(playerMark);
-        break;
-    case WinCase::NoWinCase:
-        return;
+        case WinCase::Lateral:
+            _clearLateralWin(playerMark);
+            break;
+        case WinCase::Vertical:
+            _clearVerticalWin(playerMark);
+            break;
+        case WinCase::Diagonal:
+            //The work required to undo a single diagonal win case isn't worth
+            //the headache. <----- I lied.
+            _clearDiagonalWin(playerMark);
+            break;
+        case WinCase::NoWinCase:
+            return;
     }
+
     m_winCase = WinCase::NoWinCase;
 }
 
