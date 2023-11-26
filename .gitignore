@@ -36,6 +36,7 @@ Thumbs.db
 /.qmake.cache
 /.qmake.stash
 /out
+/build
 CMakeSettings.json
 
 # qtcreator generated files
