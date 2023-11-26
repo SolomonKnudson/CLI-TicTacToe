@@ -11,7 +11,7 @@ add_executable(TicTacToeRepo
 )
 
 
-target_link_libraries(TicTacToeRepo PUBLIC TicTacToe Board Player)
+target_link_libraries(TicTacToeRepo PUBLIC TicTacToe)
 add_subdirectory(TicTacToe)
 add_subdirectory(Board)
 add_subdirectory(Player)

@@ -6,4 +6,6 @@ add_library(TicTacToe
 
 target_include_directories(TicTacToe PUBLIC include)
 
-target_link_libraries(TicTacToe PRIVATE Board Player)
+
+target_link_libraries(TicTacToe PUBLIC Board Player)
+add_dependencies(TicTacToe Board Player)
