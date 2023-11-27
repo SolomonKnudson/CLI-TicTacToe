@@ -349,13 +349,11 @@ void Board::_clearLateralWin(const char playerMark)
     {
         for(int column{0}; column < m_columns; ++column)
         {
-            if(m_table[row][column].m_playerIsOccupying)
+            if (m_table[row][column].m_playerFlag == playerMark)
             {
-                if (m_table[row][column].m_playerFlag == playerMark)
-                {
-                    m_table[row][column].reset();
-                }
+                m_table[row][column].reset();
             }
+
         }
     }
 }
@@ -368,22 +366,16 @@ void Board::_clearVerticalWin(const char playerMark)
         {
             if(column == 0)
             {
-                if (m_table[row][column].m_playerIsOccupying)
+                if (m_table[row][column].m_playerFlag == playerMark)
                 {
-                    if (m_table[row][column].m_playerFlag == playerMark)
-                    {
-                        m_table[row][column].reset();
-                    }
+                    m_table[row][column].reset();
                 }
             }
             else
             {
-                if (m_table[row][column].m_playerIsOccupying)
+                if (m_table[row][column].m_playerFlag == playerMark)
                 {
-                    if (m_table[row][column].m_playerFlag == playerMark)
-                    {
-                        m_table[row][column].reset();
-                    }
+                    m_table[row][column].reset();
                 }
             }
         }
@@ -444,8 +436,15 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark, const bool rever
     int columnOffSet{m_columns - m_rows};
     if (!reverseWin)
     {
-        for (int columnStart{ 0 }; columnStart < columnOffSet; ++columnStart)
+        for (int column{ 0 }; column < columnOffSet; ++column)
         {
+            if (m_table[0][column].m_playerFlag == playerMark)
+            {
+                for (int row{ 0 }; row < m_rows; ++row)
+                {
+
+                }
+            }
 
         }
     }
