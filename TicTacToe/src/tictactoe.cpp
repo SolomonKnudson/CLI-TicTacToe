@@ -262,7 +262,7 @@ void TicTacToe::_getMove()
     {
         m_tablePosition = std::stoi(command);
     }
-    catch (const std::exception& error)
+    catch (const std::invalid_argument& error)
     {
         std::istringstream stream{command};
         stream >> m_debugCommand.m_commandString;
@@ -348,7 +348,7 @@ bool TicTacToe::_isWinningMove() const
 
 bool TicTacToe::_isTieGame() const
 {
-    return m_board.isTie(m_playerX.mark(), m_playerO.mark());
+    return m_board.isTie();
 }
 
 //Player Logic
