@@ -3,9 +3,14 @@
 #include <iostream>
 #include <vector>
 #include <limits>
-#include <sstream>
 #include "board.h"
 #include "player.h"
+
+#ifdef BOARD_DEBUG
+#include <cctype>
+#include <sstream>
+#include <exception>
+#endif // BOARD_DEBUG
 
 //TODO: create move parser to set win conditions mid game/Create new git branch
 

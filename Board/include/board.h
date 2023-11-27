@@ -9,7 +9,7 @@
 //uncomment for automated win conditions
 #define BOARD_DEBUG
 
-class Board
+namespace BoardTypes
 {
     struct BoardPiece
     {
@@ -27,6 +27,18 @@ class Board
         char m_playerFlag{};
         bool m_playerIsOccupying{};
     };
+
+    enum  BoardSize
+    {
+        standardRow = 3,
+        standardColumn = 3,
+        standardSize = standardRow * standardColumn,
+
+        maxRow = 55,
+        maxColumn = 55,
+        maxSize = maxRow * maxColumn //55x55 hard cap  
+    };
+
     enum class WinCase
     {
         Lateral,
@@ -34,7 +46,11 @@ class Board
         Diagonal,
         NoWinCase
     };
-    using Table = std::vector<std::vector<BoardPiece>>;
+}
+
+class Board
+{
+    using Table = std::vector<std::vector<BoardTypes::BoardPiece>>;
 public:
     explicit Board(int row = 3, int column = 3);
     ~Board() = default;
@@ -54,24 +70,12 @@ public:
     //Not in use
     int rows() const;
     int columns() const;
-    //
-
-    enum  BoardSize
-    {
-        standardRow = 3,
-        standardColumn = 3,
-        standardSize = standardRow * standardColumn,
-
-        maxRow = 55,
-        maxColumn = 55,
-        maxSize = maxRow * maxColumn //55x55 hard cap  
-    };
 
     //Win Logic
     //const for winningMove() is a lie; Object will change if true
     //(see m_winCase declaration).
     bool isWinningMove(char playerMark) const;
-    bool isTie(char playerX, char playerO) const;
+    bool isTie() const;
 
     //Util
     std::string_view winCase() const;
@@ -103,7 +107,7 @@ private:
     void _setDiagonalWinLopsidedColumn(int startRow, char playerMark,
                                    bool reverseWin);
 
-    bool _isValidWinCase(int startPoint, WinCase winCase,
+    bool _isValidWinCase(int startPoint, BoardTypes::WinCase winCase,
                         bool reverseWin = false);
 
     static bool _isValidWin(const std::vector<int>& winCases,
@@ -150,7 +154,7 @@ private:
 
     //Member Vars
     Table m_table{};
-    mutable WinCase m_winCase{};
+    mutable BoardTypes::WinCase m_winCase{};
     int m_rows{};
     int m_columns{};
     int m_boardSize{};
