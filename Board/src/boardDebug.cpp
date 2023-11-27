@@ -352,23 +352,7 @@ void Board::_clearLateralWin(const char playerMark)
             {
                 if (m_table[row][column].m_playerFlag == playerMark)
                 {
-                    if (row == 0)
-                    {
-                        for (int i{ 0 }; i <= m_columns; ++i)
-                        {
-                            m_table[row][i] = i + 1;
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        offSet = m_table[row - 1][m_columns - 1].m_piecePosition + 1;
-                        for (int i{ 0 }; i < m_columns; ++i)
-                        {
-                            m_table[row][i] = offSet++;
-                        }
-                        return;
-                    }
+                    m_table[row][column].reset();
                 }
             }
         }
@@ -387,7 +371,7 @@ void Board::_clearVerticalWin(const char playerMark)
                 {
                     if (m_table[row][column].m_playerFlag == playerMark)
                     {
-                        m_table[row][column] = m_table[row][column + 1].m_piecePosition - 1;
+                        m_table[row][column].reset();
                     }
                 }
             }
@@ -397,7 +381,7 @@ void Board::_clearVerticalWin(const char playerMark)
                 {
                     if (m_table[row][column].m_playerFlag == playerMark)
                     {
-                        m_table[row][column] = m_table[row][column - 1].m_piecePosition + 1;
+                        m_table[row][column].reset();
                     }
                 }
             }
@@ -431,7 +415,10 @@ void Board::_clearDiagonalWinEvenBoard(const bool reverseWin)
         startPoint = m_table[0][1].m_piecePosition - 1 ;
         for (int row{ 0 }, column{0}; row < m_columns; ++row, ++column, startPoint += (m_columns + 1))
         {
-            m_table[row][column] = startPoint;
+            if (m_table[row][column].m_playerIsOccupying)
+            {
+                m_table[row][column].reset();
+            }
         }
     }
     else
@@ -439,22 +426,46 @@ void Board::_clearDiagonalWinEvenBoard(const bool reverseWin)
         startPoint = m_table[0].at(static_cast<size_t>((m_columns - 2))).m_piecePosition + 1 ;
         for (int row{0}, columnOffset{m_columns - 1}; row < m_columns; ++row, --columnOffset, startPoint += m_columns)
         {
-            m_table[row][columnOffset] = startPoint;
+            if (m_table[row][columnOffset].m_playerIsOccupying)
+            {
+                m_table[row][columnOffset].reset();
+            }
         }
     }
 }
+
+
 
 //When looping to find the startPoint, it will only be valid if the playerMark found is from a column of the first row
 //ReverseWin: When looping to find the startPoint, it will only be valid if the playerMark found is from a column of the first row
 void Board::_clearDiagonalWinLopsidedRow(const char playerMark, const bool reverseWin)
 {
+    int columnOffSet{m_columns - m_rows};
+    if (!reverseWin)
+    {
+        for (int columnStart{ 0 }; columnStart < columnOffSet; ++columnStart)
+        {
 
+        }
+    }
+    else
+    {
+
+    }
 }
 //When looping to find the startPoint, it will only be valid if the playerMark found is from the starting column of each row
 //ReverseWin: When looping to find the startPoint, it will only be valid if the playerMark found is from the ending column of each row
 void Board::_clearDiagonalWinLopsidedColumn(const char playerMark, const bool reverseWin)
 {
+    int startPoint{};
+    if (!reverseWin)
+    {
 
+    }
+    else
+    {
+
+    }
 }
 
 bool Board::_multipleWinCases(const char playerMark) const
@@ -483,4 +494,6 @@ bool Board::_multipleWinCases(const char playerMark) const
     }
     return (winCaseCount > 1);
 }
+
+
 #endif //BOARD_DEBUG

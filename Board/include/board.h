@@ -13,14 +13,19 @@ class Board
 {
     struct BoardPiece
     {
-        int m_piecePosition{};
-        char m_playerFlag{};
-        bool m_playerIsOccupying{};
+        void reset()
+        {
+            m_playerFlag = ' ';
+            m_playerIsOccupying = false;
+        }
         BoardPiece(int piecePosition, char playerFlag = ' ')
             : m_piecePosition{ piecePosition }
             , m_playerFlag{ playerFlag }
             , m_playerIsOccupying{ false }
         {}
+        int m_piecePosition{};
+        char m_playerFlag{};
+        bool m_playerIsOccupying{};
     };
     enum class WinCase
     {
