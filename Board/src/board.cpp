@@ -371,7 +371,7 @@ bool Board::_lopsidedColumn(const char playerMark) const
     return false;
 }
 
-bool Board::isTie(const char playerX, const char playerO) const
+bool Board::isTie() const
 {
     int totalPlayerMarks{};
     for(const auto& row : m_table)
@@ -380,11 +380,8 @@ bool Board::isTie(const char playerX, const char playerO) const
         {
             if(column.m_playerIsOccupying)
             {
-                if (column.m_playerFlag == playerX || column.m_playerFlag == playerO)
-                {
-                    totalPlayerMarks++;
-                    continue;
-                }
+                totalPlayerMarks++;
+                continue;
             }
             return false;
         }

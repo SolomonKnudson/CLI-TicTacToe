@@ -75,7 +75,7 @@ public:
     //const for winningMove() is a lie; Object will change if true
     //(see m_winCase declaration).
     bool isWinningMove(char playerMark) const;
-    bool isTie(char playerX, char playerO) const;
+    bool isTie() const;
 
     //Util
     std::string_view winCase() const;
