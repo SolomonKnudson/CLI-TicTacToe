@@ -11,6 +11,17 @@
 
 class Board
 {
+    struct BoardPiece
+    {
+        int m_piecePosition{};
+        char m_playerFlag{};
+        bool m_playerIsOccupying{};
+        BoardPiece(int piecePosition, char playerFlag = ' ')
+            : m_piecePosition{ piecePosition }
+            , m_playerFlag{ playerFlag }
+            , m_playerIsOccupying{ false }
+        {}
+    };
     enum class WinCase
     {
         Lateral,
@@ -18,9 +29,9 @@ class Board
         Diagonal,
         NoWinCase
     };
-    using Table = std::vector<std::vector<int>>;
+    using Table = std::vector<std::vector<BoardPiece>>;
 public:
-    explicit Board(int row = 0, int column = 0);
+    explicit Board(int row = 3, int column = 3);
     ~Board() = default;
 
     Board(const Board&) = delete;
@@ -30,9 +41,9 @@ public:
     Board& operator=(const Board&&) = delete;
 
     //Table Logic
-    void display(int playerX, int playerO) const;
+    void display() const;
     void setBoard(int rows, int columns);
-    void coverBoardSlot(int tablePosition, int currentPlayer);
+    void coverBoardSlot(int tablePosition, char currentPlayer);
     int boardSize() const;
 
     //Not in use
@@ -54,8 +65,8 @@ public:
     //Win Logic
     //const for winningMove() is a lie; Object will change if true
     //(see m_winCase declaration).
-    bool isWinningMove(int playerMark) const;
-    bool isTie(int playerX, int playerO) const;
+    bool isWinningMove(char playerMark) const;
+    bool isTie(char playerX, char playerO) const;
 
     //Util
     std::string_view winCase() const;
@@ -64,13 +75,13 @@ public:
 
 #ifdef BOARD_DEBUG
     //methods to set diff win conditions
-    bool setLateralWin(int row, int playerMark);
-    bool setVerticalWin(int column, int playerMark);
-    bool setDiagonalWin(int startPoint, int playerMark,
+    bool setLateralWin(int row, char playerMark);
+    bool setVerticalWin(int column, char playerMark);
+    bool setDiagonalWin(int startPoint, char playerMark,
                         bool reverseWin = false);
-    bool setTie(int playerMark);
+    bool setTie(char playerMark);
 
-    void clearWinConfiguration(int playerMark);
+    void clearWinConfiguration(char playerMark);
 private:
     struct ValidWinCases
     {
@@ -80,11 +91,11 @@ private:
     };
 
     //util methods for board debugging
-    void _setDiagonalWinEvenBoard(int playerMark,
+    void _setDiagonalWinEvenBoard(char playerMark,
                                  bool reverseWin);
-    void _setDiagonalWinLopsidedRow(int startColumn, int playerMark,
+    void _setDiagonalWinLopsidedRow(int startColumn, char playerMark,
                                    bool reverseWin);
-    void _setDiagonalWinLopsidedColumn(int startRow, int playerMark,
+    void _setDiagonalWinLopsidedColumn(int startRow, char playerMark,
                                    bool reverseWin);
 
     bool _isValidWinCase(int startPoint, WinCase winCase,
@@ -102,15 +113,15 @@ private:
     std::vector<int> _validDiagonalWinCases() const;
 
     //Util Mehods for clearWinConFig()
-    void _clearLateralWin(int playerMark);
-    void _clearVerticalWin(int playerMark);
-    void _clearDiagonalWin(int playerMark);
-    bool _multipleWinCases(int playerMark) const;
+    void _clearLateralWin(char playerMark);
+    void _clearVerticalWin(char playerMark);
+    void _clearDiagonalWin(char playerMark);
+    bool _multipleWinCases(char playerMark) const;
 
     //Util for clearDiaWin();
     void _clearDiagonalWinEvenBoard(bool reverseWin = false );
-    void _clearDiagonalWinLopsidedRow(int playerMark, bool reverseWin = false);
-    void _clearDiagonalWinLopsidedColumn(int playerMark, bool reverseWin = false);
+    void _clearDiagonalWinLopsidedRow(char playerMark, bool reverseWin = false);
+    void _clearDiagonalWinLopsidedColumn(char playerMark, bool reverseWin = false);
     bool m_diagonalReverseWin{};
 #else
 private:
@@ -123,14 +134,14 @@ private:
     void _dashLine() const;
 
     //Win subcases(Util methods for isWiningMove())
-    bool _isLateralWin(int playerMark) const;
-    bool _isVerticalWin(int playerMark) const;
-    bool _isDiagonalWin(int playerMark) const;
+    bool _isLateralWin(char playerMark) const;
+    bool _isVerticalWin(char playerMark) const;
+    bool _isDiagonalWin(char playerMark) const;
 
     //Diagonal subcases(Util methods for _isDiaWin)
-    bool _evenBoard(int playerMark) const;
-    bool _lopsidedRow(int playerMark) const;
-    bool _lopsidedColumn(int playerMark) const;
+    bool _evenBoard(char playerMark) const;
+    bool _lopsidedRow(char playerMark) const;
+    bool _lopsidedColumn(char playerMark) const;
 
     //Member Vars
     Table m_table{};

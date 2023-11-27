@@ -16,7 +16,7 @@ Board::Board(const int row, const int column)
 }
 
 //Table Logic
-void Board::display(const int playerX, const int playerO) const
+void Board::display() const
 {
 /*
     *  What board is supposed to look like
@@ -29,38 +29,33 @@ void Board::display(const int playerX, const int playerO) const
     *  |---|---|---|
 */
     _dashLine();
-    for(const auto& row : m_table)
+    for (const auto& row : m_table)
     {
         std::cout << "|";
-        for(const auto& column : row)
+        for (const auto& column : row)
         {
-            if(column == playerX)
+            if (column.m_playerIsOccupying)
             {
-                std::cout << " X  |";
-//                std::cout << " " << column << " |";
-            }
-            else if(column == playerO)
-            {
-                std::cout << " O  |";
-//                std::cout << " " << column << " |";
+                std::cout << " " << column.m_playerFlag << "  |";
+                //                std::cout << " " << column << " |";
             }
             else
             {//  |1   |2   |3   |
-                if(_isSingleDigit(column))
+                if (Board::_isSingleDigit(column.m_piecePosition))
                 {
-                    std::cout << " " << column << "  |";
+                    std::cout << " " << column.m_piecePosition << "  |";
                 }//  |14  |15  |16  |
-                else if(_isDoubleDigit(column))
+                else if (Board::_isDoubleDigit(column.m_piecePosition))
                 {
-                    std::cout << " " << column << " |";
+                    std::cout << " " << column.m_piecePosition << " |";
                 }//|700 |800 |900 |
-                else if(_isTripleDigit(column))
+                else if (Board::_isTripleDigit(column.m_piecePosition))
                 {
-                    std::cout << " " << column << "|";
+                    std::cout << " " << column.m_piecePosition << "|";
                 }//1000|2000|3000
                 else
                 {
-                    std::cout << column << "|";
+                    std::cout << column.m_piecePosition << "|";
                 }
             }
         }
@@ -103,37 +98,38 @@ void Board::setBoard(const int rows, const int columns)
 
     m_table.reserve(m_rows);
     //O(n)
-    for(int row{0}; row < m_rows; row++)
+    for (int row{ 0 }; row < m_rows; row++)
     {
-        m_table.push_back(std::vector<int>{});
+        m_table.push_back(std::vector<BoardPiece>{});
     }
 
-    int column{1};
+    int column{ 1 };
     //if n == m || n > m, O(n^2)
     //O(nm) || O(n^2)
-    for(auto& row : m_table)
+    for (auto& row : m_table)
     {
         //O(m)
-        for(int i{0}; i < m_columns; i++)
+        for (int i{ 0 }; i < m_columns; i++)
         {
-            row.push_back(column++);
+            row.push_back(BoardPiece{ column++ });
         }
     }
 }
 
-void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
+void Board::coverBoardSlot(const int tablePosition, const char currentPlayer)
 {
     //if n == m || n > m, O(n^2)
     //O(n) * O(m) = O(nm)
     //O(n)
-    for(auto& row : m_table)
+    for (auto& row : m_table)
     {
         //O(m)
-        for(auto& column : row)
+        for (auto& column : row)
         {
-            if(column == tablePosition)
+            if (column.m_piecePosition == tablePosition)
             {
-                column = currentPlayer;
+                column.m_playerFlag = currentPlayer;
+                column.m_playerIsOccupying = true;
                 return;
             }
         }
@@ -143,7 +139,7 @@ void Board::coverBoardSlot(const int tablePosition, const int currentPlayer)
 
 
 //Win Logic
-bool Board::isWinningMove(const int playerMark) const
+bool Board::isWinningMove(const char playerMark) const
 {
     if(_isLateralWin(playerMark))//O(nm) || O(n^2)
     {
@@ -164,7 +160,7 @@ bool Board::isWinningMove(const int playerMark) const
 }
 
 //Util methods for isWinningMove
-bool Board::_isLateralWin(const int playerMark) const
+bool Board::_isLateralWin(const char playerMark) const
 {
     //if n == m || n > m, O(n^2)
     //O(n) * O(m) = O(nm)
@@ -175,8 +171,9 @@ bool Board::_isLateralWin(const int playerMark) const
         //O(m)
         for(const auto& column : row)
         {
-            if(column == playerMark)
+            if(column.m_playerIsOccupying)
             {
+                if(column.m_playerFlag == playerMark)
                 inARow++;
                 continue;
             }
@@ -191,7 +188,7 @@ bool Board::_isLateralWin(const int playerMark) const
     return false;
 }
 
-bool Board::_isVerticalWin(const int playerMark) const
+bool Board::_isVerticalWin(const char playerMark) const
 {
     //if n == m || n > m, O(n^2)
     //O(n) * O(m) = O(nm)
@@ -202,10 +199,13 @@ bool Board::_isVerticalWin(const int playerMark) const
         //O(m)
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row][column] == playerMark)
+            if(m_table[row][column].m_playerIsOccupying)
             {
-                inARow++;
-                continue;
+                if (m_table[row][column].m_playerFlag == playerMark)
+                {
+                    inARow++;
+                    continue;
+                }
             }
             break;
         }
@@ -218,7 +218,7 @@ bool Board::_isVerticalWin(const int playerMark) const
     return false;
 }
 
-bool Board::_isDiagonalWin(const int playerMark) const
+bool Board::_isDiagonalWin(const char playerMark) const
 {
     //O(n)
     if(m_evenBoard)
@@ -240,17 +240,20 @@ bool Board::_isDiagonalWin(const int playerMark) const
 }
 
 //Util methods for isDiaWin
-bool Board::_evenBoard(const int playerMark) const
+bool Board::_evenBoard(const char playerMark) const
 {
     //O(n) + O(n) = O(2n) = O(n)
     int inARow{};
     //O(n)
     for(int row{0}, column{0}; row < m_rows; row++, column++)
     {
-        if(m_table[row][column] == playerMark)
+        if(m_table[row][column].m_playerIsOccupying)
         {
-            inARow++;
-            continue;
+            if (m_table[row][column].m_playerFlag == playerMark)
+            {
+                inARow++;
+                continue;
+            }
         }
         break;
     }
@@ -264,10 +267,13 @@ bool Board::_evenBoard(const int playerMark) const
     //O(n)
     for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
     {
-        if(m_table[row].at(static_cast<size_t>(columnOffSet - row)) == playerMark)
+        if(m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerIsOccupying)
         {
-            inARow++;
-            continue;
+            if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerIsOccupying)
+            {
+                inARow++;
+                continue;
+            }
         }
         break;
     }
@@ -280,7 +286,7 @@ bool Board::_evenBoard(const int playerMark) const
     *10x11: Diagonal cases: column: 0, 1
     *
 */
-bool Board::_lopsidedRow(const int playerMark) const
+bool Board::_lopsidedRow(const char playerMark) const
 {
     //O(n * m) + O(n * m) = O(2nm) = O(nm)
     //if n == m || n > m, O(n^2)
@@ -292,10 +298,13 @@ bool Board::_lopsidedRow(const int playerMark) const
         //O(m)
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(static_cast<size_t>(column + row)) == playerMark)
+            if(m_table[row].at(static_cast<size_t>(column + row)).m_playerIsOccupying)
             {
-                inARow++;
-                continue;
+                if (m_table[row].at(static_cast<size_t>(column + row)).m_playerFlag == playerMark)
+                {
+                    inARow++;
+                    continue;
+                }
             }
             break;
         }
@@ -315,10 +324,13 @@ bool Board::_lopsidedRow(const int playerMark) const
         //O(m)
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(static_cast<size_t>(column - row)) == playerMark)
+            if(m_table[row].at(static_cast<size_t>(column - row)).m_playerIsOccupying)
             {
-                inARow++;
-                continue;
+                if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
+                {
+                    inARow++;
+                    continue;
+                }
             }
             break;
         }
@@ -337,7 +349,7 @@ bool Board::_lopsidedRow(const int playerMark) const
     *ex. 8x4: Diagonal cases: row: 0, 1, 2, 3, 4 index based!
     *15x11: Diagonal cases: row: 0, 1, 2, 3, 4
 */
-bool Board::_lopsidedColumn(const int playerMark) const
+bool Board::_lopsidedColumn(const char playerMark) const
 {
     //O(n * m) + O(n * m) = O(2nm) = O(nm)
     //if n == m || n > m, O(n^2)
@@ -349,10 +361,13 @@ bool Board::_lopsidedColumn(const int playerMark) const
         //O(m)
         for(int row{0}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(static_cast<size_t>(loop + row))[row] == playerMark)
+            if(m_table.at(static_cast<size_t>(loop + row))[row].m_playerIsOccupying)
             {
-                inARow++;
-                continue;
+                if (m_table.at(static_cast<size_t>(loop + row))[row].m_playerFlag == playerMark)
+                {
+                    inARow++;
+                    continue;
+                }
             }
             break;
         }
@@ -371,8 +386,9 @@ bool Board::_lopsidedColumn(const int playerMark) const
         //O(m)
         for(int row{0}, column{m_columns - 1}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(row + loop).at(static_cast<size_t>(column - row)) == playerMark)
+            if(m_table.at(row + loop).at(static_cast<size_t>(column - row)).m_playerIsOccupying)
             {
+                if(m_table.at(row + loop).at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
                 inARow++;
                 continue;
             }
@@ -387,7 +403,7 @@ bool Board::_lopsidedColumn(const int playerMark) const
     return false;
 }
 
-bool Board::isTie(const int playerX, const int playerO) const
+bool Board::isTie(const char playerX, const char playerO) const
 {
     //O(n * m) = O(nm)
     int totalPlayerMarks{};
@@ -397,10 +413,13 @@ bool Board::isTie(const int playerX, const int playerO) const
         //O(m)
         for(const auto& column : row)
         {
-            if(column == playerX || column == playerO)
+            if(column.m_playerIsOccupying)
             {
-                totalPlayerMarks++;
-                continue;
+                if (column.m_playerFlag == playerX || column.m_playerFlag == playerO)
+                {
+                    totalPlayerMarks++;
+                    continue;
+                }
             }
             return false;
         }

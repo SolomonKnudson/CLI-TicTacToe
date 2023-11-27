@@ -86,11 +86,11 @@ private:
     int m_previousColumn{};
     int m_tablePosition{};
 
-    int m_firstPlayer{};
-    int m_currentPlayerMark{};
     int m_totalInvalidMovesAllowed{};
-
     int m_tieGames{};
+    char m_firstPlayer{};
+    char m_currentPlayerMark{};
+
     bool m_hasWon{};
     bool m_tie{};
 

@@ -1,24 +1,19 @@
 #include "tictactoe.h"
-
-struct BoardPiece
-{
-    int piecePosition{};
-    char playerFlag{};
-    bool playerIsOccupying{};
-};
+#include "board.h"
+#include <vector>
 
 
 
 int main(int argc, char *argv[])
 {
-    int playerX{ -1 };
-    int playerO{ -2 };
-    Board testBoard{ 5, 5 };
-    testBoard.display(playerX, playerO);
+    char playerX{ 'X'};
+    char playerO{ 'O'};
+    Board testBoard{};
+    testBoard.display();
     testBoard.setDiagonalWin(1, playerX);
-    testBoard.display(playerX, playerO);
+    testBoard.display();
     testBoard.clearWinConfiguration(playerX);
-    testBoard.display(playerX, playerO);
+    testBoard.display();
     TicTacToe ticTacToe{};
     return 0;
 }

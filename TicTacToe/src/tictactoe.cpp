@@ -4,8 +4,8 @@
 TicTacToe::TicTacToe()
     : m_board{}
 
-    , m_playerX{-1, "Player X"}
-    , m_playerO{-2, "Player O"}
+    , m_playerX{'X', "Player X"}
+    , m_playerO{'O', "Player O"}
 
     , m_matchRecords{}
 
@@ -13,11 +13,11 @@ TicTacToe::TicTacToe()
     , m_previousColumn{}
     , m_tablePosition{}
 
+    , m_totalInvalidMovesAllowed{3}
+    , m_tieGames{}
     , m_firstPlayer{}
     , m_currentPlayerMark{}
-    , m_totalInvalidMovesAllowed{3}
 
-    , m_tieGames{}
     , m_hasWon{}
     , m_tie{}
 
@@ -425,7 +425,7 @@ void TicTacToe::_checkBoardSize()
 
 void TicTacToe::_displayBoard() const
 {
-    m_board.display(m_playerX.mark(), m_playerO.mark());
+    m_board.display();
 }
 
 void TicTacToe::_displayBoardConfiguration() const

@@ -1,7 +1,7 @@
 #include "player.h"
 
 //Constructors
-Player::Player(const int mark, const std::string_view name)
+Player::Player(const char mark, const std::string_view name)
     : m_moves{}
     , m_name{name}
     , m_mark{mark}

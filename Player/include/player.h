@@ -7,7 +7,7 @@ class Player
 {
     using Moves = std::vector<int>;
 public:
-    explicit Player(int mark = 0, std::string_view name = "");
+    explicit Player(char mark = ' ', std::string_view name = "");
     ~Player() = default;
 
     //Move Logic
@@ -39,7 +39,7 @@ private:
     //Member Vars
     Moves m_moves{};
     std::string m_name{};
-    int m_mark{};
+    char m_mark{};
     int m_wins{};
     int m_inValidMoves{};
 };
