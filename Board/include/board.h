@@ -11,30 +11,7 @@
 
 class Board
 {
-    struct BoardPiece
-    {
-        void reset()
-        {
-            m_playerFlag = ' ';
-            m_playerIsOccupying = false;
-        }
-        BoardPiece(int piecePosition, char playerFlag = ' ')
-            : m_piecePosition{ piecePosition }
-            , m_playerFlag{ playerFlag }
-            , m_playerIsOccupying{ false }
-        {}
-        int m_piecePosition{};
-        char m_playerFlag{};
-        bool m_playerIsOccupying{};
-    };
-    enum class WinCase
-    {
-        Lateral,
-        Vertical,
-        Diagonal,
-        NoWinCase
-    };
-    using Table = std::vector<std::vector<BoardPiece>>;
+    using Table = std::vector<std::vector<BoardTypes::BoardPiece>>;
 public:
     explicit Board(int row = 3, int column = 3);
     ~Board() = default;
@@ -54,18 +31,6 @@ public:
     //Not in use
     int rows() const;
     int columns() const;
-    //
-
-    enum  BoardSize
-    {
-        standardRow = 3,
-        standardColumn = 3,
-        standardSize = standardRow * standardColumn,
-
-        maxRow = 55,
-        maxColumn = 55,
-        maxSize = maxRow * maxColumn //55x55 hard cap  
-    };
 
     //Win Logic
     //const for winningMove() is a lie; Object will change if true
@@ -103,7 +68,7 @@ private:
     void _setDiagonalWinLopsidedColumn(int startRow, char playerMark,
                                    bool reverseWin);
 
-    bool _isValidWinCase(int startPoint, WinCase winCase,
+    bool _isValidWinCase(int startPoint, BoardTypes::WinCase winCase,
                         bool reverseWin = false);
 
     static bool _isValidWin(const std::vector<int>& winCases,
@@ -150,11 +115,50 @@ private:
 
     //Member Vars
     Table m_table{};
-    mutable WinCase m_winCase{};
+    mutable BoardTypes::WinCase m_winCase{};
     int m_rows{};
     int m_columns{};
     int m_boardSize{};
     bool m_evenBoard{};
 };
+
+namespace BoardTypes
+{
+    struct BoardPiece
+    {
+        void reset()
+        {
+            m_playerFlag = ' ';
+            m_playerIsOccupying = false;
+        }
+        BoardPiece(int piecePosition, char playerFlag = ' ')
+            : m_piecePosition{ piecePosition }
+            , m_playerFlag{ playerFlag }
+            , m_playerIsOccupying{ false }
+        {}
+        int m_piecePosition{};
+        char m_playerFlag{};
+        bool m_playerIsOccupying{};
+    };
+
+    enum  BoardSize
+    {
+        standardRow = 3,
+        standardColumn = 3,
+        standardSize = standardRow * standardColumn,
+
+        maxRow = 55,
+        maxColumn = 55,
+        maxSize = maxRow * maxColumn //55x55 hard cap  
+    };
+
+    enum class WinCase
+    {
+        Lateral,
+        Vertical,
+        Diagonal,
+        NoWinCase
+    };
+}
 #endif // BOARD_H
 

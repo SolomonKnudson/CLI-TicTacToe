@@ -31,11 +31,11 @@ TicTacToe::TicTacToe()
 void TicTacToe::_setupGame()
 {
     char userResponse{};
-    std::cout << "|Press (S) for a standard " << Board::standardRow << "x"
-              << Board::standardColumn
+    std::cout << "|Press (S) for a standard " << BoardTypes::standardRow << "x"
+              << BoardTypes::standardColumn
               << " board || (V) for a variable board{Row * Colum}{"
-              <<  Board::standardRow << "x" << Board::standardColumn
-              <<" up to " << Board::maxRow << "x" << Board::maxColumn
+              << BoardTypes::standardRow << "x" << BoardTypes::standardColumn
+              <<" up to " << BoardTypes::maxRow << "x" << BoardTypes::maxColumn
               << ((!m_isFirstGame) ? "}  || (P) for previous board: "
                                   :"}: ");
     std::cin >> userResponse;
@@ -44,8 +44,8 @@ void TicTacToe::_setupGame()
     {
         case 's':
         case 'S':
-            m_previousRow = Board::standardRow;
-            m_previousColumn = Board::standardColumn;
+            m_previousRow = BoardTypes::standardRow;
+            m_previousColumn = BoardTypes::standardColumn;
             _displayBoardConfiguration();
             _setBoard();
             break;
@@ -72,8 +72,8 @@ void TicTacToe::_setupGame()
        [[fallthrough]];
         default:
             std::cout << "|Not one of the options listed!\n";
-            m_previousRow = Board::standardRow;
-            m_previousColumn = Board::standardColumn;
+            m_previousRow = BoardTypes::standardRow;
+            m_previousColumn = BoardTypes::standardColumn;
             _displayBoardConfiguration();
             _setBoard();
             break;
@@ -387,38 +387,38 @@ void TicTacToe::_flushCin()
 
 void TicTacToe::_checkBoardSize()
 {
-    if(m_previousRow < Board::standardRow
-            && m_previousColumn < Board::standardColumn)
+    if(m_previousRow < BoardTypes::standardRow
+            && m_previousColumn < BoardTypes::standardColumn)
     {
         std::cout << "|Invalid board size!\n";
-        m_previousRow = Board::standardRow;
-        m_previousColumn = Board::standardColumn;
+        m_previousRow = BoardTypes::standardRow;
+        m_previousColumn = BoardTypes::standardColumn;
     }
-    else if(m_previousRow < Board::standardRow)
+    else if(m_previousRow < BoardTypes::standardRow)
     {
         std::cout << "|Invalid row size!\n";
-        m_previousRow = Board::standardRow;
+        m_previousRow = BoardTypes::standardRow;
     }
-    else if(m_previousColumn < Board::standardColumn)
+    else if(m_previousColumn < BoardTypes::standardColumn)
     {
         std::cout << "|Invalid column size!\n";
-        m_previousColumn = Board::standardColumn;
+        m_previousColumn = BoardTypes::standardColumn;
     }
 
-    if((m_previousRow * m_previousColumn) > Board::maxSize)
+    if((m_previousRow * m_previousColumn) > BoardTypes::maxSize)
     {
         std::cout << "|Exceeded max board size!\n";
-        if(m_previousRow > Board::maxRow)
+        if(m_previousRow > BoardTypes::maxRow)
         {
-            m_previousRow = Board::maxRow;
-            if((m_previousRow * m_previousColumn) > Board::maxSize)
+            m_previousRow = BoardTypes::maxRow;
+            if((m_previousRow * m_previousColumn) > BoardTypes::maxSize)
             {
-                m_previousColumn = Board::maxColumn;
+                m_previousColumn = BoardTypes::maxColumn;
             }
         }
-        else if(m_previousColumn > Board::maxColumn)
+        else if(m_previousColumn > BoardTypes::maxColumn)
         {
-            m_previousColumn = Board::maxColumn;
+            m_previousColumn = BBoardTypes::maxColumn;
         }
     }
 }
