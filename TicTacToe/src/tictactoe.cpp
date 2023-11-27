@@ -418,7 +418,7 @@ void TicTacToe::_checkBoardSize()
         }
         else if(m_previousColumn > BoardTypes::maxColumn)
         {
-            m_previousColumn = BBoardTypes::maxColumn;
+            m_previousColumn = BoardTypes::maxColumn;
         }
     }
 }

@@ -1,4 +1,5 @@
 #include "board.h"
+using namespace BoardTypes;
 
 #ifdef BOARD_DEBUG
 //TODO: implement both _clearDiagonalWinLopsided()

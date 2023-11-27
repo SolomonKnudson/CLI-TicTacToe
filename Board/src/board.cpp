@@ -1,4 +1,5 @@
 #include "board.h"
+using namespace BoardTypes;
 
 //Constructors
 Board::Board(const int row, const int column)
