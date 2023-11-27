@@ -158,13 +158,10 @@ bool Board::_isLateralWin(const char playerMark) const
     {
         for(const auto& column : row)
         {
-            if(column.m_playerIsOccupying)
+            if (column.m_playerFlag == playerMark)
             {
-                if (column.m_playerFlag == playerMark)
-                {
-                    inARow++;
-                    continue;
-                }
+                inARow++;
+                continue;
             }
             break;
         }
@@ -184,13 +181,10 @@ bool Board::_isVerticalWin(const char playerMark) const
     {
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row][column].m_playerIsOccupying)
+            if (m_table[row][column].m_playerFlag == playerMark)
             {
-                if (m_table[row][column].m_playerFlag == playerMark)
-                {
-                    inARow++;
-                    continue;
-                }
+                inARow++;
+                continue;
             }
             break;
         }
@@ -226,13 +220,10 @@ bool Board::_evenBoard(const char playerMark) const
     int inARow{};
     for(int row{0}, column{0}; row < m_rows; row++, column++)
     {
-        if(m_table[row][column].m_playerIsOccupying)
+        if (m_table[row][column].m_playerFlag == playerMark)
         {
-            if (m_table[row][column].m_playerFlag == playerMark)
-            {
-                inARow++;
-                continue;
-            }
+            inARow++;
+            continue;
         }
         break;
     }
@@ -245,13 +236,10 @@ bool Board::_evenBoard(const char playerMark) const
     //Reverse case
     for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
     {
-        if(m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerIsOccupying)
+        if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerIsOccupying)
         {
-            if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerIsOccupying)
-            {
-                inARow++;
-                continue;
-            }
+            inARow++;
+            continue;
         }
         break;
     }
@@ -273,13 +261,10 @@ bool Board::_lopsidedRow(const char playerMark) const
     {
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(static_cast<size_t>(column + row)).m_playerIsOccupying)
+            if (m_table[row].at(static_cast<size_t>(column + row)).m_playerFlag == playerMark)
             {
-                if (m_table[row].at(static_cast<size_t>(column + row)).m_playerFlag == playerMark)
-                {
-                    inARow++;
-                    continue;
-                }
+                inARow++;
+                continue;
             }
             break;
         }
@@ -297,13 +282,10 @@ bool Board::_lopsidedRow(const char playerMark) const
     {
         for(int row{0}; row < m_rows; row++)
         {
-            if(m_table[row].at(static_cast<size_t>(column - row)).m_playerIsOccupying)
+            if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
             {
-                if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
-                {
-                    inARow++;
-                    continue;
-                }
+                inARow++;
+                continue;
             }
             break;
         }
@@ -331,13 +313,10 @@ bool Board::_lopsidedColumn(const char playerMark) const
 
         for(int row{0}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(static_cast<size_t>(loop + row))[row].m_playerIsOccupying)
+            if (m_table.at(static_cast<size_t>(loop + row))[row].m_playerFlag == playerMark)
             {
-                if (m_table.at(static_cast<size_t>(loop + row))[row].m_playerFlag == playerMark)
-                {
-                    inARow++;
-                    continue;
-                }
+                inARow++;
+                continue;
             }
             break;
         }
@@ -354,9 +333,8 @@ bool Board::_lopsidedColumn(const char playerMark) const
     {
         for(int row{0}, column{m_columns - 1}; row < (m_rows - offSet); row++)
         {
-            if(m_table.at(row + loop).at(static_cast<size_t>(column - row)).m_playerIsOccupying)
+            if (m_table.at(static_cast<size_t>(row + loop)).at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
             {
-                if(m_table.at(row + loop).at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
                 inARow++;
                 continue;
             }
