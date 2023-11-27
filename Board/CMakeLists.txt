@@ -5,4 +5,4 @@ add_library(Board
 	${CMAKE_CURRENT_SOURCE_DIR}/src/boardDebug.cpp
 )
 
-target_include_directories(Board PUBLIC include)
+target_include_directories(Board PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

@@ -7,11 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
 add_executable(TicTacToeRepo
-  ${CMAKE_SOURCE_DIR}/src/main.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
 )
 
 
 target_link_libraries(TicTacToeRepo PUBLIC TicTacToe)
-add_subdirectory(${CMAKE_SOURCE_DIR}/TicTacToe)
-add_subdirectory(${CMAKE_SOURCE_DIR}/Board)
-add_subdirectory(${CMAKE_SOURCE_DIR}/Player)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TicTacToe)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Board)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Player)

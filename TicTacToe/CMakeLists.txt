@@ -4,7 +4,7 @@ add_library(TicTacToe
 	${CMAKE_CURRENT_SOURCE_DIR}/src/tictactoe.cpp
 )
 
-target_include_directories(TicTacToe PUBLIC include)
+target_include_directories(TicTacToe PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 
 target_link_libraries(TicTacToe PUBLIC Board Player)
