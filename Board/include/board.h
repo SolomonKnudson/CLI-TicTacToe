@@ -86,8 +86,7 @@ public:
                         bool reverseWin = false);
     bool setTie(char playerMark);
 
-    void clearWinConfigurationB(char playerMark);
-    void clearWinConfiguration();
+    void clearWinConfiguration(char playerMark);
 private:
     struct ValidWinCases
     {

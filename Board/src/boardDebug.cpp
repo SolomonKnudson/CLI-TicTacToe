@@ -307,7 +307,7 @@ std::vector<int> Board::_validDiagonalWinCases() const
     return winCases;
 }
 
-void Board::clearWinConfigurationB(const char playerMark)
+void Board::clearWinConfiguration(const char playerMark)
 {
     if (m_winCase == WinCase::NoWinCase)
     {
