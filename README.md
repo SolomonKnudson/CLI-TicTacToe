@@ -3,8 +3,7 @@
 ---
 
 ## *Synopsis*
-
-This repository is my attempt at dynamic CLI tic-tac-toe. This implementation supports any row-by-column combination in between 3x3 and 55x55.
+This repository is my attempt at dynamic CLI tic-tac-toe and my first-ever feature-complete C++ project! This implementation supports any row-by-column combination in between 3x3 and 55x55.
 
 ## *Building*
 
@@ -49,6 +48,7 @@ TODO
     * Max size allowed: Row by Column must be <= 55x55(3025)
 
 * Displays complete chronological match history
+  * ![ALT text][chronoMatchHist]
 
 * Can automatically set the board in winning configuration to test different board sizes
 
@@ -86,6 +86,7 @@ TODO
 
 [illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
+[chronoMatchHist]:
 
 [setLDemo]: https://i.imgur.com/RhaTyAa.gif
 [setVDemo]: https://i.imgur.com/RhaTyAa.gif
