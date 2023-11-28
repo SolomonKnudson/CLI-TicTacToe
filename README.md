@@ -56,19 +56,19 @@ TODO
 
   * *setL {value}:* used to set the board in a lateral win config starting at {value}.
   
-    * ![ALT text][setLDemo]
+    ![ALT text][setLDemo]
 
   * *setV {value}:* used to set the board in a vertical win config starting at {value}.
  
-    * ![ALT text][setVDemo]
+    ![ALT text][setVDemo]
 
   * *setD {value}:* used to set the board in a diagonal win config starting at {value}.
  
-    * ![ALT text][setDDemo] 
+    ![ALT text][setDDemo] 
 
   * *setDr {value}:* used to set the board in a diagonal win config, starting at {value}, but in reverse.
  
-    * ![ALT text][setDrDemo] 
+    ![ALT text][setDrDemo] 
 
 ---
 
