@@ -236,7 +236,7 @@ bool Board::_evenBoard(const char playerMark) const
     //Reverse case
     for(int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
     {
-        if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerIsOccupying)
+        if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerFlag == playerMark)
         {
             inARow++;
             continue;

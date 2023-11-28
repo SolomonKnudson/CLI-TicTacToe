@@ -125,7 +125,7 @@ void TicTacToe::_gameLoop()
                   <= m_totalInvalidMovesAllowed)
             {
                 std::cout << "|Watch it, " << _currentPlayer().name()
-                          << " that's an invalid table position,"
+                          << ", that's an invalid table position,"
                           << " you have " << m_totalInvalidMovesAllowed
                              - _currentPlayer().invalidMoves()
                           << " left!\n";
@@ -284,28 +284,28 @@ void TicTacToe::_runCommand()
             gameEndingCommand = true;
         }
     }
-    if (m_debugCommand.m_commandString == "setV")
+    else if (m_debugCommand.m_commandString == "setV")
     {
         if (m_board.setVerticalWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
         {
             gameEndingCommand = true;
         }
     }
-    if (m_debugCommand.m_commandString == "setD")
+    else if (m_debugCommand.m_commandString == "setD")
     {
         if (m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
         {
             gameEndingCommand = true;
         }
     }
-    if (m_debugCommand.m_commandString == "setDr")
+    else if (m_debugCommand.m_commandString == "setDr")
     {
         if (m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark, true))
         {
             gameEndingCommand = true;
         }
     }
-    if (m_debugCommand.m_commandString == "endGame")
+    else if (m_debugCommand.m_commandString == "endGame")
     {
         _endGame();
     }
