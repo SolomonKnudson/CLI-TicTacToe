@@ -86,4 +86,3 @@ std::string_view Player::name() const
 {
     return m_name;
 }
-
