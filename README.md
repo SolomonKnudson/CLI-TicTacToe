@@ -91,7 +91,7 @@ TODO
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
 [chronoMatchHist]: https://i.imgur.com/JkCtMOk.png
 
-[setLDemo]: https://i.imgur.com/RhaTyAa.gif
+[setLDemo]: https://i.imgur.com/ZKxCNQ3.gif
 [setVDemo]: https://i.imgur.com/RhaTyAa.gif
 [setDDemo]: https://i.imgur.com/WIjINrl.gif
 [setDrDemo]: https://i.imgur.com/61jeo2e.gif
