@@ -3,6 +3,7 @@
 ---
 
 ## *Synopsis*
+
 This repository is my attempt at dynamic CLI tic-tac-toe and my first-ever feature-complete C++ project! This implementation supports any row-by-column combination in between 3x3 and 55x55.
 
 ## *Building*
@@ -19,19 +20,24 @@ TODO
 * If playing on a 4x8 board, players must get 4 in a row vertically/diagonally and 8 laterally.
 
 * *Lateral:*
-* ![ALT text][4x8LatWin]
+  
+  ![ALT text][4x8LatWin]
 
 * *Vertical:*
-* ![ALT text][4x8VertWin]
+  
+  ![ALT text][4x8VertWin]
 
 * *Diagonal:*
-* ![ALT text][4x8DiaWin]
+  
+  ![ALT text][4x8DiaWin]
 
 * Players are not allowed to make duplicate moves. Doing so will result in a warning from the game.
-* ![ALT text][illegalMoveWarning]
+  
+  ![ALT text][illegalMoveWarning]
 
 * Players are permitted four illegal moves per game. Any player that exceeds four illegal moves will forfeit their current turn, as well as all subsequent turns resulting in an illegal move.
-* ![ALT text][forfeitMoves]
+  
+  ![ALT text][forfeitMoves]
 
 ---
 
@@ -48,9 +54,12 @@ TODO
     * Max size allowed: Row by Column must be <= 55x55(3025)
 
 * Displays complete chronological match history
-  * ![ALT text][chronoMatchHist]
+  
+   ![ALT text][chronoMatchHist]
 
 * Can automatically set the board in winning configuration to test different board sizes
+
+  ![ALT text][testBoard]
 
 * *Debug commands:*
 
@@ -59,26 +68,26 @@ TODO
     ![ALT text][setLDemo]
 
   * *setV {value}:* used to set the board in a vertical win config starting at {value}.
- 
+
     ![ALT text][setVDemo]
 
   * *setD {value}:* used to set the board in a diagonal win config starting at {value}.
- 
-    ![ALT text][setDDemo] 
+
+    ![ALT text][setDDemo]
 
   * *setDr {value}:* used to set the board in a diagonal win config, starting at {value}, but in reverse.
+
+    ![ALT text][setDrDemo]
+
+  * *endGame:* used to end the game.
  
-    ![ALT text][setDrDemo] 
+    ![ALT text][endGame]
 
 ---
 
 ## *Limitations:*
 
-  * Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
-
-
-
-
+* Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
 
 [4x8LatWin]: https://i.imgur.com/GiVTRLQ.png
 [4x8VertWin]: https://i.imgur.com/a5qMDuz.png
@@ -86,9 +95,11 @@ TODO
 
 [illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
-[chronoMatchHist]:
+[chronoMatchHist]: https://i.imgur.com/JkCtMOk.png
+[testBoard]: https://i.imgur.com/uVfrxm6.gif
 
-[setLDemo]: https://i.imgur.com/RhaTyAa.gif
+[setLDemo]: https://i.imgur.com/ZKxCNQ3.gif
 [setVDemo]: https://i.imgur.com/RhaTyAa.gif
 [setDDemo]: https://i.imgur.com/WIjINrl.gif
 [setDrDemo]: https://i.imgur.com/61jeo2e.gif
+[endGame]: https://i.imgur.com/EdDntpt.gif
