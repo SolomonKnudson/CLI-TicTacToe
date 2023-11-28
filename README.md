@@ -19,13 +19,13 @@ TODO
 
 * If playing on a 4x8 board, players must get 4 in a row vertically/diagonally and 8 laterally.
 
-* *Lateral*:
+* *Lateral:*
 * ![ALT text][4x8LatWin]
 
-* *Vertical*:
+* *Vertical:*
 * ![ALT text][4x8VertWin]
 
-* *Diagonal*
+* *Diagonal:*
 * ![ALT text][4x8DiaWin]
 
 * Players are not allowed to make duplicate moves. Doing so will result in a warning from the game.
