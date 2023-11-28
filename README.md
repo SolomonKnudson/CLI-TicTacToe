@@ -93,18 +93,18 @@ TODO
 
 * Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
 
-[4x8LatWin]: https://i.imgur.com/GiVTRLQ.png
-[4x8VertWin]: https://i.imgur.com/a5qMDuz.png
-[4x8DiaWin]: https://i.imgur.com/5hp2DmH.png
-[tieGame]: https://i.imgur.com/fn8om8c.png
+[4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/4x8LatWin.png
+[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/4x8VertWin.png
+[4x8DiaWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/4x8DiaWin.png
+[tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/tieGame.png
 
-[illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
-[forfeitMoves]: https://i.imgur.com/Uad3lgf.png
-[chronoMatchHist]: https://i.imgur.com/JkCtMOk.png
-[testBoard]: https://i.imgur.com/uVfrxm6.gif
+[illegalMoveWarning]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/illegalMoveWarning.png
+[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/forfeitMoves.png
+[chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/chronoMatchHist.png
+[testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/testBoard.gif
 
-[setLDemo]: https://i.imgur.com/ZKxCNQ3.gif
-[setVDemo]: https://i.imgur.com/RhaTyAa.gif
-[setDDemo]: https://i.imgur.com/WIjINrl.gif
-[setDrDemo]: https://i.imgur.com/61jeo2e.gif
-[endGame]: https://i.imgur.com/EdDntpt.gif
+[setLDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setLDemo.gif
+[setVDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setVDemo.gif
+[setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setDDemo.gif
+[setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setDrDemo.gif
+[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/endGame.gif
