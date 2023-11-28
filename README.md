@@ -86,7 +86,7 @@ TODO
 
 [illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
-[chronoMatchHist]:
+[chronoMatchHist]: https://i.imgur.com/JkCtMOk.png
 
 [setLDemo]: https://i.imgur.com/RhaTyAa.gif
 [setVDemo]: https://i.imgur.com/RhaTyAa.gif
