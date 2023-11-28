@@ -128,7 +128,7 @@ private:
     bool _multipleWinCases(char playerMark) const;
 
     //Util for clearDiaWin();
-    void _clearDiagonalWinEvenBoard(bool reverseWin = false );
+    void _clearDiagonalWinEvenBoard(char playerMark, bool reverseWin = false );
     void _clearDiagonalWinLopsidedRow(char playerMark, bool reverseWin = false);
     void _clearDiagonalWinLopsidedColumn(char playerMark, bool reverseWin = false);
     bool m_diagonalReverseWin{};
