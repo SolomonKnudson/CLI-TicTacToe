@@ -125,7 +125,7 @@ void TicTacToe::_gameLoop()
                   <= m_totalInvalidMovesAllowed)
             {
                 std::cout << "|Watch it, " << _currentPlayer().name()
-                          << " that's an invalid table position,"
+                          << ", that's an invalid table position,"
                           << " you have " << m_totalInvalidMovesAllowed
                              - _currentPlayer().invalidMoves()
                           << " left!\n";
