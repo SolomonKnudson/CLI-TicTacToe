@@ -19,19 +19,19 @@ TODO
 * If playing on a 4x8 board, players must get 4 in a row vertically/diagonally and 8 laterally.
 
 * *Lateral:*
-* ![ALT text][4x8LatWin]
+  ![ALT text][4x8LatWin]
 
 * *Vertical:*
-* ![ALT text][4x8VertWin]
+  ![ALT text][4x8VertWin]
 
 * *Diagonal:*
-* ![ALT text][4x8DiaWin]
+  ![ALT text][4x8DiaWin]
 
 * Players are not allowed to make duplicate moves. Doing so will result in a warning from the game.
-* ![ALT text][illegalMoveWarning]
+  ![ALT text][illegalMoveWarning]
 
 * Players are permitted four illegal moves per game. Any player that exceeds four illegal moves will forfeit their current turn, as well as all subsequent turns resulting in an illegal move.
-* ![ALT text][forfeitMoves]
+  ![ALT text][forfeitMoves]
 
 ---
 
@@ -48,7 +48,7 @@ TODO
     * Max size allowed: Row by Column must be <= 55x55(3025)
 
 * Displays complete chronological match history
-  * ![ALT text][chronoMatchHist]
+   ![ALT text][chronoMatchHist]
 
 * Can automatically set the board in winning configuration to test different board sizes
 
