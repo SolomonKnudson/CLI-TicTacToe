@@ -107,4 +107,4 @@ TODO
 [setVDemo]:https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setVDemo.gif
 [setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setDDemo.gif
 [setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setDrDemo.gif
-[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/endGame.gif
+[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/endGameDemo.gif
