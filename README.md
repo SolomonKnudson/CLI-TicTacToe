@@ -54,13 +54,21 @@ TODO
 
 * *Debug commands:*
 
-  * *setL {value}:* used to set the board in a lateral win config starting at {value}
+  * *setL {value}:* used to set the board in a lateral win config starting at {value}.
+  
+    * ![ALT text][setLDemo]
 
   * *setV {value}:* used to set the board in a vertical win config starting at {value}.
+ 
+    * ![ALT text][setVDemo]
 
   * *setD {value}:* used to set the board in a diagonal win config starting at {value}.
+ 
+    * ![ALT text][setDDemo] 
 
   * *setDr {value}:* used to set the board in a diagonal win config, starting at {value}, but in reverse.
+ 
+    * ![ALT text][setDrDemo] 
 
 ---
 
@@ -72,9 +80,14 @@ TODO
 
 
 
-[illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
-[forfeitMoves]: https://i.imgur.com/Uad3lgf.png
-
 [4x8LatWin]: https://i.imgur.com/GiVTRLQ.png
 [4x8VertWin]: https://i.imgur.com/a5qMDuz.png
 [4x8DiaWin]: https://i.imgur.com/5hp2DmH.png
+
+[illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
+[forfeitMoves]: https://i.imgur.com/Uad3lgf.png
+
+[setLDemo]: https://i.imgur.com/RhaTyAa.gif
+[setVDemo]: https://i.imgur.com/RhaTyAa.gif
+[setDDemo]: https://i.imgur.com/WIjINrl.gif
+[setDrDemo]: https://i.imgur.com/61jeo2e.gif
