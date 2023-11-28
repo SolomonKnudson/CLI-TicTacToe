@@ -79,6 +79,10 @@ TODO
 
     ![ALT text][setDrDemo]
 
+  * *endGame:* used to end the game.
+ 
+    ![ALT text][endGame]
+
 ---
 
 ## *Limitations:*
@@ -98,3 +102,4 @@ TODO
 [setVDemo]: https://i.imgur.com/RhaTyAa.gif
 [setDDemo]: https://i.imgur.com/WIjINrl.gif
 [setDrDemo]: https://i.imgur.com/61jeo2e.gif
+[endGame]: https://i.imgur.com/EdDntpt.gif
