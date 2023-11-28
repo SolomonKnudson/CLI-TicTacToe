@@ -93,18 +93,18 @@ TODO
 
 * Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
 
-[4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/4x8LatWin.png
-[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/4x8VertWin.png
-[4x8DiaWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/4x8DiaWin.png
-[tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/tieGame.png
+[4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/4x8LatWin.png
+[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/4x8VertWin.png
+[4x8DiaWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/4x8DiaWin.png
+[tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/tieGame.png
 
-[illegalMoveWarning]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/illegalMoveWarning.png
-[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/forfeitMoves.png
-[chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/chronoMatchHist.png
-[testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/testBoard.gif
+[illegalMoveWarning]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/illegalMoveWarning.png
+[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/foreitMoves.png
+[chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/chronoMatchHist.png
+[testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/testBoard.gif
 
-[setLDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setLDemo.gif
-[setVDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setVDemo.gif
-[setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setDDemo.gif
-[setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/setDrDemo.gif
-[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/tree/main/img/endGame.gif
+[setLDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setLDemo.gif
+[setVDemo]:https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setVDemo.gif
+[setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setDDemo.gif
+[setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setDrDemo.gif
+[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/endGame.gif
