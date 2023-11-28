@@ -15,7 +15,7 @@ TODO
 
 ---
 
-* Wins are calculated by counting the number of board slots the current player has in a row and seeing if it's equal to whichever side of the board is smaller.
+* Wins are calculated by counting the number of board slots the current player has in a row and seeing if it's equal to whichever side of the board is smaller. Winner always starts.
 
 * If playing on a 4x8 board, players must get 4 in a row vertically/diagonally and 8 laterally.
 
@@ -30,6 +30,10 @@ TODO
 * *Diagonal:*
   
   ![ALT text][4x8DiaWin]
+
+* *Tie:*
+
+  ![ALT text][tieGame]
 
 * Players are not allowed to make duplicate moves. Doing so will result in a warning from the game.
   
@@ -92,6 +96,7 @@ TODO
 [4x8LatWin]: https://i.imgur.com/GiVTRLQ.png
 [4x8VertWin]: https://i.imgur.com/a5qMDuz.png
 [4x8DiaWin]: https://i.imgur.com/5hp2DmH.png
+[tieGame]: https://i.imgur.com/h1soyAt.png
 
 [illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
