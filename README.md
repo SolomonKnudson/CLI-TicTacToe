@@ -59,6 +59,8 @@ TODO
 
 * Can automatically set the board in winning configuration to test different board sizes
 
+  ![ALT text][testBoard]
+
 * *Debug commands:*
 
   * *setL {value}:* used to set the board in a lateral win config starting at {value}.
@@ -90,6 +92,7 @@ TODO
 [illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
 [chronoMatchHist]: https://i.imgur.com/JkCtMOk.png
+[testBoard]: https://i.imgur.com/uVfrxm6.gif
 
 [setLDemo]: https://i.imgur.com/ZKxCNQ3.gif
 [setVDemo]: https://i.imgur.com/RhaTyAa.gif
