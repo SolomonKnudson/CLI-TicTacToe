@@ -96,7 +96,7 @@ TODO
 [4x8LatWin]: https://i.imgur.com/GiVTRLQ.png
 [4x8VertWin]: https://i.imgur.com/a5qMDuz.png
 [4x8DiaWin]: https://i.imgur.com/5hp2DmH.png
-[tieGame]: https://i.imgur.com/h1soyAt.png
+[tieGame]: https://i.imgur.com/6gukemw.png
 
 [illegalMoveWarning]:  https://i.imgur.com/Pqw7mre.png
 [forfeitMoves]: https://i.imgur.com/Uad3lgf.png
