@@ -81,6 +81,8 @@ public:
     std::string_view winCase() const;
     void resetBoard();
     bool isEmpty() const;
+    bool isEvenBoard() const;
+    const Table& internalTable() const;
 
 #ifdef BOARD_DEBUG
     //methods to set diff win conditions
