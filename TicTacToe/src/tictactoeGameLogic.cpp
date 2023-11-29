@@ -38,6 +38,8 @@ void TicTacToe::_gameLoop()
             }
         }
         _move();
+//if win was set by a debug command, the win checks will not be called, as debug commands do not add to player moves. if in debug, skip check.
+#ifndef BOARD_DEBUG
         //isWinningMove does a lot of looping. Only call once current player has
         //made the minimum number of moves to have a win
         if (_currentPlayer().moves() >=
@@ -55,6 +57,19 @@ void TicTacToe::_gameLoop()
                 break;
             }
         }
+#else
+        if (_isWinningMove())
+        {
+            m_hasWon = true;
+            break;
+        }
+        else if (_isTieGame())
+        {
+            m_tie = true;
+            break;
+        }
+#endif
+
         _nextPlayer();
     }
     _displayBoard();
