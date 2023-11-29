@@ -238,6 +238,3 @@ bool Board::isTie() const
     }
     return (totalPlayerMarks == m_boardSize);
 }
-
-
-
