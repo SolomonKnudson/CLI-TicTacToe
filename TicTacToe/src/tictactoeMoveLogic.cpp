@@ -60,42 +60,37 @@ bool TicTacToe::_isValidPosition() const
 #ifdef BOARD_DEBUG
 void TicTacToe::_runCommand()
 {
-    bool gameEndingCommand{};
     if (m_debugCommand.m_commandString == "setL")
     {
-        if (m_board.setLateralWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
-        {
-            gameEndingCommand = true;
-        }
+        m_board.setLateralWin(m_debugCommand.m_commandValue, 
+            m_currentPlayerMark);
     }
     else if (m_debugCommand.m_commandString == "setV")
     {
-        if (m_board.setVerticalWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
-        {
-            gameEndingCommand = true;
-        }
+        m_board.setVerticalWin(m_debugCommand.m_commandValue, 
+            m_currentPlayerMark);
     }
     else if (m_debugCommand.m_commandString == "setD")
     {
-        if (m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark))
+        if (m_board.isEvenBoard())
         {
-            gameEndingCommand = true;
+            m_tablePosition = m_board.internalTable()[0][0].m_piecePosition;
         }
+        m_board.setDiagonalWin(m_debugCommand.m_commandValue, 
+            m_currentPlayerMark);
     }
     else if (m_debugCommand.m_commandString == "setDr")
     {
-        if (m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark, true))
+        if (m_board.isEvenBoard())
         {
-            gameEndingCommand = true;
+           m_tablePosition = m_board.internalTable()[0]
+                [static_cast<size_t>(m_board.columns() - 1) ].m_piecePosition;
         }
+        m_board.setDiagonalWin(m_debugCommand.m_commandValue, 
+            m_currentPlayerMark, true);
     }
     else if (m_debugCommand.m_commandString == "endGame")
     {
-        _endGame();
-    }
-    if (gameEndingCommand)
-    {
-        _displayBoard();
         _endGame();
     }
 }
