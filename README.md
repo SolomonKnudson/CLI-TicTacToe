@@ -159,7 +159,6 @@
 
 * *4x12 Board:*
 
-
   ![ALT text][4x12Board]
 
 * *20x5 Board:*
