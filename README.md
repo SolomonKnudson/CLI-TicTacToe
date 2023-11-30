@@ -155,20 +155,20 @@
    
 * *3x3 Board:*
   
-  [ALT text][3x3Board]
+  ![ALT text][3x3Board]
 
 * *4x12 Board:*
 
 
-  [ALT text][4x12Board]
+  ![ALT text][4x12Board]
 
 * *20x5 Board:*
 
-  [ALT text][20x5Board]
+  ![ALT text][20x5Board]
 
 * *25x45 Board:*
 
-[ALT text][25x45Board]
+![ALT text][25x45Board]
 
 ---
 
