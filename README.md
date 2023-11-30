@@ -167,7 +167,7 @@
 
 * *25x45 Board:*
 
-![ALT text][25x45Board]
+  ![ALT text][25x45Board]
 
 ---
 
