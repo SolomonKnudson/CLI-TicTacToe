@@ -9,14 +9,46 @@ This repository is my attempt at dynamic CLI tic-tac-toe and my first-ever featu
 ## *Building*
 
 ---
+
+
 ### *Linux*
 
+---
+
+#### *Requirements*
+
+---
+
+1. Must have ***cmake installed*** if you plan of following my ***cmake build instructions*** or using the ***CMakeLists.txt*** provided by the repository
+
+1. Must be able to run c++ files on your machine
+
+---
+
+### *Using Zip provided by github*
+
+---
+1. click on green code button
+
+1. click *download zip*
+
+1. un-zip zip
+
+
+
+---
+
+### *Cloning from GitHub*
 
 1. Go to system directory where you want Git to clone the repo to.
 
 2. From command line: git clone https://github.com/SolomonKnudson/CLI-TicTacToe.git
 
-#### *In Repo Directory*
+---
+
+##### *In Repo Directory*
+
+---
 
 3. cd <*repo name*>
 
@@ -24,15 +56,20 @@ This repository is my attempt at dynamic CLI tic-tac-toe and my first-ever featu
 
 6. cd <*build directory name*>
 
-
 7. ***FROM COMMAND LINE: INSIDE BUILD DIRECTORY:*** `cmake -S .. -B .`
 
 8. ***FROM COMMAND LINE: INSIDE REPO ROOT DIRECTORY:*** `cmake -S . -B 
 <build directory>
 
-#### *From anywhere*
+---
+
+##### *From anywhere*
+
+---
 
 3. ***FROM COMMAND LINE: ANY DIRECTORY:*** `cmake -S <full path/CLI-TicTacToe/src/ -B CLI-TicTacToe/<build directory>
+
+---
 
 ## *Game Rules*
 
