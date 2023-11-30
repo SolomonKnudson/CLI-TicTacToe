@@ -145,23 +145,46 @@
 
 ---
 
-* *Dynamic Board:*
+### *Dynamic Board::*
 
   * *Limitations:*
 
     * Minimum size allowed: Row and Column individually must be > 3
 
     * Max size allowed: Row by Column must be <= 55x55(3025)
+   
+* *3x3 Board:*
+  
+  [ALT text][3x3Board]
 
-* Displays complete chronological match history
+* *4x12 Board:*
+
+
+  [ALT text][4x12Board]
+
+* *20x5 Board:*
+
+  [ALT text][20x5Board]
+
+* *25x45 Board:*
+
+[ALT text][25x45Board]
+
+---
+
+### *Displays complete chronological match history::*
   
    ![ALT text][chronoMatchHist]
 
-* Can automatically set the board in winning configuration to test different board sizes
+---
+
+### *Can automatically set the board in winning configuration to test different board sizes::*
 
   ![ALT text][testBoard]
 
-* *Debug commands:*
+---
+
+### *Debug commands::*
 
   * *setL {value}:* used to set the board in a lateral win config starting at {value}.
   
@@ -213,6 +236,11 @@
 [forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/foreitMoves.png
 [chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Features/chronoMatchHist.png
 [testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Features/testBoard.gif
+
+[3x3Board]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/ExampleBoards/3x3Board.png
+[4x12Board]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/ExampleBoards/4x12Board.png
+[20x5Board]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/ExampleBoards/20x5Board.png
+[25x45Board]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/ExampleBoards/25x45Board.png
 
 [setLDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setLDemo.gif
 [setVDemo]:https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setVDemo.gif
