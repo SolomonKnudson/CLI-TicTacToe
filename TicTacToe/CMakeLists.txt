@@ -12,3 +12,7 @@ target_include_directories(TicTacToe PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_link_libraries(TicTacToe PUBLIC Board Player)
 add_dependencies(TicTacToe Board Player)
+if(${CMAKE_SYSTEM_NAME} STREQUAL Linux)
+	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/tictactoe.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+	install(TARGETS TicTacToe DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+endif()
