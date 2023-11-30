@@ -186,7 +186,7 @@
 [runExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/runExcutable.gif
 
 [4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8LatWin.png
-[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules4x8VertWin.png
+[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8VertWin.png
 [4x8DiaWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8DiaWin.png
 [tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/tieGame.png
 
