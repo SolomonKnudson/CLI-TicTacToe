@@ -173,30 +173,30 @@
 
 ---
 
-[codeButton]: 
-[codeDropDown]: 
+[codeButton]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Installing/codeButton.png
+[codeDropDown]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Installing/codeDropDown.png
 
-[gitCloneCommand]: 
+[gitCloneCommand]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Installing/gitCloneCommand.gif
 
-[buildInsideBuildDir]: 
-[buildInsideRepoRootDir]: 
-[buildFromAnyDir]:
+[buildInsideBuildDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildInsideBuildDir.gif
+[buildInsideRepoRootDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildInsideRepoRootDir.gif
+[buildFromAnyDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildFromAnyDir.gif
 
-[buildExcutable]:
-[runExcutable]:
+[buildExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildExcutable.gif
+[runExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/runExcutable.gif
 
-[4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/4x8LatWin.png
-[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/4x8VertWin.png
-[4x8DiaWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/4x8DiaWin.png
-[tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/tieGame.png
+[4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8LatWin.png
+[4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/GameRules/img/4x8VertWin.png
+[4x8DiaWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8DiaWin.png
+[tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/tieGame.png
 
-[illegalMoveWarning]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/illegalMoveWarning.png
-[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/foreitMoves.png
-[chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/chronoMatchHist.png
-[testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/testBoard.gif
+[illegalMoveWarning]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/illegalMoveWarning.png
+[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/foreitMoves.png
+[chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Features/chronoMatchHist.png
+[testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Features/testBoard.gif
 
-[setLDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setLDemo.gif
-[setVDemo]:https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setVDemo.gif
-[setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setDDemo.gif
-[setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/setDrDemo.gif
-[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/endGameDemo.gif
+[setLDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setLDemo.gif
+[setVDemo]:https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setVDemo.gif
+[setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setDDemo.gif
+[setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setDrDemo.gif
+[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/endGameDemo.gif
