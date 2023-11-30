@@ -58,7 +58,11 @@
 
 1. Must be able to run c++ files on your machine
 
-#### *From command line::*
+---
+
+### *Building build files::*
+
+##### *From command line::*
 
 * `cd` <*full-path/repo name*>
 
@@ -77,6 +81,16 @@
 * ***FROM COMMAND LINE: ANY DIRECTORY::*** `cmake` -S <*full-path/CLI-TicTacToe/*> -B <*full-path/CLI-TicTacToe/<*build directory*>*>
 
   ![ALT text][buildFromAnyDir]
+
+---
+
+### *Building source::*
+
+* *Note:* Previous examples will work here as well; replace cmake -S <*path*> -B <*path*> with cmake --build <*path*>
+
+* ***FROM COMMAND LINE: INSIDE BUILD DIRECTORY::*** `cmake --build .`
+
+  ![ALT text][buildSource]
 
 ---
 
@@ -182,11 +196,12 @@
 
 [gitCloneCommand]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Installing/gitCloneCommand.gif
 
-[buildInsideBuildDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildInsideBuildDir.gif
-[buildInsideRepoRootDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildInsideRepoRootDir.gif
-[buildFromAnyDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildFromAnyDir.gif
+[buildInsideBuildDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildInsideBuildDir.gif
+[buildInsideRepoRootDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildInsideRepoRootDir.gif
+[buildFromAnyDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildFromAnyDir.gif
+[buildSource]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildSource
 
-[buildExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/LinuxBuild/buildExcutable.gif
+[buildExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildExcutable.gif
 [runExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/runExcutable.gif
 
 [4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8LatWin.png
