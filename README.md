@@ -70,7 +70,7 @@
 
   ![ALT text][buildInsideRepoRootDir]
 
-* ***FROM COMMAND LINE: ANY DIRECTORY::*** `cmake` -S <*full-path/CLI-TicTacToe/src/*> -B <*full-path/CLI-TicTacToe/*>
+* ***FROM COMMAND LINE: ANY DIRECTORY::*** `cmake` -S <*full-path/CLI-TicTacToe/*> -B <*full-path/CLI-TicTacToe/<build directory>*>
 
   ![ALT text][buildFromAnyDir]
 
