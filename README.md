@@ -9,7 +9,30 @@ This repository is my attempt at dynamic CLI tic-tac-toe and my first-ever featu
 ## *Building*
 
 ---
-TODO
+### *Linux*
+
+
+1. Go to system directory where you want Git to clone the repo to.
+
+2. From command line: git clone https://github.com/SolomonKnudson/CLI-TicTacToe.git
+
+#### *In Repo Directory*
+
+3. cd <*repo name*>
+
+5. `mkdir` <*build directory name*>
+
+6. cd <*build directory name*>
+
+
+7. ***FROM COMMAND LINE: INSIDE BUILD DIRECTORY:*** `cmake -S .. -B .`
+
+8. ***FROM COMMAND LINE: INSIDE REPO ROOT DIRECTORY:*** `cmake -S . -B 
+<build directory>
+
+#### *From anywhere*
+
+3. ***FROM COMMAND LINE: ANY DIRECTORY:*** `cmake -S <full path/CLI-TicTacToe/src/ -B CLI-TicTacToe/<build directory>
 
 ## *Game Rules*
 
