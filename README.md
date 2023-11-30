@@ -54,7 +54,7 @@
 
 #### *Requirements::*
 
-1. Must have ***cmake installed*** if you plan of following my ***cmake build instructions*** or using the ***CMakeLists.txt*** provided by the repository
+1. Must have ***cmake installed*** if you plan on following my ***cmake build instructions*** or using the ***CMakeLists.txt*** provided by the repository
 
 1. Must be able to run c++ files on your machine
 
