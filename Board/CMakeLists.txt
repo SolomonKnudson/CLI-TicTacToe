@@ -5,7 +5,7 @@ add_library(Board
 	${CMAKE_CURRENT_SOURCE_DIR}/src/boardUtil.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/isWinConfig.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/debug/setWinConfig.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/src/debug/clearWinConFig.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/debug/clearWinConfig.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/debug/isValidWinCase.cpp
 )
 
