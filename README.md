@@ -145,7 +145,7 @@
 
 ---
 
-### *Dynamic Board::*
+### *Dynamic Boards::*
 
   * *Limitations:*
 
