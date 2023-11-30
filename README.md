@@ -44,7 +44,11 @@
 
 ---
 
-### *Linux*
+### *Supported Platforms:*
+
+* Windows
+
+* Linux
 
 ---
 
@@ -54,7 +58,7 @@
 
 1. Must be able to run c++ files on your machine
 
-#### *In Repo Directory::*
+#### *From command line::*
 
 * `cd` <*full-path/repo name*>
 
