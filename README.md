@@ -199,7 +199,7 @@
 [buildInsideBuildDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildInsideBuildDir.gif
 [buildInsideRepoRootDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildInsideRepoRootDir.gif
 [buildFromAnyDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildFromAnyDir.gif
-[buildSource]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildSource
+[buildSource]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildSource.gif
 
 [buildExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildExcutable.gif
 [runExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/runExcutable.gif
