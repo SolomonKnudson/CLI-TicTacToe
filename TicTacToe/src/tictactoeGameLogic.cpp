@@ -7,6 +7,12 @@ void TicTacToe::_gameLoop()
     {
         _displayBoard();
         _getMove();
+#ifdef BOARD_DEBUG
+        if (m_endGameCalled)
+        {
+            break;
+        }
+#endif // BOARD_DEBUG
         if (!_isLegalMove())
         {
             _currentPlayer().addInvalidMove();
@@ -58,10 +64,6 @@ void TicTacToe::_gameLoop()
             }
         }
 #else
-        if (m_endGameCalled)
-        {
-            break;
-        }
         if (_isWinningMove())
         {
             m_hasWon = true;
