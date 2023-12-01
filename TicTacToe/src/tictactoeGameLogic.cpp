@@ -58,6 +58,10 @@ void TicTacToe::_gameLoop()
             }
         }
 #else
+        if (m_endGameCalled)
+        {
+            break;
+        }
         if (_isWinningMove())
         {
             m_hasWon = true;
@@ -72,9 +76,22 @@ void TicTacToe::_gameLoop()
 
         _nextPlayer();
     }
+#ifdef BOARD_DEBUG
+    if (m_endGameCalled)
+    {
+        m_endGameCalled = false;
+    }
+    else
+    {
+        _displayBoard();
+    }
+    _createMatchRecord();
+    _endGame();
+#else // def BOARD_DEBUG
     _displayBoard();
     _createMatchRecord();
     _endGame();
+#endif
 }
 
 void TicTacToe::_endGame()
@@ -168,5 +185,4 @@ void TicTacToe::_quit() const
     std::cout << "|Thank you, CJ, for challenging me to create "
         << "Tic-Tac-Toe,\n|and for helping to test the game logic.";
     std::cout << "\n|GoodBye!\n\n";
-    std::exit(0);
 }

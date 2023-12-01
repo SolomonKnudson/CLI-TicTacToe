@@ -91,7 +91,7 @@ void TicTacToe::_runCommand()
     }
     else if (m_debugCommand.m_commandString == "endGame")
     {
-        _endGame();
+        m_endGameCalled = true;
     }
 }
 #endif // BOARD_DEBUG
