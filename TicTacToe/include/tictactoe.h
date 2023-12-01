@@ -44,6 +44,7 @@ private:
         int m_commandValue{};
     };
     DebugCommand m_debugCommand{};
+    bool m_endGameCalled{};
     void _runCommand();
 #endif // BOARD_DEBUG
     //setup Logic
