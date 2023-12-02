@@ -1,8 +1,9 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include <iostream>
+
 #include <vector>
 #include <string_view>
+
 //TODO: implement clearDiaWin
 //NOTE!: max board size that I can display is 63x63
 

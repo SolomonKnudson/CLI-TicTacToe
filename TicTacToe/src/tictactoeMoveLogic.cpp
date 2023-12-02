@@ -1,4 +1,10 @@
 #include "tictactoe.h"
+#include <iostream>
+
+#ifdef BOARD_DEBUG
+#include <sstream>
+#include <exception>
+#endif // BOARD_DEBUG
 
 
 //Move Logic

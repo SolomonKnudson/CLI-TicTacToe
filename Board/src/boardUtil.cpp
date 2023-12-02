@@ -1,3 +1,5 @@
+#include <iostream>
+#include <string_view>
 #include "board.h"
 using namespace BoardTypes;
 

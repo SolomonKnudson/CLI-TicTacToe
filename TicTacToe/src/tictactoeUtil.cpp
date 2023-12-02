@@ -1,3 +1,5 @@
+#include <iostream>
+#include <limits>
 #include "tictactoe.h"
 
 //Display

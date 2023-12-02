@@ -1,3 +1,4 @@
+#include <iostream>
 #include "board.h"
 
 #ifdef BOARD_DEBUG
