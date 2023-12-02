@@ -37,40 +37,38 @@ void Board::clearWinConfiguration(const char playerMark)
 }
 
 //Util methods for clearWinConfig
+//URGENT: method loops through entire board without looking for a start point. 
+// refactor to look for winCase start point, loop to reverse win case, then early exit. 
+// Same goes for _clearVertWin()
 void Board::_clearLateralWin(const char playerMark)
 {
-    int offSet{};
     for (int row{ 0 }; row < m_rows; ++row)
     {
-        for (int column{ 0 }; column < m_columns; ++column)
+        if (m_table[row][0].m_playerFlag == playerMark)
         {
-            if (m_table[row][column].m_playerFlag == playerMark)
+            for (int column{ 0 }; column < m_columns; ++column)
             {
-                m_table[row][column].reset();
-            }
+                if (m_table[row][column].m_playerFlag == playerMark)
+                {
+                    m_table[row][column].reset();
+                }
 
+            }
         }
     }
 }
 
 void Board::_clearVerticalWin(const char playerMark)
 {
-    for (int row{ 0 }; row < m_rows; ++row)
+    for (int startColumn{ 0 }; startColumn < m_columns; ++startColumn)
     {
-        for (int column{ 0 }; column < m_columns; ++column)
+        if (m_table[0][startColumn].m_playerFlag == playerMark)
         {
-            if (column == 0)
+            for (int row{ 0 }; row < m_rows; ++row)
             {
-                if (m_table[row][column].m_playerFlag == playerMark)
+                if (m_table[row][startColumn].m_playerFlag == playerMark)
                 {
-                    m_table[row][column].reset();
-                }
-            }
-            else
-            {
-                if (m_table[row][column].m_playerFlag == playerMark)
-                {
-                    m_table[row][column].reset();
+                    m_table[row][startColumn].reset();
                 }
             }
         }
@@ -149,16 +147,16 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark, const bool rever
     }
     else
     {
-        for (int numberOfLoops{ 0 }, columnStart{ m_columns - 1 }; 
-            numberOfLoops <= columnOffSet; ++numberOfLoops, --columnStart)
+        for (int column{ m_columns - 1 }; column >= ((m_columns - 1) - columnOffSet);
+            column--)
         {
-            if (m_table[0][columnStart].m_playerFlag == playerMark)
+            if (m_table[0][column].m_playerFlag == playerMark)
             {
-                for (int row{ 0 }; row < m_rows; ++row, --columnStart)
+                for (int row{ 0 }; row < m_rows; row++)
                 {
-                    if (m_table[row][columnStart].m_playerFlag == playerMark)
+                    if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
                     {
-                        m_table[row][columnStart].reset();
+                        m_table[row].at(static_cast<size_t>(column - row)).reset();
                     }
                 }
             }
