@@ -95,12 +95,9 @@ void Board::_clearDiagonalWin(const char playerMark)
 
 void Board::_clearDiagonalWinEvenBoard(const char playerMark, const bool reverseWin)
 {
-    int startPoint{};
     if (!reverseWin)
     {
-        startPoint = m_table[0][1].m_piecePosition - 1;
-        for (int row{ 0 }, column{ 0 }; row < m_columns; ++row, ++column, 
-            startPoint += (m_columns + 1))
+        for (int row{ 0 }, column{ 0 }; row < m_columns; ++row, ++column)
         {
             if (m_table[row][column].m_playerFlag == playerMark)
             {
@@ -110,9 +107,8 @@ void Board::_clearDiagonalWinEvenBoard(const char playerMark, const bool reverse
     }
     else
     {
-        startPoint = m_table[0].at(static_cast<size_t>((m_columns - 2))).m_piecePosition + 1;
         for (int row{ 0 }, columnOffset{ m_columns - 1 }; row < m_columns; ++row, 
-            --columnOffset, startPoint += m_columns)
+            --columnOffset)
         {
             if (m_table[row][columnOffset].m_playerFlag == playerMark)
             {
@@ -135,7 +131,8 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark, const bool rever
         {
             if (m_table[0][columnStart].m_playerFlag == playerMark)
             {
-                for (int row{ 0 }, column{ columnStart }; row < m_rows; ++row, ++column)
+                for (int row{ 0 }, column{ columnStart }; row < m_rows; ++row, 
+                    ++column)
                 {
                     if (m_table[row][column].m_playerFlag == playerMark)
                     {
@@ -154,7 +151,8 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark, const bool rever
             {
                 for (int row{ 0 }; row < m_rows; row++)
                 {
-                    if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
+                    if (m_table[row].at(static_cast<size_t>(column - row))
+                        .m_playerFlag == playerMark)
                     {
                         m_table[row].at(static_cast<size_t>(column - row)).reset();
                     }
