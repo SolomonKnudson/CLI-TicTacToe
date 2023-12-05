@@ -103,7 +103,8 @@ void Board::coverBoardSlot(const int tablePosition, const char currentPlayer)
     {
         for (auto& column : row)
         {
-            if (column.m_piecePosition == tablePosition && !column.m_playerIsOccupying)
+            if (column.m_piecePosition == tablePosition && 
+                !column.m_playerIsOccupying)
             {
                 column.m_playerFlag = currentPlayer;
                 column.m_playerIsOccupying = true;

@@ -108,7 +108,8 @@ bool Board::_evenBoard(const char playerMark) const
     //Reverse case
     for (int row{ 0 }, columnOffSet{ m_columns - 1 }; row < m_rows; row++)
     {
-        if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerFlag == playerMark)
+        if (m_table[row].at(static_cast<size_t>(columnOffSet - row))
+            .m_playerFlag == playerMark)
         {
             inARow++;
             continue;
@@ -133,7 +134,8 @@ bool Board::_lopsidedRow(const char playerMark) const
     {
         for (int row{ 0 }; row < m_rows; row++)
         {
-            if (m_table[row].at(static_cast<size_t>(column + row)).m_playerFlag == playerMark)
+            if (m_table[row].at(static_cast<size_t>(column + row))
+                .m_playerFlag == playerMark)
             {
                 inARow++;
                 continue;
@@ -154,7 +156,8 @@ bool Board::_lopsidedRow(const char playerMark) const
     {
         for (int row{ 0 }; row < m_rows; row++)
         {
-            if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
+            if (m_table[row].at(static_cast<size_t>(column - row))
+                .m_playerFlag == playerMark)
             {
                 inARow++;
                 continue;
@@ -185,7 +188,8 @@ bool Board::_lopsidedColumn(const char playerMark) const
 
         for (int row{ 0 }; row < (m_rows - offSet); row++)
         {
-            if (m_table.at(static_cast<size_t>(loop + row))[row].m_playerFlag == playerMark)
+            if (m_table.at(static_cast<size_t>(loop + row))[row]
+                .m_playerFlag == playerMark)
             {
                 inARow++;
                 continue;
@@ -203,9 +207,12 @@ bool Board::_lopsidedColumn(const char playerMark) const
     //Reverse case
     for (int loop{ 0 }; loop <= offSet; loop++)
     {
-        for (int row{ 0 }, column{ m_columns - 1 }; row < (m_rows - offSet); row++)
+        for (int row{ 0 }, column{ m_columns - 1 }; row < (m_rows - offSet);
+            row++)
         {
-            if (m_table.at(static_cast<size_t>(row + loop)).at(static_cast<size_t>(column - row)).m_playerFlag == playerMark)
+            if (m_table.at(static_cast<size_t>(row + loop))
+                .at(static_cast<size_t>(column - row)).
+                m_playerFlag == playerMark)
             {
                 inARow++;
                 continue;

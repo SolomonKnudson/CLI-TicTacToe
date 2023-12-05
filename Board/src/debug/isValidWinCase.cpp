@@ -26,15 +26,15 @@ bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
 
     switch (winCase)
     {
-    case WinCase::Lateral:
-        return _isValidWin(winCases.m_lateralCases, startPoint);
-    case WinCase::Vertical:
-        return _isValidWin(winCases.m_verticalCases, startPoint);
-    case WinCase::Diagonal:
-        return _isValidDiagonalWin(winCases.m_diagonalCases,
-            startPoint, reverseWin);
-    case WinCase::NoWinCase:
-        break;
+        case WinCase::Lateral:
+            return _isValidWin(winCases.m_lateralCases, startPoint);
+        case WinCase::Vertical:
+            return _isValidWin(winCases.m_verticalCases, startPoint);
+        case WinCase::Diagonal:
+            return _isValidDiagonalWin(winCases.m_diagonalCases,
+                startPoint, reverseWin);
+        case WinCase::NoWinCase:
+            break;
     }
     return false;
 }
@@ -139,7 +139,8 @@ std::vector<int> Board::_validDiagonalWinCases() const
         //reverse cases
         for (int i{ 0 }; i <= offSet; ++i)
         {
-            winCases.push_back(m_table[0].at((m_columns - 1) - i).m_piecePosition);
+            winCases.push_back(m_table[0]
+                .at(static_cast<size_t>((m_columns - 1) - i)).m_piecePosition);
         }
     }
     else if (m_columns < m_rows)
@@ -152,7 +153,8 @@ std::vector<int> Board::_validDiagonalWinCases() const
         //reverseWins
         for (int i{ 0 }; i <= offSet; ++i)
         {
-            winCases.push_back(m_table[i][m_columns - 1].m_piecePosition);
+            winCases.push_back(m_table[i][static_cast<size_t>(m_columns - 1)]
+                .m_piecePosition);
         }
     }
     return winCases;

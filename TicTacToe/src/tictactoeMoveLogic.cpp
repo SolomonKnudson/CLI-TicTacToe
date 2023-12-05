@@ -19,7 +19,8 @@ void TicTacToe::_getMove()
 #else
     std::string command{};
     std::getline(std::cin, command);
-    //If stoi doesn't blow up, user entered a number. Otherwise, check to see if its a debug command
+    //If stoi doesn't blow up, user entered a number. 
+    // Otherwise, check to see if its a debug command
     //If not a debug command, do nothing as control will return to gameLoop
     //(_runCommand --> _getMove() --> _gameLoop)
     // Which will check to see if the m_tablePosition is valid
