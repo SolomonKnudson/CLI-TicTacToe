@@ -26,6 +26,7 @@ void Board::resetBoard()
     m_table.clear();
     m_rows = 0;
     m_columns = 0;
+    m_boardSize = 0;
     if (m_evenBoard)
     {
         m_evenBoard = false;
@@ -94,7 +95,7 @@ bool Board::isEvenBoard() const
 }
 
 
-const Board::Table& Board::internalTable() const
+const BoardTypes::Table& Board::internalTable() const
 {
     return m_table;
 }
