@@ -28,7 +28,7 @@ namespace BoardTypes
         char m_playerFlag{};
         bool m_playerIsOccupying{};
     };
-
+    using Table = std::vector<std::vector<BoardTypes::BoardPiece>>;
     enum  BoardSize
     {
         standardRow = 3,
@@ -51,7 +51,6 @@ namespace BoardTypes
 
 class Board
 {
-    using Table = std::vector<std::vector<BoardTypes::BoardPiece>>;
 public:
     explicit Board(int row = 3, int column = 3);
     ~Board() = default;
@@ -83,7 +82,7 @@ public:
     void resetBoard();
     bool isEmpty() const;
     bool isEvenBoard() const;
-    const Table& internalTable() const;
+    const BoardTypes::Table& internalTable() const;
 
 #ifdef BOARD_DEBUG
     //methods to set diff win conditions
@@ -156,7 +155,7 @@ private:
     bool _lopsidedColumn(char playerMark) const;
 
     //Member Vars
-    Table m_table{};
+    BoardTypes::Table m_table{};
     mutable BoardTypes::WinCase m_winCase{};
     int m_rows{};
     int m_columns{};
