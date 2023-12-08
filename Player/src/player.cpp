@@ -25,6 +25,7 @@ bool Player::isOccupying(const int move) const
             return true;
         }
     }
+
     return false;
 }
 

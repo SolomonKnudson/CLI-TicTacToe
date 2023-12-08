@@ -49,9 +49,9 @@ bool Board::_isLateralWin(const char playerMark) const
 bool Board::_isVerticalWin(const char playerMark) const
 {
     int inARow{};
-    for (int column{ 0 }; column < m_columns; column++)
+    for (int column{ 0 }; column < m_columns; ++column)
     {
-        for (int row{ 0 }; row < m_rows; row++)
+        for (int row{ 0 }; row < m_rows; ++row)
         {
             if (m_table[row][column].m_playerFlag == playerMark)
             {
@@ -90,7 +90,7 @@ bool Board::_isDiagonalWin(const char playerMark) const
 bool Board::_evenBoard(const char playerMark) const
 {
     int inARow{};
-    for (int row{ 0 }, column{ 0 }; row < m_rows; row++, column++)
+    for (int row{ 0 }, column{ 0 }; row < m_rows; ++row, ++column)
     {
         if (m_table[row][column].m_playerFlag == playerMark)
         {
@@ -128,11 +128,11 @@ bool Board::_evenBoard(const char playerMark) const
 bool Board::_lopsidedRow(const char playerMark) const
 {
     int inARow{};
-    int offSet{ m_columns - m_rows };
+    int columnOffset{ m_columns - m_rows };
 
-    for (int column{ 0 }; column <= offSet; column++)
+    for (int column{ 0 }; column <= columnOffset; ++column)
     {
-        for (int row{ 0 }; row < m_rows; row++)
+        for (int row{ 0 }; row < m_rows; ++row)
         {
             if (m_table[row].at(static_cast<size_t>(column + row))
                 .m_playerFlag == playerMark)
@@ -151,8 +151,8 @@ bool Board::_lopsidedRow(const char playerMark) const
     inARow = 0;
 
     //Reverse case
-    for (int column{ m_columns - 1 }; column >= ((m_columns - 1) - offSet);
-        column--)
+    for (int column{ m_columns - 1 }; column >= ((m_columns - 1) - columnOffset);
+        --column)
     {
         for (int row{ 0 }; row < m_rows; row++)
         {
@@ -182,13 +182,13 @@ bool Board::_lopsidedRow(const char playerMark) const
 bool Board::_lopsidedColumn(const char playerMark) const
 {
     int inARow{};
-    int offSet{ m_rows - m_columns };
-    for (int loop{ 0 }; loop <= offSet; loop++)
+    int rowOffset{ m_rows - m_columns };
+    for (int rowStart{ 0 }; rowStart <= rowOffset; ++rowStart)
     {
 
-        for (int row{ 0 }; row < (m_rows - offSet); row++)
+        for (int row{ 0 }; row < (m_rows - rowOffset); ++row)
         {
-            if (m_table.at(static_cast<size_t>(loop + row))[row]
+            if (m_table.at(static_cast<size_t>(rowStart + row))[row]
                 .m_playerFlag == playerMark)
             {
                 inARow++;
@@ -205,12 +205,12 @@ bool Board::_lopsidedColumn(const char playerMark) const
     inARow = 0;
 
     //Reverse case
-    for (int loop{ 0 }; loop <= offSet; loop++)
+    for (int rowStart{ 0 }; rowStart <= rowOffset; ++rowStart)
     {
-        for (int row{ 0 }, column{ m_columns - 1 }; row < (m_rows - offSet);
+        for (int row{ 0 }, column{ m_columns - 1 }; row < (m_rows - rowOffset);
             row++)
         {
-            if (m_table.at(static_cast<size_t>(row + loop))
+            if (m_table.at(static_cast<size_t>(row + rowStart))
                 .at(static_cast<size_t>(column - row)).
                 m_playerFlag == playerMark)
             {

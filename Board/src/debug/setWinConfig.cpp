@@ -31,11 +31,13 @@ bool Board::setVerticalWin(const int startColumn, const char playerMark)
         std::cout << "setVertWin(): Invalid column!\n";
         return false;
     }
+
     for(int row{0}, columnOffset{startColumn}; row < m_rows;
         row++, columnOffset += m_columns)
     {
         coverBoardSlot(columnOffset, playerMark);
     }
+
     m_winCase = WinCase::Vertical;
     return true;
 }
@@ -46,6 +48,7 @@ bool Board::setTie(const char playerMark)
     {
         coverBoardSlot(tablePosition, playerMark);
     }
+
     return true;
 }
 
@@ -79,6 +82,7 @@ bool Board::setDiagonalWin(int startColumn, const char playerMark,
                                          : "Invalid Row!\n");
         return false;
     }
+
     m_diagonalReverseWin = reverseWin;
     m_winCase = WinCase::Diagonal;
     return true;

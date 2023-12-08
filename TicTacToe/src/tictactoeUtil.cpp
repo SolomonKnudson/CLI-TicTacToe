@@ -95,9 +95,11 @@ void TicTacToe::_createMatchRecord()
 {
     static int numberOfGames{ 1 };
     MatchRecord matchRecord{};
+
     matchRecord.m_matchID = numberOfGames++;
     matchRecord.m_row = m_previousRow;
     matchRecord.m_column = m_previousColumn;
+
     if (m_hasWon)
     {
         matchRecord.m_winner = _currentPlayer().name();
@@ -110,6 +112,7 @@ void TicTacToe::_createMatchRecord()
         //keep track of total moves played to display later if there's a tie
         matchRecord.m_moves = m_playerX.moves() + m_playerO.moves();
     }
+
     m_matchRecords.push_back(matchRecord);
 }
 //END MATCH RECORDS

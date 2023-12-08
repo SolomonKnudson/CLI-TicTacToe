@@ -72,6 +72,7 @@ void Board::setBoard(const int rows, const int columns)
     {
         resetBoard();
     }
+
     m_rows = rows;
     m_columns = columns;
     m_boardSize = m_rows * m_columns;

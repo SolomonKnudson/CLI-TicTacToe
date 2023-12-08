@@ -25,11 +25,13 @@ void TicTacToe::_gameLoop()
                     << " you have " << m_totalInvalidMovesAllowed
                     - _currentPlayer().invalidMoves()
                     << " left!\n";
+
                 _getMove();
                 if (_isLegalMove())
                 {
                     break;
                 }
+
                 _currentPlayer().addInvalidMove();
             }
             if (_currentPlayer().invalidMoves()
@@ -40,6 +42,7 @@ void TicTacToe::_gameLoop()
                     << "invalid moves allowed!\n|You will now forfeit "
                     << "your current turn and future turns upon "
                     << "detection of an invalid move!\n";
+
                 _nextPlayer();
                 continue;
             }
@@ -77,7 +80,6 @@ void TicTacToe::_gameLoop()
             break;
         }
 #endif
-
         _nextPlayer();
     }
 #ifdef BOARD_DEBUG
@@ -89,13 +91,14 @@ void TicTacToe::_gameLoop()
     {
         _displayBoard();
     }
+
     _createMatchRecord();
     _endGame();
-#else // def BOARD_DEBUG
+#else
     _displayBoard();
     _createMatchRecord();
     _endGame();
-#endif
+#endif// def BOARD_DEBUG
 }
 
 void TicTacToe::_endGame()
@@ -104,10 +107,12 @@ void TicTacToe::_endGame()
     {
         std::cout << "|Tic-Tac-Toe!\n|Congrats, "
             << _currentPlayer().name() << "! You Win!\n";
+
         std::cout << "|You beat " << ((m_currentPlayerMark == m_playerX.mark())
             ? m_playerO.name() : m_playerX.name())
             << " in " << _currentPlayer().moves()
             << " moves!";
+
         _currentPlayer().addWin();
     }
     else if (m_tie)
@@ -115,25 +120,28 @@ void TicTacToe::_endGame()
         std::cout << "|Tie game! Well played, X, O!\n";
         m_tieGames++;
     }
+
     _displayStats();
+
     char userResponse{};
     std::cout << "|(P) to play again || (Q) to quit: ";
     std::cin >> userResponse;
     _flushCin();
+
     switch (userResponse)
     {
-    case 'P':
-    case 'p':
-        _resetGame();
-        break;
-    case 'q':
-    case 'Q':
-        _quit();
-        break;
-    default:
-        std::cout << "|Gonna assume you want to play again!\n";
-        _resetGame();
-        break;
+        case 'P':
+        case 'p':
+            _resetGame();
+            break;
+        case 'q':
+        case 'Q':
+            _quit();
+            break;
+        default:
+            std::cout << "|Gonna assume you want to play again!\n";
+            _resetGame();
+            break;
     }
 }
 
@@ -151,6 +159,7 @@ void TicTacToe::_resetGame()
         m_tie = false;
         m_firstPlayer = ((m_firstPlayer == m_playerX.mark()) ? m_playerO.mark()
             : m_playerX.mark());
+
         m_currentPlayerMark = m_firstPlayer;
         std::cout << "|Last game was a tie; "
             << _currentPlayer().name() << " will start!\n";
@@ -171,6 +180,7 @@ void TicTacToe::_quit() const
 {
     _displayStats();
     _displayMatchRecords();
+
     if (m_playerX.wins() != m_playerO.wins())
     {
         std::cout << "\n|Congrats, " << ((m_playerX.wins() > m_playerO.wins())
@@ -186,7 +196,9 @@ void TicTacToe::_quit() const
 
     std::cout << "\n|Thank you for playing! Have a lovely rest of your "
         << "day/night!\n";
+
     std::cout << "|Thank you, CJ, for challenging me to create "
         << "Tic-Tac-Toe,\n|and for helping to test the game logic.";
+
     std::cout << "\n|GoodBye!\n\n";
 }

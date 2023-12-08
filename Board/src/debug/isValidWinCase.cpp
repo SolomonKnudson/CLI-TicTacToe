@@ -17,6 +17,7 @@ bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
 
     static int previousRow{ m_rows };
     static int previousColumn{ m_columns };
+
     if (previousRow != m_rows && previousColumn != m_columns)
     {
         previousRow = m_rows;
@@ -80,6 +81,7 @@ bool Board::_isValidDiagonalWin(const std::vector<int>& winCases,
 {
     const static int n{ static_cast<int>(winCases.size()) };
     const static int offSet{ n / 2 };
+
     if (!reverseWin)
     {
         for (int i{ 0 }; i < offSet; ++i)
@@ -102,26 +104,31 @@ bool Board::_isValidDiagonalWin(const std::vector<int>& winCases,
             }
         }
     }
+
     return false;
 }
 
 std::vector<int> Board::_validLateralWinCases() const
 {
     std::vector<int> winCases{};
+
     for (int row{ 0 }; row < m_rows; ++row)
     {
         winCases.push_back(m_table[row][0].m_piecePosition);
     }
+
     return winCases;
 }
 
 std::vector<int> Board::_validVerticalWinCases() const
 {
     std::vector<int> winCases{};
+
     for (int column{ 0 }; column < m_columns; ++column)
     {
         winCases.push_back(m_table[0][column].m_piecePosition);
     }
+
     return winCases;
 }
 
@@ -129,6 +136,7 @@ std::vector<int> Board::_validDiagonalWinCases() const
 {
     std::vector<int> winCases{};
     int offSet{};
+
     if (m_rows < m_columns)
     {
         offSet = m_columns - m_rows;
@@ -157,6 +165,7 @@ std::vector<int> Board::_validDiagonalWinCases() const
                 .m_piecePosition);
         }
     }
+
     return winCases;
 }
 #endif //BOARD_DEBUG

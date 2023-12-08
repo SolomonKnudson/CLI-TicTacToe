@@ -39,14 +39,17 @@ void TicTacToe::_setupGame()
               <<" up to " << BoardTypes::maxRow << "x" << BoardTypes::maxColumn
               << ((!m_isFirstGame) ? "}  || (P) for previous board: "
                                   :"}: ");
+
     std::cin >> userResponse;
     _flushCin();
+
     switch(userResponse)
     {
         case 's':
         case 'S':
             m_previousRow = BoardTypes::standardRow;
             m_previousColumn = BoardTypes::standardColumn;
+
             _displayBoardConfiguration();
             _setBoard();
             break;
@@ -55,9 +58,11 @@ void TicTacToe::_setupGame()
             std::cout << "|Enter # of rows: ";
             std::cin >> m_previousRow;
             _flushCin();
+
             std::cout << "|Enter # of columns: ";
             std::cin >> m_previousColumn;
             _flushCin();
+
             _checkBoardSize();
             _displayBoardConfiguration();
             _setBoard();
@@ -73,8 +78,10 @@ void TicTacToe::_setupGame()
        [[fallthrough]];
         default:
             std::cout << "|Not one of the options listed!\n";
+
             m_previousRow = BoardTypes::standardRow;
             m_previousColumn = BoardTypes::standardColumn;
+
             _displayBoardConfiguration();
             _setBoard();
             break;
@@ -99,6 +106,7 @@ void TicTacToe::_setupGame()
                 break;
             default:
                 std::cout << "|No idea who that is!\n|Player X, you start!\n";
+
                 m_firstPlayer = m_playerX.mark();
                 m_currentPlayerMark = m_firstPlayer;
                 break;
@@ -111,9 +119,6 @@ void TicTacToe::_setBoard()
 {
     m_board.setBoard(m_previousRow, m_previousColumn);
 }
-//END SETUP LOGIC
-
-
 
 
 //Win Logic
@@ -126,9 +131,6 @@ bool TicTacToe::_isTieGame() const
 {
     return m_board.isTie();
 }
-//END WIN LOGIC
-
-
 
 
 //Player Logic
@@ -136,11 +138,15 @@ void TicTacToe::_displayStats() const
 {
     std::cout << "\n         Win || Loss\n";
     std::cout << "----------------------\n";
+
     std::cout << m_playerX.name() << ": " << m_playerX.wins() << " || "
         << m_playerO.wins() << '\n';
+
     std::cout << "----------------------\n";
+
     std::cout << m_playerO.name() << ": " << m_playerO.wins() << " || "
         << m_playerX.wins() << '\n';
+
     std::cout << "----------------------\n";
     std::cout << "|Ties    : " << m_tieGames << '\n';
     std::cout << "----------------------\n";
@@ -157,4 +163,3 @@ Player& TicTacToe::_currentPlayer()
 {
     return ((m_currentPlayerMark == m_playerX.mark()) ? m_playerX : m_playerO);
 }
-//END PLAYER LOGIC
