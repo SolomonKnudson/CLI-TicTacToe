@@ -29,11 +29,14 @@ bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
     {
         case WinCase::Lateral:
             return _isValidWin(winCases.m_lateralCases, startPoint);
+
         case WinCase::Vertical:
             return _isValidWin(winCases.m_verticalCases, startPoint);
+
         case WinCase::Diagonal:
             return _isValidDiagonalWin(winCases.m_diagonalCases,
                 startPoint, reverseWin);
+
         case WinCase::NoWinCase:
             break;
     }

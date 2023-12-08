@@ -21,14 +21,17 @@ void Board::clearWinConfiguration(const char playerMark)
         case WinCase::Lateral:
             _clearLateralWin(playerMark);
             break;
+
         case WinCase::Vertical:
             _clearVerticalWin(playerMark);
             break;
+
         case WinCase::Diagonal:
             //The work required to undo a single diagonal win case isn't worth
             //the headache. <----- I lied.
             _clearDiagonalWin(playerMark);
             break;
+
         case WinCase::NoWinCase:
             return;
     }
@@ -49,7 +52,6 @@ void Board::_clearLateralWin(const char playerMark)
                 {
                     m_table[row][column].reset();
                 }
-
             }
         }
     }
@@ -116,8 +118,6 @@ void Board::_clearDiagonalWinEvenBoard(const char playerMark,
     }
 }
 
-
-
 void Board::_clearDiagonalWinLopsidedRow(const char playerMark, 
     const bool reverseWin)
 {
@@ -159,19 +159,51 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark,
         }
     }
 }
-//When looping to find the startPoint, it will only be valid if the playerMark found is from the starting column of each row
-//ReverseWin: When looping to find the startPoint, it will only be valid if the playerMark found is from the ending column of each row
+
 void Board::_clearDiagonalWinLopsidedColumn(const char playerMark, 
     const bool reverseWin)
 {
     int startPoint{};
+    int rowOffset{ m_rows - m_columns };
     if (!reverseWin)
     {
-
+        for (int rowStart{ 0 }; rowStart <= rowOffset; ++rowStart)
+        {
+            if (m_table[rowStart][0].m_playerFlag == playerMark)
+            {
+                for (int row{ 0 }; row < (m_rows - rowOffset); ++row)
+                {
+                    if (m_table.at(static_cast<size_t>(row + rowStart))[row]
+                        .m_playerFlag == playerMark)
+                    {
+                        m_table[static_cast<size_t>(row + rowStart)][row]
+                            .reset();
+                    }   
+                }
+            }
+        }
     }
     else
     {
-
+        
+        for (int rowStart{ 0 }, lastColumn{m_columns - 1}; 
+            rowStart <= rowOffset; ++rowStart)
+        {
+            if (m_table[rowStart][lastColumn].m_playerFlag == playerMark)
+            {
+                for (int row{ 0 }; row < (m_rows - rowOffset);
+                    row++)
+                {
+                    if (m_table.at(static_cast<size_t>(row + rowStart))
+                        .at(static_cast<size_t>(lastColumn - row)).
+                        m_playerFlag == playerMark)
+                    {
+                        m_table[static_cast<size_t>(row + rowStart)]
+                            [static_cast<size_t>(lastColumn - row)].reset();
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -182,10 +214,12 @@ bool Board::_multipleWinCases(const char playerMark) const
     {
         ++winCaseCount;
     }
+
     if (_isVerticalWin(playerMark))
     {
         ++winCaseCount;
     }
+
     //isDia does a lot of looping, only call if you have to.
     if (winCaseCount == 0)
     {
@@ -195,10 +229,12 @@ bool Board::_multipleWinCases(const char playerMark) const
     {
         return true;
     }
+
     if (_isDiagonalWin(playerMark))
     {
         ++winCaseCount;
     }
+
     return (winCaseCount > 1);
 }
 #endif

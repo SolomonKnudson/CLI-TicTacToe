@@ -202,6 +202,7 @@ bool Board::_lopsidedColumn(const char playerMark) const
         }
         inARow = 0;
     }
+
     inARow = 0;
 
     //Reverse case
@@ -219,12 +220,14 @@ bool Board::_lopsidedColumn(const char playerMark) const
             }
             break;
         }
+
         if (inARow == m_columns)
         {
             return true;
         }
         inARow = 0;
     }
+
     return false;
 }
 
@@ -243,5 +246,6 @@ bool Board::isTie() const
             return false;
         }
     }
+
     return (totalPlayerMarks == m_boardSize);
 }

@@ -11,10 +11,13 @@ std::string_view Board::winCase() const
     {
         case WinCase::Lateral:
             return "Lateral";
+
         case WinCase::Vertical:
             return "Vertical";
+
         case WinCase::Diagonal:
             return "Diagonal";
+
         case WinCase::NoWinCase:
             break;
     }
@@ -67,6 +70,7 @@ void Board::_dashLine() const
             std::cout << "----|";
         }
     }
+
     std::cout << '\n';
 }
 
