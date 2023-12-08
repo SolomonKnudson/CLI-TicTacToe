@@ -19,6 +19,7 @@ bool Board::isWinningMove(const char playerMark) const
         m_winCase = WinCase::Diagonal;
         return true;
     }
+
     return false;
 }
 
@@ -37,12 +38,14 @@ bool Board::_isLateralWin(const char playerMark) const
             }
             break;
         }
+
         if (inARow == m_columns)
         {
             return true;
         }
         inARow = 0;
     }
+
     return false;
 }
 
@@ -60,12 +63,14 @@ bool Board::_isVerticalWin(const char playerMark) const
             }
             break;
         }
+
         if (inARow == m_rows)
         {
             return true;
         }
         inARow = 0;
     }
+
     return false;
 }
 
@@ -83,6 +88,7 @@ bool Board::_isDiagonalWin(const char playerMark) const
     {
         return _lopsidedColumn(playerMark);
     }
+
     return false;
 }
 
@@ -99,6 +105,7 @@ bool Board::_evenBoard(const char playerMark) const
         }
         break;
     }
+
     if (inARow == m_rows)
     {
         return true;
@@ -116,6 +123,7 @@ bool Board::_evenBoard(const char playerMark) const
         }
         break;
     }
+
     return (inARow == m_rows);
 }
 
@@ -142,12 +150,14 @@ bool Board::_lopsidedRow(const char playerMark) const
             }
             break;
         }
+
         if (inARow == m_rows)
         {
             return true;
         }
         inARow = 0;
     }
+
     inARow = 0;
 
     //Reverse case
@@ -164,12 +174,14 @@ bool Board::_lopsidedRow(const char playerMark) const
             }
             break;
         }
+
         if (inARow == m_rows)
         {
             return true;
         }
         inARow = 0;
     }
+
     return false;
 }
 
@@ -196,6 +208,7 @@ bool Board::_lopsidedColumn(const char playerMark) const
             }
             break;
         }
+
         if (inARow == m_columns)
         {
             return true;

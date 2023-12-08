@@ -78,24 +78,21 @@ void Board::_clearDiagonalWin(const char playerMark)
 {
     if (m_rows < m_columns)
     {
-        _clearDiagonalWinLopsidedRow(playerMark,
-            m_diagonalReverseWin);
+        _clearDiagonalWinLopsidedRow(playerMark);
     }
     else if (m_columns < m_rows)
     {
-        _clearDiagonalWinLopsidedColumn(playerMark,
-            m_diagonalReverseWin);
+        _clearDiagonalWinLopsidedColumn(playerMark);
     }
     else if (m_evenBoard)
     {
-        _clearDiagonalWinEvenBoard(playerMark, m_diagonalReverseWin);
+        _clearDiagonalWinEvenBoard(playerMark);
     }
 }
 
-void Board::_clearDiagonalWinEvenBoard(const char playerMark, 
-    const bool reverseWin)
+void Board::_clearDiagonalWinEvenBoard(const char playerMark)
 {
-    if (!reverseWin)
+    if (!m_diagonalReverseWin)
     {
         for (int row{ 0 }, column{ 0 }; row < m_columns; ++row, ++column)
         {
@@ -118,11 +115,10 @@ void Board::_clearDiagonalWinEvenBoard(const char playerMark,
     }
 }
 
-void Board::_clearDiagonalWinLopsidedRow(const char playerMark, 
-    const bool reverseWin)
+void Board::_clearDiagonalWinLopsidedRow(const char playerMark)
 {
     int columnOffSet{ m_columns - m_rows };
-    if (!reverseWin)
+    if (!m_diagonalReverseWin)
     {
         for (int columnStart{ 0 }; columnStart <= columnOffSet; ++columnStart)
         {
@@ -160,12 +156,11 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark,
     }
 }
 
-void Board::_clearDiagonalWinLopsidedColumn(const char playerMark, 
-    const bool reverseWin)
+void Board::_clearDiagonalWinLopsidedColumn(const char playerMark)
 {
     int startPoint{};
     int rowOffset{ m_rows - m_columns };
-    if (!reverseWin)
+    if (!m_diagonalReverseWin)
     {
         for (int rowStart{ 0 }; rowStart <= rowOffset; ++rowStart)
         {
