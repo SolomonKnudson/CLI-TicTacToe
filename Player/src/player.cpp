@@ -4,9 +4,9 @@
 Player::Player(const char mark, const std::string_view name)
     : m_moves{}
     , m_name{name}
-    , m_mark{mark}
     , m_wins{}
     , m_inValidMoves{}
+    , m_mark{mark}
 {}
 
 

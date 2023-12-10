@@ -43,15 +43,15 @@ void Board::display() const
             }
             else
             {//  |1   |2   |3   |
-                if (Board::_isSingleDigit(column.m_piecePosition))
+                if (_isSingleDigit(column.m_piecePosition))
                 {
                     std::cout << " " << column.m_piecePosition << "  |";
                 }//  |14  |15  |16  |
-                else if (Board::_isDoubleDigit(column.m_piecePosition))
+                else if (_isDoubleDigit(column.m_piecePosition))
                 {
                     std::cout << " " << column.m_piecePosition << " |";
                 }//|700 |800 |900 |
-                else if (Board::_isTripleDigit(column.m_piecePosition))
+                else if (_isTripleDigit(column.m_piecePosition))
                 {
                     std::cout << " " << column.m_piecePosition << "|";
                 }//1000|2000|3000
@@ -83,7 +83,7 @@ void Board::setBoard(const int rows, const int columns)
     }
 
     m_table.reserve(m_rows);
-    for (int row{ 0 }; row < m_rows; row++)
+    for (int row{ 0 }; row < m_rows; ++row)
     {
         m_table.push_back(std::vector<BoardPiece>{});
     }
@@ -91,7 +91,7 @@ void Board::setBoard(const int rows, const int columns)
     int column{ 1 };
     for (auto& row : m_table)
     {
-        for (int i{ 0 }; i < m_columns; i++)
+        for (int i{ 0 }; i < m_columns; ++i)
         {
             row.push_back(BoardPiece{ column++ });
         }

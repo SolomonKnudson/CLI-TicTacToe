@@ -42,7 +42,7 @@ void TicTacToe::_flushCin()
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
-//END DISPLAY
+
 
 
 
@@ -85,7 +85,7 @@ void TicTacToe::_checkBoardSize()
         }
     }
 }
-//END SIZING
+
 
 
 
@@ -115,4 +115,3 @@ void TicTacToe::_createMatchRecord()
 
     m_matchRecords.push_back(matchRecord);
 }
-//END MATCH RECORDS

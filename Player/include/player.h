@@ -40,8 +40,8 @@ private:
     //Member Vars
     Moves m_moves{};
     std::string m_name{};
-    char m_mark{};
     int m_wins{};
     int m_inValidMoves{};
+    char m_mark{};
 };
 #endif // PLAYER_H

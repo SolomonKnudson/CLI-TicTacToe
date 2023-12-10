@@ -1,6 +1,5 @@
 #include <iostream>
 #include "tictactoe.h"
-#include "board.h"
 
 int main(int argc, char *argv[])
 {
