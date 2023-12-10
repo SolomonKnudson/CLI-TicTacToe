@@ -78,22 +78,22 @@ bool Board::_isDiagonalWin(const char playerMark) const
 {
     if (m_evenBoard)
     {
-        return _evenBoard(playerMark);
+        return _isDiagonalWinEvenBoard(playerMark);
     }
     else if (m_rows < m_columns)
     {
-        return _lopsidedRow(playerMark);
+        return _isDiagonalWinLopsidedRow(playerMark);
     }
     else if (m_columns < m_rows)
     {
-        return _lopsidedColumn(playerMark);
+        return _isDiagonalWinLopsidedColumn(playerMark);
     }
 
     return false;
 }
 
 //Util methods for isDiaWin
-bool Board::_evenBoard(const char playerMark) const
+bool Board::_isDiagonalWinEvenBoard(const char playerMark) const
 {
     int inARow{};
     for (int row{ 0 }, column{ 0 }; row < m_rows; ++row, ++column)
@@ -133,7 +133,7 @@ bool Board::_evenBoard(const char playerMark) const
     *10x11: Diagonal cases: column: 0, 1
     *
 */
-bool Board::_lopsidedRow(const char playerMark) const
+bool Board::_isDiagonalWinLopsidedRow(const char playerMark) const
 {
     int inARow{};
     int columnOffset{ m_columns - m_rows };
@@ -191,7 +191,7 @@ bool Board::_lopsidedRow(const char playerMark) const
     *ex. 8x4: Diagonal cases: row: 0, 1, 2, 3, 4 index based!
     *15x11: Diagonal cases: row: 0, 1, 2, 3, 4
 */
-bool Board::_lopsidedColumn(const char playerMark) const
+bool Board::_isDiagonalWinLopsidedColumn(const char playerMark) const
 {
     int inARow{};
     int rowOffset{ m_rows - m_columns };

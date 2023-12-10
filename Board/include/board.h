@@ -150,9 +150,9 @@ private:
     bool _isDiagonalWin(char playerMark) const;
 
     //Diagonal subcases(Util methods for _isDiaWin)
-    bool _evenBoard(char playerMark) const;
-    bool _lopsidedRow(char playerMark) const;
-    bool _lopsidedColumn(char playerMark) const;
+    bool _isDiagonalWinEvenBoard(char playerMark) const;
+    bool _isDiagonalWinLopsidedRow(char playerMark) const;
+    bool _isDiagonalWinLopsidedColumn(char playerMark) const;
 
     //Member Vars
     BoardTypes::Table m_table{};
