@@ -19,17 +19,13 @@ void TicTacToe::_getMove()
     std::string command{};
     std::getline(std::cin, command);
 
-    //If stoi doesn't blow up, user entered a number. 
-    // Otherwise, check to see if its a debug command
-    //
-    //If not a debug command, do nothing as control will return to gameLoop
-    //(_runCommand --> _getMove() --> _gameLoop)
-    // Which will check to see if the m_tablePosition is valid
-    try
-    {
-        m_tablePosition = std::stoi(command);
-    }
-    catch (const std::invalid_argument& error)
+    // Check to see if user enterd a number. 
+    // Otherwise, assume it's a debug command.
+    // If not a debug command, do nothing as control will return to gameLoop.
+    // (_runCommand --> _getMove() --> _gameLoop)
+    // Which will check to see if the m_tablePosition is valid.
+
+    if (!_stringToNumber(command))
     {
         std::istringstream stream{ command };
         stream >> m_debugCommand.m_commandString;

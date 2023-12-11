@@ -115,3 +115,25 @@ void TicTacToe::_createMatchRecord()
 
     m_matchRecords.push_back(matchRecord);
 }
+
+
+#ifdef BOARD_DEBUG
+#include <exception>
+#include <string>
+//STL Wrapper
+// 
+//wrapper method for std::stoi, because stoi throws an exception if unable to convert input into a number.
+//
+bool TicTacToe::_stringToNumber(const std::string& command)
+{
+    try
+    {
+        m_tablePosition = std::stoi(command);
+        return true;
+    }
+    catch (const std::invalid_argument& error)
+    {
+        return false;
+    }
+}
+#endif // BOARD_DEBUG
