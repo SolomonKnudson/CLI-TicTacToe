@@ -13,12 +13,16 @@ class TicTacToe
     {
         std::string_view m_winner{};
         std::string_view m_winCase{};
+
         int m_matchID{};
         int m_row{};
+
         int m_column{};
         int m_moves{};
+
         bool m_tieGame{};
     };
+
     using MatchRecords = std::vector<MatchRecord>;
 public:
     TicTacToe();
@@ -36,8 +40,10 @@ private:
         std::string m_commandString{};
         int m_commandValue{};
     };
+
     DebugCommand m_debugCommand{};
     bool m_endGameCalled{};
+
     void _runCommand();
 #endif // BOARD_DEBUG
     //setup Logic
@@ -52,6 +58,7 @@ private:
     //Move Logic
     void _getMove();
     void _move();
+
     bool _isLegalMove() const;
     bool _isValidPosition() const;
 
@@ -66,12 +73,16 @@ private:
 
     //Util Methods
     void _displayBoard() const;
-    static void _flushCin();
-    void _checkBoardSize();
     void _displayBoardConfiguration() const;
-    void _createMatchRecord();
+
     void _displayMatchRecords() const;
+    static void _flushCin();
+
+    void _checkBoardSize();
+    void _createMatchRecord();
+
     void _quit() const;
+    bool _stringToNumber(const std::string& command);
 
     //Member Vars
     Board m_board{};
@@ -81,18 +92,18 @@ private:
 
     MatchRecords m_matchRecords{};
 
-    int m_previousRow{};
-    int m_previousColumn{};
-    int m_tablePosition{};
+    int  m_previousRow{};
+    int  m_previousColumn{};
+    int  m_tablePosition{};
 
-    int m_totalInvalidMovesAllowed{};
-    int m_tieGames{};
+    int  m_totalInvalidMovesAllowed{};
+    int  m_tieGames{};
+
     char m_firstPlayer{};
     char m_currentPlayerMark{};
 
     bool m_hasWon{};
     bool m_tie{};
-
     bool m_isFirstGame{};
 };
 #endif // TICTACTOE_H

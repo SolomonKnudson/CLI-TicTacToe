@@ -6,8 +6,10 @@ using namespace BoardTypes;
 Board::Board(const int row, const int column)
     : m_table{}
     , m_winCase{WinCase::NoWinCase}
+
     , m_rows{}
     , m_columns{}
+
     , m_boardSize{}
     , m_evenBoard{}
 {
@@ -39,7 +41,6 @@ void Board::display() const
             if (column.m_playerIsOccupying)
             {
                 std::cout << " " << column.m_playerFlag << "  |";
-                //                std::cout << " " << column << " |";
             }
             else
             {//  |1   |2   |3   |
@@ -61,6 +62,7 @@ void Board::display() const
                 }
             }
         }
+
         std::cout << '\n';
         _dashLine();
     }

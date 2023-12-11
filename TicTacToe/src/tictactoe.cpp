@@ -16,6 +16,7 @@ TicTacToe::TicTacToe()
 
     , m_totalInvalidMovesAllowed{3}
     , m_tieGames{}
+
     , m_firstPlayer{}
     , m_currentPlayerMark{}
 

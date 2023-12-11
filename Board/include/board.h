@@ -19,16 +19,20 @@ namespace BoardTypes
             m_playerFlag = ' ';
             m_playerIsOccupying = false;
         }
-        BoardPiece(int piecePosition, char playerFlag = ' ')
+
+        explicit BoardPiece(int piecePosition, char playerFlag = ' ')
             : m_piecePosition{ piecePosition }
             , m_playerFlag{ playerFlag }
             , m_playerIsOccupying{ false }
         {}
+
         int m_piecePosition{};
         char m_playerFlag{};
         bool m_playerIsOccupying{};
     };
+
     using Table = std::vector<std::vector<BoardTypes::BoardPiece>>;
+
     enum  BoardSize
     {
         standardRow = 3,
@@ -44,6 +48,7 @@ namespace BoardTypes
     {
         Lateral,
         Vertical,
+
         Diagonal,
         NoWinCase
     };
@@ -64,6 +69,7 @@ public:
     //Table Logic
     void display() const;
     void setBoard(int rows, int columns);
+
     void coverBoardSlot(int tablePosition, char currentPlayer);
     int boardSize() const;
 
@@ -79,10 +85,12 @@ public:
 
     //Util
     std::string_view winCase() const;
-    void resetBoard();
+
     bool isEmpty() const;
     bool isEvenBoard() const;
+
     const BoardTypes::Table& internalTable() const;
+    void resetBoard();
 
 #ifdef BOARD_DEBUG
     //methods to set diff win conditions
@@ -90,8 +98,8 @@ public:
     bool setVerticalWin(int column, char playerMark);
     bool setDiagonalWin(int startPoint, char playerMark,
                         bool reverseWin = false);
-    bool setTie(char playerMark);
 
+    bool setTie(char playerMark);
     void clearWinConfiguration(char playerMark);
 private:
     struct ValidWinCases
@@ -114,25 +122,28 @@ private:
 
     static bool _isValidWin(const std::vector<int>& winCases,
                            int startPoint);
-    void _recalculateWinCases(ValidWinCases& winCases);
     static bool _isValidDiagonalWin(const std::vector<int>& winCases,
                             int startPoint,
                             bool reverseWin = false);
+
+    //Util methods for isValidWinCase() 
+    void _recalculateWinCases(ValidWinCases& winCases);
 
     std::vector<int> _validLateralWinCases() const;
     std::vector<int> _validVerticalWinCases() const;
     std::vector<int> _validDiagonalWinCases() const;
 
-    //Util Mehods for clearWinConFig()
+    //Util mehods for clearWinConFig()
     void _clearLateralWin(char playerMark);
     void _clearVerticalWin(char playerMark);
     void _clearDiagonalWin(char playerMark);
-    bool _multipleWinCases(char playerMark) const;
 
     //Util for clearDiaWin();
     void _clearDiagonalWinEvenBoard(char playerMark);
     void _clearDiagonalWinLopsidedRow(char playerMark);
     void _clearDiagonalWinLopsidedColumn(char playerMark);
+    
+    bool _multipleWinCases(char playerMark) const;
     bool m_diagonalReverseWin{};
 #else
 private:
@@ -141,6 +152,7 @@ private:
     //Positive ints only!
     static bool _isSingleDigit(int column);
     static bool _isDoubleDigit(int column);
+
     static bool _isTripleDigit(int column);
     void _dashLine() const;
 
