@@ -99,11 +99,11 @@
 ---
 * Build executable
 
-  ![ALT][buildExcutable]
+  ![ALT][buildExecutable]
 
 * Run executable
 
-  ![ALT text][runExcutable]
+  ![ALT text][runExecutable]
 
 ---
 
@@ -223,8 +223,8 @@
 [buildFromAnyDir]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildFromAnyDir.gif
 [buildSource]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildSource.gif
 
-[buildExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildExcutable.gif
-[runExcutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/runExcutable.gif
+[buildExecutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Build/buildExecutable.gif
+[runExecutable]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/runExecutable.gif
 
 [4x8LatWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8LatWin.png
 [4x8VertWin]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/4x8VertWin.png
