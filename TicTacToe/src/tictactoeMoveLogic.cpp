@@ -23,7 +23,7 @@ void TicTacToe::_getMove()
     // Otherwise, assume it's a debug command.
     // If not a debug command, do nothing as control will return to gameLoop.
     // (_runCommand --> _getMove() --> _gameLoop)
-    // Which will check to see if the m_tablePosition is valid.
+    // Which will check to see if m_tablePosition is valid.
 
     if (!_stringToNumber(command))
     {
