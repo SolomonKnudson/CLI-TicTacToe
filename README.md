@@ -97,11 +97,11 @@
 ## *Running Code*
 
 ---
-* Build excutable
+* Build executable
 
   ![ALT][buildExcutable]
 
-* Run excutable
+* Run executable
 
   ![ALT text][runExcutable]
 
