@@ -82,7 +82,7 @@ private:
     void _createMatchRecord();
 
     void _quit() const;
-    bool _stringToNumber(const std::string& command);
+    bool _stringToNumber(const std::string& number);
 
     //Member Vars
     Board m_board{};

@@ -28,6 +28,7 @@ void TicTacToe::_getMove()
     if (!_stringToNumber(command))
     {
         std::istringstream stream{ command };
+
         stream >> m_debugCommand.m_commandString;
         stream >> m_debugCommand.m_commandValue;
 
@@ -52,6 +53,7 @@ bool TicTacToe::_isLegalMove() const
         {
             return false;
         }
+
         return true;
     }
 

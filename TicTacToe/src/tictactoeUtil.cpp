@@ -124,14 +124,14 @@ void TicTacToe::_createMatchRecord()
 // 
 //wrapper method for std::stoi, because stoi throws an exception if unable to convert input into a number.
 //
-bool TicTacToe::_stringToNumber(const std::string& command)
+bool TicTacToe::_stringToNumber(const std::string& number)
 {
     try
     {
-        m_tablePosition = std::stoi(command);
+        m_tablePosition = std::stoi(number);
         return true;
     }
-    catch (const std::invalid_argument& error)
+    catch (const std::invalid_argument& isInFactNotANumber)
     {
         return false;
     }
