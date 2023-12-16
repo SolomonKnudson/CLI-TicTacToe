@@ -118,6 +118,7 @@ void Board::_clearDiagonalWinEvenBoard(const char playerMark)
 void Board::_clearDiagonalWinLopsidedRow(const char playerMark)
 {
     int columnOffSet{ m_columns - m_rows };
+
     if (!m_diagonalReverseWin)
     {
         for (int columnStart{ 0 }; columnStart <= columnOffSet; ++columnStart)
@@ -158,8 +159,8 @@ void Board::_clearDiagonalWinLopsidedRow(const char playerMark)
 
 void Board::_clearDiagonalWinLopsidedColumn(const char playerMark)
 {
-    int startPoint{};
     int rowOffset{ m_rows - m_columns };
+
     if (!m_diagonalReverseWin)
     {
         for (int rowStart{ 0 }; rowStart <= rowOffset; ++rowStart)

@@ -7,7 +7,7 @@ using namespace BoardTypes;
 bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
     const bool reverseWin)
 {
-    //Static so win cases aren't re-calculated unless using a different size board
+    //Static so win cases aren't re-calculated unless board size changes
     static ValidWinCases winCases
     {
         _validLateralWinCases(),
