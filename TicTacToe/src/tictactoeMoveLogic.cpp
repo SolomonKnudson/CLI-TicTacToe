@@ -3,7 +3,6 @@
 
 #ifdef BOARD_DEBUG
 #include <sstream>
-#include <exception>
 #endif // BOARD_DEBUG
 
 
@@ -98,10 +97,6 @@ void TicTacToe::_runCommand()
 
         m_board.setDiagonalWin(m_debugCommand.m_commandValue, 
             m_currentPlayerMark, true);
-    }
-    else if (m_debugCommand.m_commandString == "endGame")
-    {
-        m_endGameCalled = true;
     }
 }
 #endif // BOARD_DEBUG

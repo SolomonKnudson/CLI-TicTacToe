@@ -8,12 +8,7 @@ void TicTacToe::_gameLoop()
     {
         _displayBoard();
         _getMove();
-#ifdef BOARD_DEBUG
-        if (m_endGameCalled)
-        {
-            break;
-        }
-#endif // BOARD_DEBUG
+
         if (!_isLegalMove())
         {
             _currentPlayer().addInvalidMove();
@@ -82,23 +77,11 @@ void TicTacToe::_gameLoop()
 #endif
         _nextPlayer();
     }
-#ifdef BOARD_DEBUG
-    if (m_endGameCalled)
-    {
-        m_endGameCalled = false;
-    }
-    else
-    {
-        _displayBoard();
-    }
 
-    _createMatchRecord();
-    _endGame();
-#else
     _displayBoard();
     _createMatchRecord();
     _endGame();
-#endif// def BOARD_DEBUG
+
 }
 
 void TicTacToe::_endGame()

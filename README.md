@@ -201,10 +201,6 @@
 
     ![ALT text][setDrDemo]
 
-  * *endGame:* used to end the game.
-
-    ![ALT text][endGame]
-
 ---
 
 ### *Limitations::*
@@ -245,4 +241,3 @@
 [setVDemo]:https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setVDemo.gif
 [setDDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setDDemo.gif
 [setDrDemo]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/setDrDemo.gif
-[endGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/CommandDemos/endGameDemo.gif
