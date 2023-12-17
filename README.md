@@ -177,7 +177,7 @@
 
 ---
 
-### *Can automatically set the board in winning configuration to test different board sizes::*
+### *Can automatically set the board in a winning configuration to test different board sizes::*
 
   ![ALT text][testBoard]
 
