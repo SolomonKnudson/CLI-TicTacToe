@@ -2,6 +2,8 @@
 #define TICTACTOE_H
 
 #include <vector>
+#include <string_view>
+
 #include "board.h"
 #include "player.h"
 
@@ -42,7 +44,6 @@ private:
     };
 
     DebugCommand m_debugCommand{};
-    bool m_endGameCalled{};
 
     void _runCommand();
 #endif // BOARD_DEBUG
