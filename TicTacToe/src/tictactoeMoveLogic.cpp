@@ -32,6 +32,7 @@ void TicTacToe::_getMove()
         stream >> m_debugCommand.m_commandValue;
 
         m_tablePosition = m_debugCommand.m_commandValue;
+        m_debugCommand.reset();
         _runCommand();
     }
 #endif // BOARD_DEBUG

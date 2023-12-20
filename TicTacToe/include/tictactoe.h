@@ -7,7 +7,6 @@
 #include "board.h"
 #include "player.h"
 
-//TODO: create move parser to set win conditions mid game/Create new git branch
 
 class TicTacToe
 {
@@ -39,6 +38,11 @@ private:
 #ifdef BOARD_DEBUG
     struct DebugCommand
     {
+        void reset()
+        {
+            m_commandString = " ";
+            m_commandValue = 0;
+        }
         std::string m_commandString{};
         int m_commandValue{};
     };

@@ -86,8 +86,8 @@ bool Board::_isValidDiagonalWin(const std::vector<int>& winCases,
     const int startPoint,
     const bool reverseWin)
 {
-    const static int n{ static_cast<int>(winCases.size()) };
-    const static int offSet{ n / 2 };
+    const int n{ static_cast<int>(winCases.size()) };
+    const int offSet{ n / 2 };
 
     if (!reverseWin)
     {
@@ -167,7 +167,7 @@ std::vector<int> Board::_validDiagonalWinCases() const
             winCases.push_back(m_table[i][0].m_piecePosition);
         }
 
-        //reverseWins
+        //reverse Cases
         for (int i{ 0 }; i <= offSet; ++i)
         {
             winCases.push_back(m_table[i][static_cast<size_t>(m_columns - 1)]
