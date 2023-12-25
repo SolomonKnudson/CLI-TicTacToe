@@ -31,7 +31,7 @@ namespace BoardTypes
         bool m_playerIsOccupying{};
     };
 
-    using Table = std::vector<std::vector<BoardTypes::BoardPiece>>;
+    using Table = std::vector<std::vector<BoardPiece>>;
 
     enum  BoardSize
     {
