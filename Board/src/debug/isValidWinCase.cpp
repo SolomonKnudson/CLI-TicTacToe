@@ -68,8 +68,7 @@ void Board::_recalculateWinCases(ValidWinCases& winCases)
     }
 }
 
-bool Board::_isValidWin(const std::vector<int>& winCases,
-    const int startPoint)
+bool Board::_isValidWin(const std::vector<int>& winCases, const int startPoint)
 {
     for (const int winCase : winCases)
     {
@@ -83,8 +82,7 @@ bool Board::_isValidWin(const std::vector<int>& winCases,
 }
 
 bool Board::_isValidDiagonalWin(const std::vector<int>& winCases,
-    const int startPoint,
-    const bool reverseWin)
+    const int startPoint, const bool reverseWin)
 {
     const int n{ static_cast<int>(winCases.size()) };
     const int offSet{ n / 2 };

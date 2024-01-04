@@ -99,7 +99,7 @@ bool Board::isEvenBoard() const
     return m_evenBoard;
 }
 
-const BoardTypes::Table& Board::internalTable() const
+const Table& Board::internalTable() const
 {
     return m_table;
 }
