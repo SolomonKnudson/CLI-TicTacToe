@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     char playerO{ 'O' };
     char playerX{ 'X' };
 
-    Board testBoard{4, 12};
+    Board testBoard{55, 55};
     testBoard.display();
 
     testBoard.setDiagonalWin(8, playerX, true);
