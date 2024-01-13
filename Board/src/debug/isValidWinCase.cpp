@@ -18,7 +18,7 @@ bool Board::_isValidWinCase(const int startPoint, const WinCase winCase,
     static int previousRow{ m_rows };
     static int previousColumn{ m_columns };
 
-    if (previousRow != m_rows && previousColumn != m_columns)
+    if (previousRow != m_rows || previousColumn != m_columns)
     {
         previousRow = m_rows;
         previousColumn = m_columns;
