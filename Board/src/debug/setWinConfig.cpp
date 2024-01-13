@@ -55,8 +55,8 @@ bool Board::setTie(const char playerMark)
 bool Board::setDiagonalWin(int startColumn, const char playerMark,
                            const bool reverseWin)
 {
-    if(!m_evenBoard && 
-        _isValidWinCase(startColumn, WinCase::Diagonal, reverseWin))
+    if(_isValidWinCase(startColumn, WinCase::Diagonal, reverseWin) &&
+            !m_evenBoard)
     {
         if(m_rows < m_columns)
         {
