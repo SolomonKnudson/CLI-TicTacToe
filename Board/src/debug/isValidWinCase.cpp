@@ -51,21 +51,9 @@ void Board::_recalculateWinCases(ValidWinCases& winCases)
     winCases.m_verticalCases.clear();
     winCases.m_diagonalCases.clear();
 
-    //Have to do this as you cannot assign a vector to an already made vector
-    for (int winCase : _validLateralWinCases())
-    {
-        winCases.m_lateralCases.push_back(winCase);
-    }
-
-    for (int winCase : _validVerticalWinCases())
-    {
-        winCases.m_verticalCases.push_back(winCase);
-    }
-
-    for (int winCase : _validDiagonalWinCases())
-    {
-        winCases.m_diagonalCases.push_back(winCase);
-    }
+    winCases.m_lateralCases = _validLateralWinCases();
+    winCases.m_verticalCases = _validVerticalWinCases();
+    winCases.m_diagonalCases = _validDiagonalWinCases();
 }
 
 bool Board::_isValidWin(const std::vector<int>& winCases, const int startPoint)
