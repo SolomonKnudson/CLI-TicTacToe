@@ -91,8 +91,7 @@ void TicTacToe::_endGame()
         std::cout << "|Tic-Tac-Toe!\n|Congrats, "
             << _currentPlayer().name() << "! You Win!\n";
 
-        std::cout << "|You beat " << ((m_currentPlayerMark == m_playerX.mark())
-            ? m_playerO.name() : m_playerX.name())
+        std::cout << "|You beat " << _currentPlayer().name()
             << " in " << _currentPlayer().moves()
             << " moves!";
 
