@@ -6,7 +6,7 @@
 
 ---
 
-* This repository is my attempt at dynamic CLI tic-tac-toe and my first-ever feature-complete C++ project! This implementation supports any row-by-column combination in between 3x3 and 55x55.
+* This repository is my attempt at dynamic CLI tic-tac-toe, and my first-ever feature-complete C++ project! This implementation supports any row-by-column combination in between 3x3 and 55x55.
 
 ---
 
@@ -149,7 +149,7 @@
 
   * *Limitations:*
 
-    * Minimum size allowed: Row and Column individually must be > 3
+    * Minimum size allowed: Row and Column individually must be >= 3
 
     * Max size allowed: Row by Column must be <= 55x55(3025)
    
