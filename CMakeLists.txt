@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
 add_executable(CLI-TicTacToe
-  ${CMAKE_CURRENT_SOURCE_DIR}/app/main.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/App/main.cpp
 )
 
 
