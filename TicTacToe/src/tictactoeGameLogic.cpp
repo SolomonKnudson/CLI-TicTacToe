@@ -1,7 +1,6 @@
 #include <iostream>
 #include "tictactoe.h"
 
-//Game Logic
 void TicTacToe::_gameLoop()
 {
     while (!m_hasWon && !m_tie)

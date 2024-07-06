@@ -39,9 +39,9 @@ namespace BoardTypes
         standardColumn = 3,
         standardSize = standardRow * standardColumn,
 
-        maxRow = 55,
-        maxColumn = 55,
-        maxSize = maxRow * maxColumn //55x55 hard cap  
+        maxRow = 50,
+        maxColumn = 50,
+        maxSize = maxRow * maxColumn //50x50 hard cap.(changed cmds)  
     };
 
     enum class WinCase
