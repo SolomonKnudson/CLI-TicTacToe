@@ -2,88 +2,101 @@
 
 //Constructors
 Player::Player(const char mark, const std::string_view name)
-    : m_moves{}
-    , m_name{name}
-    , m_wins{}
-    , m_inValidMoves{}
-    , m_mark{mark}
-{}
-
+  : m_moves{}
+  , m_name{name}
+  , m_wins{}
+  , m_inValidMoves{}
+  , m_mark{mark}
+{
+}
 
 //Move Logic
-int Player::moves() const
+int
+Player::moves() const
 {
-    return static_cast<int>(m_moves.size());
+  return static_cast<int>(m_moves.size());
 }
 
-bool Player::isOccupying(const int move) const
+bool
+Player::isOccupying(const int move) const
 {
-    for(const auto& m_move : m_moves)
+  for (const auto& m_move : m_moves)
+  {
+    if (m_move == move)
     {
-        if(m_move == move)
-        {
-            return true;
-        }
+      return true;
     }
+  }
 
-    return false;
+  return false;
 }
 
-void Player::addMove(const int move)
+void
+Player::addMove(const int move)
 {
-    m_moves.push_back(move);
+  m_moves.push_back(move);
 }
 
-void Player::clearMoves()
+void
+Player::clearMoves()
 {
-    m_moves.clear();
+  m_moves.clear();
 }
 
 //Invalid Move
-int Player::invalidMoves() const
+int
+Player::invalidMoves() const
 {
-    return m_inValidMoves;
+  return m_inValidMoves;
 }
 
-void Player::addInvalidMove()
+void
+Player::addInvalidMove()
 {
-    m_inValidMoves++;
+  m_inValidMoves++;
 }
 
-void Player::resetInvalidMoves()
+void
+Player::resetInvalidMoves()
 {
-    m_inValidMoves = 0;
+  m_inValidMoves = 0;
 }
 
 //Mark Logic
-int Player::mark() const
+int
+Player::mark() const
 {
-    return m_mark;
+  return m_mark;
 }
 
-void Player::setMark(const int mark)
+void
+Player::setMark(const int mark)
 {
-    m_mark = mark;
+  m_mark = mark;
 }
 
 //Win Count Logic
-int Player::wins() const
+int
+Player::wins() const
 {
-    return m_wins;
+  return m_wins;
 }
 
-void Player::addWin()
+void
+Player::addWin()
 {
-    m_wins++;
+  m_wins++;
 }
 
-void Player::resetWins()
+void
+Player::resetWins()
 {
-    m_wins = 0;
+  m_wins = 0;
 }
 
 //Name Logic
-std::string_view Player::name() const
+std::string_view
+Player::name() const
 {
-    return m_name;
+  return m_name;
 }

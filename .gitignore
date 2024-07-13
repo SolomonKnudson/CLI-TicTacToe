@@ -3,6 +3,7 @@
 
 
 *~
+*.cache
 *.autosave
 *.a
 *.core

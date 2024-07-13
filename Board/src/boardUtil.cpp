@@ -1,105 +1,116 @@
+#include "board.h"
 #include <iostream>
 #include <string_view>
-#include "board.h"
 using namespace BoardTypes;
 
-
 //Util Logic
-std::string_view Board::winCase() const
+std::string_view
+Board::winCase() const
 {
-    switch (m_winCase)
-    {
-        case WinCase::Lateral:
-            return "Lateral";
+  switch (m_winCase)
+  {
+    case WinCase::Lateral:
+      return "Lateral";
 
-        case WinCase::Vertical:
-            return "Vertical";
+    case WinCase::Vertical:
+      return "Vertical";
 
-        case WinCase::Diagonal:
-            return "Diagonal";
+    case WinCase::Diagonal:
+      return "Diagonal";
 
-        case WinCase::NoWinCase:
-            break;
-    }
+    case WinCase::NoWinCase:
+      break;
+  }
 
-    return "NoWinCase";
+  return "NoWinCase";
 }
 
-void Board::resetBoard()
+void
+Board::resetBoard()
 {
-    m_table.clear();
-    m_rows = 0;
-    m_columns = 0;
-    m_boardSize = 0;
+  m_table.clear();
+  m_rows = 0;
+  m_columns = 0;
+  m_boardSize = 0;
 
-    if (m_evenBoard)
-    {
-        m_evenBoard = false;
-    }
+  if (m_evenBoard)
+  {
+    m_evenBoard = false;
+  }
 
-    m_winCase = WinCase::NoWinCase;
+  m_winCase = WinCase::NoWinCase;
 }
 
 //Methods to help with display formatting
 //Positive ints only!
-bool Board::_isSingleDigit(const int column)
+bool
+Board::_isSingleDigit(const int column)
 {
-    return column < 10;
+  return column < 10;
 }
 
-bool Board::_isDoubleDigit(const int column)
+bool
+Board::_isDoubleDigit(const int column)
 {
-    return column >= 10 && column < 100;
+  return column >= 10 && column < 100;
 }
 
-bool Board::_isTripleDigit(const int column)
+bool
+Board::_isTripleDigit(const int column)
 {
-    return column >= 100 && column < 1000;
+  return column >= 100 && column < 1000;
 }
 
-void Board::_dashLine() const
+void
+Board::_dashLine() const
 {
-    for (int dashLine{ 0 }; dashLine < m_columns; dashLine++)
+  for (int dashLine{0}; dashLine < m_columns; dashLine++)
+  {
+    if (dashLine == 0)
     {
-        if (dashLine == 0)
-        {
-            std::cout << "|----|";
-        }
-        else
-        {
-            std::cout << "----|";
-        }
+      std::cout << "|----|";
     }
+    else
+    {
+      std::cout << "----|";
+    }
+  }
 
-    std::cout << '\n';
+  std::cout << '\n';
 }
 
-bool Board::isEmpty() const
+bool
+Board::isEmpty() const
 {
-    return m_table.empty();
+  return m_table.empty();
 }
 
-int Board::rows() const
+int
+Board::rows() const
 {
-    return m_rows;
+  return m_rows;
 }
 
-int Board::columns() const
+int
+Board::columns() const
 {
-    return m_columns;
+  return m_columns;
 }
 
-int Board::boardSize() const
+int
+Board::boardSize() const
 {
-    return m_boardSize;
+  return m_boardSize;
 }
 
-bool Board::isEvenBoard() const
+bool
+Board::isEvenBoard() const
 {
-    return m_evenBoard;
+  return m_evenBoard;
 }
 
-const Table& Board::internalTable() const
+const Table&
+Board::internalTable() const
 {
-    return m_table;
+  return m_table;
 }

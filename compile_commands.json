@@ -1,0 +1,74 @@
+[
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\CLI-TicTacToe.dir\\App\\main.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\App\\main.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\App\\main.cpp",
+  "output": "CMakeFiles\\CLI-TicTacToe.dir\\App\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoTicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoe.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoe.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoe.cpp",
+  "output": "TicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoe.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoTicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoeUtil.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoeUtil.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoeUtil.cpp",
+  "output": "TicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoeUtil.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoTicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoeMoveLogic.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoeMoveLogic.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoeMoveLogic.cpp",
+  "output": "TicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoeMoveLogic.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoTicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoeGameLogic.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoeGameLogic.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\TicTacToe\\src\\tictactoeGameLogic.cpp",
+  "output": "TicTacToe\\CMakeFiles\\TicTacToe.dir\\src\\tictactoeGameLogic.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoBoard\\CMakeFiles\\Board.dir\\src\\boardTableLogic.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\boardTableLogic.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\boardTableLogic.cpp",
+  "output": "Board\\CMakeFiles\\Board.dir\\src\\boardTableLogic.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoBoard\\CMakeFiles\\Board.dir\\src\\boardUtil.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\boardUtil.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\boardUtil.cpp",
+  "output": "Board\\CMakeFiles\\Board.dir\\src\\boardUtil.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoBoard\\CMakeFiles\\Board.dir\\src\\isWinConfig.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\isWinConfig.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\isWinConfig.cpp",
+  "output": "Board\\CMakeFiles\\Board.dir\\src\\isWinConfig.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoBoard\\CMakeFiles\\Board.dir\\src\\debug\\setWinConfig.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\debug\\setWinConfig.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\debug\\setWinConfig.cpp",
+  "output": "Board\\CMakeFiles\\Board.dir\\src\\debug\\setWinConfig.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoBoard\\CMakeFiles\\Board.dir\\src\\debug\\clearWinConfig.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\debug\\clearWinConfig.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\debug\\clearWinConfig.cpp",
+  "output": "Board\\CMakeFiles\\Board.dir\\src\\debug\\clearWinConfig.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoBoard\\CMakeFiles\\Board.dir\\src\\debug\\isValidWinCase.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\debug\\isValidWinCase.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Board\\src\\debug\\isValidWinCase.cpp",
+  "output": "Board\\CMakeFiles\\Board.dir\\src\\debug\\isValidWinCase.cpp.obj"
+},
+{
+  "directory": "C:/Users/Solomon/Documents/CLI-TicTacToe/out/build/x64-Debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1438~1.331\\bin\\Hostx86\\x64\\cl.exe  /nologo /TP -IC:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoPlayer\\CMakeFiles\\Player.dir\\src\\player.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\src\\player.cpp",
+  "file": "C:\\Users\\Solomon\\Documents\\CLI-TicTacToe\\Player\\src\\player.cpp",
+  "output": "Player\\CMakeFiles\\Player.dir\\src\\player.cpp.obj"
+}
+]
