@@ -4,8 +4,8 @@
 #include <string_view>
 #include <vector>
 
-#include "board.h"
-#include "player.h"
+#include "board.hpp"
+#include "player.hpp"
 
 class TicTacToe
 {

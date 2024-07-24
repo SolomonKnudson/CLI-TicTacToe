@@ -1,4 +1,4 @@
-#include "board.h"
+#include "board.hpp"
 #include <iostream>
 #include <string_view>
 using namespace BoardTypes;

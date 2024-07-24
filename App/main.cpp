@@ -1,4 +1,4 @@
-#include "tictactoe.h"
+#include "tictactoe.hpp"
 #include <iostream>
 
 int

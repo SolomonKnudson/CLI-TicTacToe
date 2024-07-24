@@ -1,4 +1,4 @@
-#include "board.h"
+#include "board.hpp"
 
 #ifdef BOARD_DEBUG
 using namespace BoardTypes;
