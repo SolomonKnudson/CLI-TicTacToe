@@ -4,8 +4,7 @@
 #include <string_view>
 #include <vector>
 
-//TODO: implement clearDiaWin
-//NOTE!: max board size that I can display is 63x63
+//NOTE!: max board size that I can display is 50x50
 
 //uncomment for automated win conditions
 #define BOARD_DEBUG
