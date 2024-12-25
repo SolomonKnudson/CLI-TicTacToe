@@ -20,21 +20,13 @@ Player::moves() const
 bool
 Player::isOccupying(const int move) const
 {
-  for (const auto& m_move : m_moves)
-  {
-    if (m_move == move)
-    {
-      return true;
-    }
-  }
-
-  return false;
+  return (m_moves.count(move) == 1);
 }
 
 void
 Player::addMove(const int move)
 {
-  m_moves.push_back(move);
+  m_moves.insert(move);
 }
 
 void

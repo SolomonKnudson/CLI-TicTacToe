@@ -1,11 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
-#include <vector>
+#include <unordered_set>
 
 class Player
 {
-  using Moves = std::vector<int>;
+  using Moves = std::unordered_set<int>;
 
 public:
   explicit Player(char mark = ' ', std::string_view name = "");
@@ -55,8 +55,6 @@ public:
   std::string_view
   name() const;
 
-  //Util
-  //void setWins(int wins) { m_wins = wins; }
 private:
   //Member Vars
   Moves m_moves{};
