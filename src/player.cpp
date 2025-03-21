@@ -1,4 +1,4 @@
-#include "player.hpp"
+#include <CLI-TicTacToe/player.hpp>
 
 //Constructors
 Player::Player(const char mark, const std::string_view name)

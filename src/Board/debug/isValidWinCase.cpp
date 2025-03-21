@@ -1,4 +1,4 @@
-#include "board.hpp"
+#include <CLI-TicTacToe/board.hpp>
 
 #ifdef BOARD_DEBUG
 using namespace BoardTypes;

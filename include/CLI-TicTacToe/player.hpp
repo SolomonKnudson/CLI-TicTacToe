@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef CLI_TICTACTOE_PLAYER_H
+#define CLI_TICTACTOE_PLAYER_H
 #include <string>
 #include <unordered_set>
 
@@ -63,4 +63,4 @@ private:
   int m_inValidMoves{};
   char m_mark{};
 };
-#endif // PLAYER_H
+#endif // CLI_TICTACTOE_PLAYER_H

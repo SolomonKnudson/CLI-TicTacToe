@@ -1,4 +1,4 @@
-#include "board.hpp"
+#include <CLI-TicTacToe/board.hpp>
 using namespace BoardTypes;
 
 //Win Logic

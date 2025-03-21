@@ -4,16 +4,26 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 project(TicTacToeRepo LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_BUILD_TYPE Debug)
+add_library(TicTacToe)
+add_library(CLI-TicTacToe::TicTacToe ALIAS TicTacToe)
 
-add_executable(CLI-TicTacToe
-  ${CMAKE_CURRENT_SOURCE_DIR}/App/main.cpp
+target_sources(TicTacToe PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoe.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeUtil.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeMoveLogic.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeGameLogic.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/player.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Board/boardTableLogic.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/boardUtil.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/isWinConfig.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/debug/setWinConfig.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/debug/clearWinConfig.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/debug/isValidWinCase.cpp
 )
 
+target_include_directories(TicTacToe PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_compile_features(TicTacToe PUBLIC cxx_std_17)
 
-target_link_libraries(CLI-TicTacToe PUBLIC TicTacToe)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TicTacToe)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Board)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Player)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/App)

@@ -1,4 +1,4 @@
-#include "tictactoe.hpp"
+#include <CLI-TicTacToe/tictactoe.hpp>
 #include <iostream>
 
 void
@@ -15,7 +15,8 @@ TicTacToe::_gameLoop()
       while (_currentPlayer().invalidMoves() <= m_totalInvalidMovesAllowed)
       {
         std::cout << "|Watch it, " << _currentPlayer().name()
-                  << ", that's an invalid table position," << " you have "
+                  << ", that's an invalid table position,"
+                  << " you have "
                   << m_totalInvalidMovesAllowed -
                          _currentPlayer().invalidMoves()
                   << " left!\n";

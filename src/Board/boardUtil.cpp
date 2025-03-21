@@ -1,4 +1,4 @@
-#include "board.hpp"
+#include <CLI-TicTacToe/board.hpp>
 #include <iostream>
 #include <string_view>
 using namespace BoardTypes;

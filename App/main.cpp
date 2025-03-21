@@ -1,4 +1,4 @@
-#include "tictactoe.hpp"
+#include <CLI-TicTacToe/tictactoe.hpp>
 #include <iostream>
 
 int
