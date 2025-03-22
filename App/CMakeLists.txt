@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.30)
 
 add_executable(CLI-TicTacToe
   ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
