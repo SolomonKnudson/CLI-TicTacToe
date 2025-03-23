@@ -1,11 +1,8 @@
-#ifndef TICTACTOE_H
-#define TICTACTOE_H
+#ifndef CLI_TICTACTOE_TICTACTOE_H
+#define CLI_TICTACTOE_TICTACTOE_H
 
-#include <string_view>
-#include <vector>
-
-#include "board.hpp"
-#include "player.hpp"
+#include <CLI-TicTacToe/board.hpp>
+#include <CLI-TicTacToe/player.hpp>
 
 class TicTacToe
 {
@@ -151,4 +148,4 @@ private:
   bool m_tie{};
   bool m_isFirstGame{};
 };
-#endif // TICTACTOE_H
+#endif // CLI_TICTACTOE_TICTACTOE_H

@@ -1,6 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
-
+#ifndef CLI_TICTACTOE_BOARD_H
+#define CLI_TICTACTOE_BOARD_H
 #include <string_view>
 #include <vector>
 
@@ -245,4 +244,4 @@ private:
   int m_boardSize{};
   bool m_evenBoard{};
 };
-#endif // BOARD_H
+#endif // CLI_TICTACTOE_BOARD_H

@@ -1,6 +1,7 @@
 #ifndef CLI_TICTACTOE_PLAYER_H
 #define CLI_TICTACTOE_PLAYER_H
 #include <string>
+#include <string_view>
 #include <unordered_set>
 
 class Player
