@@ -36,11 +36,11 @@ public:
   resetInvalidMoves();
 
   //Mark Logic
-  int
+  char
   mark() const;
 
   void
-  setMark(int mark);
+  setMark(char mark);
 
   //Win Count Logic
   int

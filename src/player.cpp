@@ -55,14 +55,14 @@ Player::resetInvalidMoves()
 }
 
 //Mark Logic
-int
+char
 Player::mark() const
 {
   return m_mark;
 }
 
 void
-Player::setMark(const int mark)
+Player::setMark(const char mark)
 {
   m_mark = mark;
 }
