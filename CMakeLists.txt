@@ -12,14 +12,14 @@ add_library(TicTacToe)
 add_library(CLI-TicTacToe::TicTacToe ALIAS TicTacToe)
 
 target_sources(TicTacToe PRIVATE 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoe.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoe.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeUtil.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeMoveLogic.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeGameLogic.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/TicTacToe/tictactoeGameLogic.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/player.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/player.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Board/boardTableLogic.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/Board/boardTableLogic.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/boardUtil.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/isWinConfig.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Board/debug/setWinConfig.cpp
@@ -28,7 +28,7 @@ target_sources(TicTacToe PRIVATE
 )
 
 target_include_directories(TicTacToe PUBLIC 
-$<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/App)
