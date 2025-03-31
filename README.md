@@ -228,7 +228,7 @@
 [tieGame]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/tieGame.png
 
 [illegalMoveWarning]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/illegalMoveWarning.png
-[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/foreitMoves.png
+[forfeitMoves]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/GameRules/forfeitMoves.png
 [chronoMatchHist]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Features/chronoMatchHist.png
 [testBoard]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Features/testBoard.gif
 
