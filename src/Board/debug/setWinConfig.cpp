@@ -57,7 +57,7 @@ Board::setTie(const char playerMark)
 }
 
 bool
-Board::setDiagonalWin(int startColumn,
+Board::setDiagonalWin(const int startColumn,
                       const char playerMark,
                       const bool reverseWin)
 {
@@ -94,7 +94,7 @@ Board::setDiagonalWin(int startColumn,
 
 //Util methods for setDiaWin
 void
-Board::_setDiagonalWinEvenBoard(const char playerMark, bool reverseWin)
+Board::_setDiagonalWinEvenBoard(const char playerMark, const bool reverseWin)
 {
   if (!reverseWin)
   {
