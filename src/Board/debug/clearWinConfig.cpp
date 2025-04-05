@@ -150,10 +150,10 @@ Board::_clearDiagonalWinLopsidedRow(const char playerMark)
       {
         for (int row{0}; row < m_rows; row++)
         {
-          if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag ==
+          if (m_table[row][static_cast<size_t>(column - row)].m_playerFlag ==
               playerMark)
           {
-            m_table[row].at(static_cast<size_t>(column - row)).reset();
+            m_table[row][static_cast<size_t>(column - row)].reset();
           }
         }
       }
@@ -174,8 +174,8 @@ Board::_clearDiagonalWinLopsidedColumn(const char playerMark)
       {
         for (int row{0}; row < (m_rows - rowOffset); ++row)
         {
-          if (m_table.at(static_cast<size_t>(row + rowStart))[row]
-                  .m_playerFlag == playerMark)
+          if (m_table[static_cast<size_t>(row + rowStart)][row].m_playerFlag ==
+              playerMark)
           {
             m_table[static_cast<size_t>(row + rowStart)][row].reset();
           }
@@ -193,9 +193,9 @@ Board::_clearDiagonalWinLopsidedColumn(const char playerMark)
       {
         for (int row{0}; row < (m_rows - rowOffset); row++)
         {
-          if (m_table.at(static_cast<size_t>(row + rowStart))
-                  .at(static_cast<size_t>(lastColumn - row))
-                  .m_playerFlag == playerMark)
+          if (m_table[static_cast<size_t>(row + rowStart)]
+                     [static_cast<size_t>(lastColumn - row)]
+                         .m_playerFlag == playerMark)
           {
             m_table[static_cast<size_t>(row + rowStart)]
                    [static_cast<size_t>(lastColumn - row)]

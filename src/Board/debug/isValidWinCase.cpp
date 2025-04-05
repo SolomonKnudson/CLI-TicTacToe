@@ -147,9 +147,8 @@ Board::_validDiagonalWinCases() const
     //reverse cases
     for (int i{0}; i <= offSet; ++i)
     {
-      winCases.push_back(m_table[0]
-                             .at(static_cast<size_t>((m_columns - 1) - i))
-                             .m_piecePosition);
+      winCases.push_back(
+          m_table[0][static_cast<size_t>((m_columns - 1) - i)].m_piecePosition);
     }
   }
   else if (m_columns < m_rows)

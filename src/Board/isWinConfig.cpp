@@ -120,7 +120,7 @@ Board::_isDiagonalWinEvenBoard(const char playerMark) const
   //Reverse case
   for (int row{0}, columnOffSet{m_columns - 1}; row < m_rows; row++)
   {
-    if (m_table[row].at(static_cast<size_t>(columnOffSet - row)).m_playerFlag ==
+    if (m_table[row][static_cast<size_t>(columnOffSet - row)].m_playerFlag ==
         playerMark)
     {
       inARow++;
@@ -148,7 +148,7 @@ Board::_isDiagonalWinLopsidedRow(const char playerMark) const
   {
     for (int row{0}; row < m_rows; ++row)
     {
-      if (m_table[row].at(static_cast<size_t>(column + row)).m_playerFlag ==
+      if (m_table[row][static_cast<size_t>(column + row)].m_playerFlag ==
           playerMark)
       {
         inARow++;
@@ -172,7 +172,7 @@ Board::_isDiagonalWinLopsidedRow(const char playerMark) const
   {
     for (int row{0}; row < m_rows; row++)
     {
-      if (m_table[row].at(static_cast<size_t>(column - row)).m_playerFlag ==
+      if (m_table[row][static_cast<size_t>(column - row)].m_playerFlag ==
           playerMark)
       {
         inARow++;
@@ -207,7 +207,7 @@ Board::_isDiagonalWinLopsidedColumn(const char playerMark) const
 
     for (int row{0}; row < (m_rows - rowOffset); ++row)
     {
-      if (m_table.at(static_cast<size_t>(rowStart + row))[row].m_playerFlag ==
+      if (m_table[static_cast<size_t>(rowStart + row)][row].m_playerFlag ==
           playerMark)
       {
         inARow++;
@@ -230,9 +230,9 @@ Board::_isDiagonalWinLopsidedColumn(const char playerMark) const
   {
     for (int row{0}, column{m_columns - 1}; row < (m_rows - rowOffset); row++)
     {
-      if (m_table.at(static_cast<size_t>(row + rowStart))
-              .at(static_cast<size_t>(column - row))
-              .m_playerFlag == playerMark)
+      if (m_table[static_cast<size_t>(row + rowStart)]
+                 [static_cast<size_t>(column - row)]
+                     .m_playerFlag == playerMark)
       {
         inARow++;
         continue;
