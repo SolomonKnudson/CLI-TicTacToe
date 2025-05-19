@@ -1,241 +1,275 @@
 #include <CLI-TicTacToe/board.hpp>
+#include <CLI-TicTacToe/boardDebug.hpp>
 
-#ifdef BOARD_DEBUG
 using namespace BoardTypes;
+using namespace BoardDebug::util;
 
-void
-Board::clearWinConfiguration(const char playerMark)
+namespace BoardDebug
 {
-  if (m_winCase == WinCase::NoWinCase)
+  void
+  clearWinConfiguration(Board& board, const char playerMark)
   {
-    return;
-  }
+    WinCase winCase{board.winCase()};
 
-  if (_multipleWinCases(playerMark))
-  {
-    setBoard(m_rows, m_columns);
-    return;
-  }
-
-  switch (m_winCase)
-  {
-    case WinCase::Lateral:
-      _clearLateralWin(playerMark);
-      break;
-
-    case WinCase::Vertical:
-      _clearVerticalWin(playerMark);
-      break;
-
-    case WinCase::Diagonal:
-      //The work required to undo a single diagonal win case isn't worth
-      //the headache. <----- I lied.
-      _clearDiagonalWin(playerMark);
-      break;
-
-    case WinCase::NoWinCase:
+    if (winCase == WinCase::NoWinCase)
+    {
       return;
+    }
+
+    if (multipleWinCases(board, playerMark))
+    {
+      board.setBoard(board.rows(), board.columns());
+      return;
+    }
+
+    switch (winCase)
+    {
+      case WinCase::Lateral:
+        clearLateralWin(board, playerMark);
+        break;
+
+      case WinCase::Vertical:
+        clearVerticalWin(board, playerMark);
+        break;
+
+      case WinCase::Diagonal:
+        //The work required to undo a single diagonal win case isn't worth
+        //the headache. <----- I lied.
+        clearDiagonalWin(board, playerMark);
+        break;
+
+      case WinCase::NoWinCase:
+        return;
+    }
+
+    winCase = WinCase::NoWinCase;
   }
 
-  m_winCase = WinCase::NoWinCase;
-}
-
-//Util methods for clearWinConfig
-void
-Board::_clearLateralWin(const char playerMark)
-{
-  for (int row{0}; row < m_rows; ++row)
+  //Util methods for clearWinConfig
+  void
+  clearLateralWin(Board& board, const char playerMark)
   {
-    if (m_table[row][0].m_playerFlag == playerMark)
+    int rows{board.rows()};
+    int columns{board.columns()};
+
+    Table& table{board.internalTable()};
+
+    for (int row{0}; row < rows; ++row)
     {
-      for (int column{0}; column < m_columns; ++column)
+      if (table[row][0].m_playerFlag == playerMark)
       {
-        if (m_table[row][column].m_playerFlag == playerMark)
+        for (int column{0}; column < columns; ++column)
         {
-          m_table[row][column].reset();
-        }
-      }
-    }
-  }
-}
-
-void
-Board::_clearVerticalWin(const char playerMark)
-{
-  for (int startColumn{0}; startColumn < m_columns; ++startColumn)
-  {
-    if (m_table[0][startColumn].m_playerFlag == playerMark)
-    {
-      for (int row{0}; row < m_rows; ++row)
-      {
-        if (m_table[row][startColumn].m_playerFlag == playerMark)
-        {
-          m_table[row][startColumn].reset();
-        }
-      }
-    }
-  }
-}
-
-void
-Board::_clearDiagonalWin(const char playerMark)
-{
-  if (m_rows < m_columns)
-  {
-    _clearDiagonalWinLopsidedRow(playerMark);
-  }
-  else if (m_columns < m_rows)
-  {
-    _clearDiagonalWinLopsidedColumn(playerMark);
-  }
-  else if (m_evenBoard)
-  {
-    _clearDiagonalWinEvenBoard(playerMark);
-  }
-}
-
-void
-Board::_clearDiagonalWinEvenBoard(const char playerMark)
-{
-  if (!m_diagonalReverseWin)
-  {
-    for (int row{0}, column{0}; row < m_columns; ++row, ++column)
-    {
-      if (m_table[row][column].m_playerFlag == playerMark)
-      {
-        m_table[row][column].reset();
-      }
-    }
-  }
-  else
-  {
-    for (int row{0}, columnOffset{m_columns - 1}; row < m_columns;
-         ++row, --columnOffset)
-    {
-      if (m_table[row][columnOffset].m_playerFlag == playerMark)
-      {
-        m_table[row][columnOffset].reset();
-      }
-    }
-  }
-}
-
-void
-Board::_clearDiagonalWinLopsidedRow(const char playerMark)
-{
-  int columnOffSet{m_columns - m_rows};
-
-  if (!m_diagonalReverseWin)
-  {
-    for (int columnStart{0}; columnStart <= columnOffSet; ++columnStart)
-    {
-      if (m_table[0][columnStart].m_playerFlag == playerMark)
-      {
-        for (int row{0}, column{columnStart}; row < m_rows; ++row, ++column)
-        {
-          if (m_table[row][column].m_playerFlag == playerMark)
+          if (table[row][column].m_playerFlag == playerMark)
           {
-            m_table[row][column].reset();
+            table[row][column].reset();
           }
         }
       }
     }
   }
-  else
+
+  void
+  clearVerticalWin(Board& board, const char playerMark)
   {
-    for (int column{m_columns - 1}; column >= ((m_columns - 1) - columnOffSet);
-         column--)
+    int rows{board.rows()};
+    int columns{board.columns()};
+
+    Table& table{board.internalTable()};
+
+    for (int startColumn{0}; startColumn < columns; ++startColumn)
     {
-      if (m_table[0][column].m_playerFlag == playerMark)
+      if (table[0][startColumn].m_playerFlag == playerMark)
       {
-        for (int row{0}; row < m_rows; row++)
+        for (int row{0}; row < rows; ++row)
         {
-          if (m_table[row][static_cast<size_t>(column - row)].m_playerFlag ==
-              playerMark)
+          if (table[row][startColumn].m_playerFlag == playerMark)
           {
-            m_table[row][static_cast<size_t>(column - row)].reset();
+            table[row][startColumn].reset();
           }
         }
       }
     }
   }
-}
 
-void
-Board::_clearDiagonalWinLopsidedColumn(const char playerMark)
-{
-  int rowOffset{m_rows - m_columns};
-
-  if (!m_diagonalReverseWin)
+  void
+  clearDiagonalWin(Board& board, const char playerMark)
   {
-    for (int rowStart{0}; rowStart <= rowOffset; ++rowStart)
+    int rows{board.rows()};
+    int columns{board.columns()};
+
+    if (rows < columns)
     {
-      if (m_table[rowStart][0].m_playerFlag == playerMark)
+      clearDiagonalWinLopsidedRow(board, playerMark);
+    }
+    else if (columns < rows)
+    {
+      clearDiagonalWinLopsidedColumn(board, playerMark);
+    }
+    else if (board.isEvenBoard())
+    {
+      clearDiagonalWinEvenBoard(board, playerMark);
+    }
+  }
+
+  void
+  clearDiagonalWinEvenBoard(Board& board, const char playerMark)
+  {
+    int rows{board.rows()};
+    int columns{board.columns()};
+
+    Table& table{board.internalTable()};
+
+    if (!diagonalReverseWin)
+    {
+      for (int row{0}, column{0}; row < columns; ++row, ++column)
       {
-        for (int row{0}; row < (m_rows - rowOffset); ++row)
+        if (table[row][column].m_playerFlag == playerMark)
         {
-          if (m_table[static_cast<size_t>(row + rowStart)][row].m_playerFlag ==
-              playerMark)
+          table[row][column].reset();
+        }
+      }
+    }
+    else
+    {
+      for (int row{0}, columnOffset{columns - 1}; row < columns;
+           ++row, --columnOffset)
+      {
+        if (table[row][columnOffset].m_playerFlag == playerMark)
+        {
+          table[row][columnOffset].reset();
+        }
+      }
+    }
+  }
+
+  void
+  clearDiagonalWinLopsidedRow(Board& board, const char playerMark)
+  {
+    int rows{board.rows()};
+    int columns{board.columns()};
+
+    Table& table{board.internalTable()};
+
+    int columnOffSet{columns - rows};
+
+    if (!diagonalReverseWin)
+    {
+      for (int columnStart{0}; columnStart <= columnOffSet; ++columnStart)
+      {
+        if (table[0][columnStart].m_playerFlag == playerMark)
+        {
+          for (int row{0}, column{columnStart}; row < rows; ++row, ++column)
           {
-            m_table[static_cast<size_t>(row + rowStart)][row].reset();
+            if (table[row][column].m_playerFlag == playerMark)
+            {
+              table[row][column].reset();
+            }
+          }
+        }
+      }
+    }
+    else
+    {
+      for (int column{columns - 1}; column >= ((columns - 1) - columnOffSet);
+           column--)
+      {
+        if (table[0][column].m_playerFlag == playerMark)
+        {
+          for (int row{0}; row < rows; ++row)
+          {
+            if (table[row][static_cast<size_t>(column - row)].m_playerFlag ==
+                playerMark)
+            {
+              table[row][static_cast<size_t>(column - row)].reset();
+            }
           }
         }
       }
     }
   }
-  else
-  {
 
-    for (int rowStart{0}, lastColumn{m_columns - 1}; rowStart <= rowOffset;
-         ++rowStart)
+  void
+  clearDiagonalWinLopsidedColumn(Board& board, const char playerMark)
+  {
+    int rows{board.rows()};
+    int columns{board.columns()};
+
+    Table& table{board.internalTable()};
+
+    int rowOffset{rows - columns};
+
+    if (!diagonalReverseWin)
     {
-      if (m_table[rowStart][lastColumn].m_playerFlag == playerMark)
+      for (int rowStart{0}; rowStart <= rowOffset; ++rowStart)
       {
-        for (int row{0}; row < (m_rows - rowOffset); row++)
+        if (table[rowStart][0].m_playerFlag == playerMark)
         {
-          if (m_table[static_cast<size_t>(row + rowStart)]
+          for (int row{0}; row < (rows - rowOffset); ++row)
+          {
+            if (table[static_cast<size_t>(row + rowStart)][row].m_playerFlag ==
+                playerMark)
+            {
+              table[static_cast<size_t>(row + rowStart)][row].reset();
+            }
+          }
+        }
+      }
+    }
+    else
+    {
+
+      for (int rowStart{0}, lastColumn{columns - 1}; rowStart <= rowOffset;
+           ++rowStart)
+      {
+        if (table[rowStart][lastColumn].m_playerFlag == playerMark)
+        {
+          for (int row{0}; row < (rows - rowOffset); ++row)
+          {
+            if (table[static_cast<size_t>(row + rowStart)]
                      [static_cast<size_t>(lastColumn - row)]
                          .m_playerFlag == playerMark)
-          {
-            m_table[static_cast<size_t>(row + rowStart)]
+            {
+              table[static_cast<size_t>(row + rowStart)]
                    [static_cast<size_t>(lastColumn - row)]
                        .reset();
+            }
           }
         }
       }
     }
   }
-}
 
-bool
-Board::_multipleWinCases(const char playerMark) const
-{
-  int winCaseCount{};
-  if (_isLateralWin(playerMark))
+  bool
+  multipleWinCases(Board& board, const char playerMark)
   {
-    ++winCaseCount;
-  }
+    int winCaseCount{};
 
-  if (_isVerticalWin(playerMark))
-  {
-    ++winCaseCount;
-  }
+    if (board.isLateralWin(playerMark))
+    {
+      ++winCaseCount;
+    }
 
-  //isDia does a lot of looping, only call if you have to.
-  if (winCaseCount == 0)
-  {
-    return false;
-  }
-  else if (winCaseCount > 1)
-  {
-    return true;
-  }
+    if (board.isVerticalWin(playerMark))
+    {
+      ++winCaseCount;
+    }
 
-  if (_isDiagonalWin(playerMark))
-  {
-    ++winCaseCount;
-  }
+    //isDia does a lot of looping, only call if you have to.
+    if (winCaseCount == 0)
+    {
+      return false;
+    }
+    else if (winCaseCount > 1)
+    {
+      return true;
+    }
 
-  return (winCaseCount > 1);
-}
-#endif
+    if (board.isDiagonalWin(playerMark))
+    {
+      ++winCaseCount;
+    }
+
+    return winCaseCount > 1;
+  }
+} // namespace BoardDebug
