@@ -1,58 +1,11 @@
 #ifndef CLI_TICTACTOE_BOARD_H
 #define CLI_TICTACTOE_BOARD_H
+#include <CLI-TicTacToe/boardTypes.hpp>
 #include <string_view>
 #include <vector>
 
-//NOTE!: max board size that I can display is 50x50
-
 //uncomment for automated win conditions
-#define BOARD_DEBUG
-
-namespace BoardTypes
-{
-  struct BoardPiece
-  {
-    void
-    reset()
-    {
-      m_playerFlag = ' ';
-      m_playerIsOccupying = false;
-    }
-
-    explicit BoardPiece(int piecePosition, char playerFlag = ' ')
-      : m_piecePosition{piecePosition}
-      , m_playerFlag{playerFlag}
-      , m_playerIsOccupying{false}
-    {
-    }
-
-    int m_piecePosition{};
-    char m_playerFlag{};
-    bool m_playerIsOccupying{};
-  };
-
-  using Table = std::vector<std::vector<BoardPiece>>;
-
-  enum BoardSize
-  {
-    standardRow = 3,
-    standardColumn = 3,
-    standardSize = standardRow * standardColumn,
-
-    maxRow = 50,
-    maxColumn = 50,
-    maxSize = maxRow * maxColumn //50x50 hard cap.(changed cmds)
-  };
-
-  enum class WinCase
-  {
-    Lateral,
-    Vertical,
-
-    Diagonal,
-    NoWinCase
-  };
-} // namespace BoardTypes
+//#define BOARD_DEBUG
 
 class Board
 {
@@ -95,11 +48,24 @@ public:
   bool
   isWinningMove(char playerMark) const;
 
+  //Win subcases(Util methods for isWiningMove())
+  bool
+  isLateralWin(char playerMark) const;
+
+  bool
+  isVerticalWin(char playerMark) const;
+
+  bool
+  isDiagonalWin(char playerMark) const;
+
   bool
   isTie() const;
 
   //Util
   std::string_view
+  winCaseToString() const;
+
+  BoardTypes::WinCase
   winCase() const;
 
   bool
@@ -109,99 +75,15 @@ public:
   isEvenBoard() const;
 
   const BoardTypes::Table&
-  internalTable() const;
+  cInternalTable() const;
+
+  BoardTypes::Table&
+  internalTable();
 
   void
   resetBoard();
 
-#ifdef BOARD_DEBUG
-  //methods to set diff win conditions
-  bool
-  setLateralWin(int row, char playerMark);
-
-  bool
-  setVerticalWin(int column, char playerMark);
-
-  bool
-  setDiagonalWin(int startPoint, char playerMark, bool reverseWin = false);
-
-  bool
-  setTie(char playerMark);
-
-  void
-  clearWinConfiguration(char playerMark);
-
 private:
-  struct ValidWinCases
-  {
-    std::vector<int> m_lateralCases{};
-    std::vector<int> m_verticalCases{};
-    std::vector<int> m_diagonalCases{};
-  };
-
-  //util methods for board debugging
-  void
-  _setDiagonalWinEvenBoard(char playerMark, bool reverseWin);
-
-  void
-  _setDiagonalWinLopsidedRow(int startColumn, char playerMark, bool reverseWin);
-
-  void
-  _setDiagonalWinLopsidedColumn(int startRow, char playerMark, bool reverseWin);
-
-  bool
-  _isValidWinCase(int startPoint,
-                  BoardTypes::WinCase winCase,
-                  bool reverseWin = false);
-
-  static bool
-  _isValidWin(const std::vector<int>& winCases, int startPoint);
-
-  static bool
-  _isValidDiagonalWin(const std::vector<int>& winCases,
-                      int startPoint,
-                      bool reverseWin = false);
-
-  //Util methods for isValidWinCase()
-  void
-  _recalculateWinCases(ValidWinCases& winCases);
-
-  std::vector<int>
-  _validLateralWinCases() const;
-
-  std::vector<int>
-  _validVerticalWinCases() const;
-
-  std::vector<int>
-  _validDiagonalWinCases() const;
-
-  //Util mehods for clearWinConFig()
-  void
-  _clearLateralWin(char playerMark);
-
-  void
-  _clearVerticalWin(char playerMark);
-
-  void
-  _clearDiagonalWin(char playerMark);
-
-  //Util for clearDiaWin();
-  void
-  _clearDiagonalWinEvenBoard(char playerMark);
-
-  void
-  _clearDiagonalWinLopsidedRow(char playerMark);
-
-  void
-  _clearDiagonalWinLopsidedColumn(char playerMark);
-
-  bool
-  _multipleWinCases(char playerMark) const;
-
-  bool m_diagonalReverseWin{};
-#else
-private:
-#endif //BOARD_DEBUG
   //Methods to help with display formatting
   //Positive ints only!
   static bool
@@ -215,16 +97,6 @@ private:
 
   void
   _dashLine() const;
-
-  //Win subcases(Util methods for isWiningMove())
-  bool
-  _isLateralWin(char playerMark) const;
-
-  bool
-  _isVerticalWin(char playerMark) const;
-
-  bool
-  _isDiagonalWin(char playerMark) const;
 
   //Diagonal subcases(Util methods for _isDiaWin)
   bool

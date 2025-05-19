@@ -1,3 +1,4 @@
+#include <CLI-TicTacToe/boardDebug.hpp>
 #include <CLI-TicTacToe/tictactoe.hpp>
 #include <iostream>
 
@@ -11,15 +12,15 @@ main(int argc, char* argv[])
   Board testBoard{15, 15};
   testBoard.display();
 
-  testBoard.setDiagonalWin(8, playerX, true);
+  BoardDebug::setDiagonalWin(testBoard, 8, playerX, true);
   testBoard.display();
 
   if (testBoard.isWinningMove(playerX))
   {
-    std::cout << "|Win Case: " << testBoard.winCase() << '\n';
+    std::cout << "|Win Case: " << testBoard.winCaseToString() << '\n';
   }
 
-  testBoard.clearWinConfiguration(playerX);
+  BoardDebug::clearWinConfiguration(testBoard, playerX);
   testBoard.display();
 
   TicTacToe ticTacToe{};

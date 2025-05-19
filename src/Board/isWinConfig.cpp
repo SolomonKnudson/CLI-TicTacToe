@@ -5,17 +5,17 @@ using namespace BoardTypes;
 bool
 Board::isWinningMove(const char playerMark) const
 {
-  if (_isLateralWin(playerMark))
+  if (isLateralWin(playerMark))
   {
     m_winCase = WinCase::Lateral;
     return true;
   }
-  else if (_isVerticalWin(playerMark))
+  else if (isVerticalWin(playerMark))
   {
     m_winCase = WinCase::Vertical;
     return true;
   }
-  else if (_isDiagonalWin(playerMark))
+  else if (isDiagonalWin(playerMark))
   {
     m_winCase = WinCase::Diagonal;
     return true;
@@ -26,7 +26,7 @@ Board::isWinningMove(const char playerMark) const
 
 //Util methods for isWinningMove
 bool
-Board::_isLateralWin(const char playerMark) const
+Board::isLateralWin(const char playerMark) const
 {
   int inARow{};
   for (const auto& row : m_table)
@@ -52,7 +52,7 @@ Board::_isLateralWin(const char playerMark) const
 }
 
 bool
-Board::_isVerticalWin(const char playerMark) const
+Board::isVerticalWin(const char playerMark) const
 {
   int inARow{};
   for (int column{0}; column < m_columns; ++column)
@@ -78,7 +78,7 @@ Board::_isVerticalWin(const char playerMark) const
 }
 
 bool
-Board::_isDiagonalWin(const char playerMark) const
+Board::isDiagonalWin(const char playerMark) const
 {
   if (m_evenBoard)
   {

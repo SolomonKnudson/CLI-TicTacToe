@@ -101,94 +101,100 @@ namespace BoardDebug
     return true;
   }
 
-  //Util methods for setDiaWin
-  void
-  setDiagonalWinEvenBoard(Board& board,
-                          const char playerMark,
-                          const bool reverseWin)
+  namespace util
   {
-    int rows{board.rows()};
-    int columns{board.columns()};
-
-    Table& table{board.internalTable()};
-
-    if (!reverseWin)
-    {
-      for (int row{0}, column{0}; row < rows; ++row, ++column)
-      {
-        board.coverBoardSlot(table[row][column].m_piecePosition, playerMark);
-      }
-    }
-    else
-    {
-      //Reverse case
-      for (int row{0}, columnOffSet{columns - 1}; row < rows; ++row)
-      {
-        board.coverBoardSlot(
-            table[row][static_cast<size_t>(columnOffSet - row)].m_piecePosition,
-            playerMark);
-      }
-    }
-  }
-
-  void
-  setDiagonalWinLopsidedRow(Board& board,
-                            int startColumn,
+    //Util methods for setDiaWin
+    void
+    setDiagonalWinEvenBoard(Board& board,
                             const char playerMark,
                             const bool reverseWin)
-  {
-    //convert to index as columns in the rows are not 0 indexed
-    --startColumn;
-
-    int rows{board.rows()};
-    int columns{board.columns()};
-
-    Table& table{board.internalTable()};
-
-    if (!reverseWin)
     {
-      for (int row{0}, column{startColumn}; row < rows; row++)
+      int rows{board.rows()};
+      int columns{board.columns()};
+
+      Table& table{board.internalTable()};
+
+      if (!reverseWin)
       {
-        board.coverBoardSlot(
-            table[row][static_cast<size_t>(column + row)].m_piecePosition,
-            playerMark);
+        for (int row{0}, column{0}; row < rows; ++row, ++column)
+        {
+          board.coverBoardSlot(table[row][column].m_piecePosition, playerMark);
+        }
+      }
+      else
+      {
+        //Reverse case
+        for (int row{0}, columnOffSet{columns - 1}; row < rows; ++row)
+        {
+          board.coverBoardSlot(
+              table[row][static_cast<size_t>(columnOffSet - row)]
+                  .m_piecePosition,
+              playerMark);
+        }
       }
     }
-    else
-    {
-      //Reverse case
-      for (int row{0}, column{startColumn}; row < rows; ++row)
-      {
-        board.coverBoardSlot(
-            table[row][static_cast<size_t>(column - row)].m_piecePosition,
-            playerMark);
-      }
-    }
-  }
 
-  void
-  setDiagonalWinLopsidedColumn(Board& board,
-                               int startRow,
-                               const char playerMark,
-                               const bool reverseWin)
-  {
-    int rows{board.rows()};
-    int columns{board.columns()};
+    void
+    setDiagonalWinLopsidedRow(Board& board,
+                              int startColumn,
+                              const char playerMark,
+                              const bool reverseWin)
+    {
+      //convert to index as columns in the rows are not 0 indexed
+      --startColumn;
 
-    if (!reverseWin)
-    {
-      for (int column{0}; column < columns; ++column, startRow += (columns + 1))
+      int rows{board.rows()};
+      int columns{board.columns()};
+
+      Table& table{board.internalTable()};
+
+      if (!reverseWin)
       {
-        board.coverBoardSlot(startRow, playerMark);
+        for (int row{0}, column{startColumn}; row < rows; row++)
+        {
+          board.coverBoardSlot(
+              table[row][static_cast<size_t>(column + row)].m_piecePosition,
+              playerMark);
+        }
+      }
+      else
+      {
+        //Reverse case
+        for (int row{0}, column{startColumn}; row < rows; ++row)
+        {
+          board.coverBoardSlot(
+              table[row][static_cast<size_t>(column - row)].m_piecePosition,
+              playerMark);
+        }
       }
     }
-    else
+
+    void
+    setDiagonalWinLopsidedColumn(Board& board,
+                                 int startRow,
+                                 const char playerMark,
+                                 const bool reverseWin)
     {
-      //Reverse case
-      for (int column{0}; column < columns; ++column, startRow += (columns - 1))
+      int rows{board.rows()};
+      int columns{board.columns()};
+
+      if (!reverseWin)
       {
-        board.coverBoardSlot(startRow, playerMark);
+        for (int column{0}; column < columns;
+             ++column, startRow += (columns + 1))
+        {
+          board.coverBoardSlot(startRow, playerMark);
+        }
+      }
+      else
+      {
+        //Reverse case
+        for (int column{0}; column < columns;
+             ++column, startRow += (columns - 1))
+        {
+          board.coverBoardSlot(startRow, playerMark);
+        }
       }
     }
-  }
+  } // namespace util
 } // namespace BoardDebug

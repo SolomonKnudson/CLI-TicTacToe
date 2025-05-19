@@ -2,6 +2,7 @@
 #include <iostream>
 
 #ifdef BOARD_DEBUG
+#include <CLI-TicTacToe/boardDebug.hpp>
 #include <sstream>
 #endif // BOARD_DEBUG
 
@@ -74,11 +75,13 @@ TicTacToe::_runCommand()
 {
   if (m_debugCommand.m_commandString == "setL")
   {
-    m_board.setLateralWin(m_debugCommand.m_commandValue, m_currentPlayerMark);
+    BoardDebug::setLateralWin(
+        m_board, m_debugCommand.m_commandValue, m_currentPlayerMark);
   }
   else if (m_debugCommand.m_commandString == "setV")
   {
-    m_board.setVerticalWin(m_debugCommand.m_commandValue, m_currentPlayerMark);
+    BoardDebug::setVerticalWin(
+        m_board, m_debugCommand.m_commandValue, m_currentPlayerMark);
   }
   else if (m_debugCommand.m_commandString == "setD")
   {
@@ -87,19 +90,21 @@ TicTacToe::_runCommand()
       m_tablePosition = m_board.internalTable()[0][0].m_piecePosition;
     }
 
-    m_board.setDiagonalWin(m_debugCommand.m_commandValue, m_currentPlayerMark);
+    BoardDebug::setDiagonalWin(
+        m_board, m_debugCommand.m_commandValue, m_currentPlayerMark);
   }
   else if (m_debugCommand.m_commandString == "setDr")
   {
     if (m_board.isEvenBoard())
     {
       m_tablePosition =
-          m_board.internalTable()[0][static_cast<size_t>(m_board.columns() - 1)]
+          m_board
+              .cInternalTable()[0][static_cast<size_t>(m_board.columns() - 1)]
               .m_piecePosition;
     }
 
-    m_board.setDiagonalWin(
-        m_debugCommand.m_commandValue, m_currentPlayerMark, true);
+    BoardDebug::setDiagonalWin(
+        m_board, m_debugCommand.m_commandValue, m_currentPlayerMark, true);
   }
 }
 #endif // BOARD_DEBUG

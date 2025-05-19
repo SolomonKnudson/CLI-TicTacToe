@@ -4,8 +4,14 @@
 using namespace BoardTypes;
 
 //Util Logic
-std::string_view
+WinCase
 Board::winCase() const
+{
+  return m_winCase;
+}
+
+std::string_view
+Board::winCaseToString() const
 {
   switch (m_winCase)
   {
@@ -110,7 +116,13 @@ Board::isEvenBoard() const
 }
 
 const Table&
-Board::internalTable() const
+Board::cInternalTable() const
+{
+  return m_table;
+}
+
+Table&
+Board::internalTable()
 {
   return m_table;
 }

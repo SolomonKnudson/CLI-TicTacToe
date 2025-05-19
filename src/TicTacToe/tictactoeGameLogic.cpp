@@ -1,3 +1,4 @@
+#include <CLI-TicTacToe/boardDebug.hpp>
 #include <CLI-TicTacToe/tictactoe.hpp>
 #include <iostream>
 

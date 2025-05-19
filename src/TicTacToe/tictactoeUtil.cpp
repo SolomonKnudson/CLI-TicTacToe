@@ -100,7 +100,7 @@ TicTacToe::_createMatchRecord()
   {
     matchRecord.m_winner = _currentPlayer().name();
     matchRecord.m_moves = _currentPlayer().moves();
-    matchRecord.m_winCase = m_board.winCase();
+    matchRecord.m_winCase = m_board.winCaseToString();
   }
   else
   {
