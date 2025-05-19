@@ -2,7 +2,6 @@
 #define CLI_TICTACTOE_BOARD_H
 #include <CLI-TicTacToe/boardTypes.hpp>
 #include <string_view>
-#include <vector>
 
 //uncomment for automated win conditions
 #define BOARD_DEBUG
