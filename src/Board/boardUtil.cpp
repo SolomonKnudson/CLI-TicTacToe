@@ -126,3 +126,11 @@ Board::internalTable()
 {
   return m_table;
 }
+
+#ifdef BOARD_DEBUG
+void
+Board::setWinCase(const WinCase winCase)
+{
+  m_winCase = winCase;
+}
+#endif
