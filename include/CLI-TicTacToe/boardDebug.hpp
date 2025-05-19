@@ -48,7 +48,7 @@ namespace BoardDebug
       std::vector<int> m_diagonalCases{};
     };
 
-    static bool diagonalReverseWin{};
+    inline bool diagonalReverseWin{};
 
     bool
     isValidWinCase(Board& board,

@@ -35,7 +35,6 @@ public:
   int
   boardSize() const;
 
-  //Not in use
   int
   rows() const;
 
