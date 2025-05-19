@@ -25,6 +25,7 @@ namespace BoardDebug
       board.coverBoardSlot(tablePosition, playerMark);
     }
 
+    board.setWinCase(WinCase::Lateral);
     return true;
   }
 
@@ -46,6 +47,7 @@ namespace BoardDebug
       board.coverBoardSlot(columnOffset, playerMark);
     }
 
+    board.setWinCase(WinCase::Vertical);
     return true;
   }
 
@@ -98,6 +100,7 @@ namespace BoardDebug
     }
 
     diagonalReverseWin = reverseWin;
+    board.setWinCase(WinCase::Diagonal);
     return true;
   }
 
