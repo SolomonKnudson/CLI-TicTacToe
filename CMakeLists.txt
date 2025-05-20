@@ -27,8 +27,9 @@ target_sources(TicTacToe PRIVATE
 	${CMAKE_CURRENT_LIST_DIR}/src/Board/debug/isValidWinCase.cpp
 )
 
-target_include_directories(TicTacToe PUBLIC 
-  $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_LIST_DIR}/include>
+target_include_directories(TicTacToe 
+  PUBLIC  $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_LIST_DIR}/include>
+  PRIVATE $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_LIST_DIR}/src/Board/debug>
 )
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/App)

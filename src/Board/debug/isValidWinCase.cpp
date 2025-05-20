@@ -1,4 +1,5 @@
 #include <CLI-TicTacToe/boardDebug.hpp>
+#include <boardDebugUtil.hpp>
 
 using namespace BoardTypes;
 namespace BoardDebug
