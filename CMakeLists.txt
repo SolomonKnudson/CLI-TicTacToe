@@ -29,7 +29,7 @@ target_sources(TicTacToe PRIVATE
 
 target_include_directories(TicTacToe 
   PUBLIC  $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_LIST_DIR}/include>
-  PRIVATE $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_LIST_DIR}/src/Board/debug>
+  PRIVATE $<BUILD_LOCAL_INTERFACE: ${CMAKE_CURRENT_LIST_DIR}/src/Board>
 )
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/App)
