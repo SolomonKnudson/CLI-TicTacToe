@@ -9,6 +9,8 @@
 #### *Requirements:*
 
 * must have ***git installed locally*** if you're going to use `git clone`
+
+---
   
 #### *Cloning from GitHub:*
 
@@ -17,6 +19,8 @@
 * From command line: `git clone` <https://github.com/SolomonKnudson/CLI-TicTacToe.git>
 
   ![ALT text][gitCloneCommand]
+
+  ---
 
 #### *Using the Zip provided by GitHub:*
 
@@ -30,23 +34,27 @@
 
 * Unzip the directory you just downloaded, where you want the project to be located on your machine  
 
+---
+
 ## *Building*
 
-### *Supported Platforms:*
+### *Supported Platforms*
 
 * Windows
 
 * Linux
+---
 
-#### *Requirements:*
+### *Requirements*
 
 1. Must have ***cmake installed*** if you plan on following my ***cmake build instructions*** or using the ***CMakeLists.txt*** provided by the repository
 
 1. Must be able to run C++ files on your machine
+---
 
-### *Building build files:*
+### *Building build files*
 
-##### *From command line:*
+#### *From command line:*
 
 * `cd` <*full-path/repo name*>
 
@@ -66,15 +74,17 @@
 
   ![ALT text][buildFromAnyDir]
 
+---
 
-
-### *Building source:*
+### *Building source*
 
 * *Note:* Previous examples will work here as well; replace cmake -S <*path*> -B <*path*> with cmake --build <*path*>
 
 * ***INSIDE BUILD DIRECTORY:*** `cmake --build .`
 
   ![ALT text][buildSource]
+
+---
 
 ## *Running Code*
 
@@ -86,8 +96,9 @@
 
   ![ALT text][runExecutable]
 
-## *Game Rules*
+---
 
+## *Game Rules*
 
 * Wins are calculated by counting the number of board slots the current player has in a row and seeing if it's equal to whichever side of the board is smaller. The winner always starts.
 
@@ -121,9 +132,7 @@
 
 ## *Features*
 
----
-
-### *Dynamic Boards:*
+### *Dynamic Boards*
 
   * *Limitations:*
 
@@ -147,21 +156,16 @@
 
   ![ALT text][25x45Board]
 
----
-
-### *Displays complete chronological match history:*
+#### *Displays complete chronological match history*
   
    ![ALT text][chronoMatchHist]
 
----
-
-### *Can automatically set the board in a winning configuration to test different board sizes:*
+#### *Can automatically set the board in a winning configuration to test different board sizes*
 
   ![ALT text][testBoard]
 
----
 
-### *Debug commands:*
+#### *Debug commands*
 
   * *setL {value}:* used to set the board in a lateral win config starting at {value}.
   
@@ -181,12 +185,11 @@
 
 ---
 
-### *Limitations:*
+### *Limitations*
 
 * Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
 
 ---
-
 [codeButton]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Installing/codeButton.png
 [codeDropDown]: https://github.com/SolomonKnudson/CLI-TicTacToe/blob/main/img/Installing/codeDropDown.png
 
