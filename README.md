@@ -1,18 +1,22 @@
 # *Over-Engineered Tic-Tac-Toe*(CLI-TicTacToe)
 
+---
+
 ## *Synopsis*
 
 * This repository is my attempt at dynamic CLI tic-tac-toe, and my first-ever feature-complete C++ project! This implementation supports any row-by-column combination in between 3x3 and 55x55.
 
+---
+
 ## *Downloading*
 
-#### *Requirements:*
+#### *Requirements*
 
 * must have ***git installed locally*** if you're going to use `git clone`
 
 ---
   
-#### *Cloning from GitHub:*
+#### *Cloning from GitHub*
 
 * `cd` <*full-path/where git should clone the repo*>
 
@@ -22,7 +26,7 @@
 
   ---
 
-#### *Using the Zip provided by GitHub:*
+#### *Using the Zip provided by GitHub*
 
 * Click on the green code button
 
@@ -52,7 +56,7 @@
 1. Must be able to run C++ files on your machine
 ---
 
-### *Building build files*
+### *Generating build files*
 
 #### *From command line:*
 
@@ -156,14 +160,19 @@
 
   ![ALT text][25x45Board]
 
+---
+
 #### *Displays complete chronological match history*
   
    ![ALT text][chronoMatchHist]
+
+---
 
 #### *Can automatically set the board in a winning configuration to test different board sizes*
 
   ![ALT text][testBoard]
 
+---
 
 #### *Debug commands*
 
