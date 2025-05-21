@@ -72,7 +72,7 @@
 
 * *Note:* Previous examples will work here as well; replace cmake -S <*path*> -B <*path*> with cmake --build <*path*>
 
-* ***FROM COMMAND LINE: INSIDE BUILD DIRECTORY::*** `cmake --build .`
+* ***INSIDE BUILD DIRECTORY:*** `cmake --build .`
 
   ![ALT text][buildSource]
 
