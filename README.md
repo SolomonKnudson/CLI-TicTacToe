@@ -1,24 +1,16 @@
 # *Over-Engineered Tic-Tac-Toe*(CLI-TicTacToe)
 
----
-
 ## *Synopsis*
-
----
 
 * This repository is my attempt at dynamic CLI tic-tac-toe, and my first-ever feature-complete C++ project! This implementation supports any row-by-column combination in between 3x3 and 55x55.
 
----
-
 ## *Downloading*
 
----
-
-#### *Requirements::*
+#### *Requirements:*
 
 * must have ***git installed locally*** if you're going to use `git clone`
   
-#### *Cloning from GitHub::*
+#### *Cloning from GitHub:*
 
 * `cd` <*full-path/where git should clone the repo*>
 
@@ -26,9 +18,9 @@
 
   ![ALT text][gitCloneCommand]
 
-#### *Using Zip provided by github::*
+#### *Using the Zip provided by GitHub:*
 
-* Click on green code button
+* Click on the green code button
 
   ![ALT text][codeButton]
 
@@ -36,13 +28,9 @@
 
   ![ALT text][codeDropDown]
 
-* Un-zip directory, you just downloaded, where you want the project located on your machine  
-
----
+* Unzip the directory you just downloaded, where you want the project to be located on your machine  
 
 ## *Building*
-
----
 
 ### *Supported Platforms:*
 
@@ -50,19 +38,15 @@
 
 * Linux
 
----
-
-#### *Requirements::*
+#### *Requirements:*
 
 1. Must have ***cmake installed*** if you plan on following my ***cmake build instructions*** or using the ***CMakeLists.txt*** provided by the repository
 
-1. Must be able to run c++ files on your machine
+1. Must be able to run C++ files on your machine
 
----
+### *Building build files:*
 
-### *Building build files::*
-
-##### *From command line::*
+##### *From command line:*
 
 * `cd` <*full-path/repo name*>
 
@@ -70,21 +54,21 @@
 
 * `cd` <*build directory*>
 
-* ***FROM COMMAND LINE: INSIDE BUILD DIRECTORY::*** `cmake -S .. -B .`
+* ***INSIDE BUILD DIRECTORY:*** `cmake -S .. -B .`
 
   ![ALT text][buildInsideBuildDir]
 
-* ***FROM COMMAND LINE: INSIDE REPO ROOT DIRECTORY::*** `cmake` -S . -B <*build directory*>
+* ***INSIDE REPO ROOT DIRECTORY:*** `cmake` -S . -B <*build directory*>
 
   ![ALT text][buildInsideRepoRootDir]
 
-* ***FROM COMMAND LINE: ANY DIRECTORY::*** `cmake` -S <*full-path/CLI-TicTacToe/*> -B <*full-path/CLI-TicTacToe/<*build directory*>*>
+* ***ANY DIRECTORY:*** `cmake` -S <*full-path/CLI-TicTacToe/*> -B <*full-path/CLI-TicTacToe/<*build directory*>*>
 
   ![ALT text][buildFromAnyDir]
 
----
 
-### *Building source::*
+
+### *Building source:*
 
 * *Note:* Previous examples will work here as well; replace cmake -S <*path*> -B <*path*> with cmake --build <*path*>
 
@@ -92,26 +76,20 @@
 
   ![ALT text][buildSource]
 
----
-
 ## *Running Code*
 
----
 * Build executable
 
   ![ALT][buildExecutable]
 
-* Run executable
+* Run the executable
 
   ![ALT text][runExecutable]
 
----
-
 ## *Game Rules*
 
----
 
-* Wins are calculated by counting the number of board slots the current player has in a row and seeing if it's equal to whichever side of the board is smaller. Winner always starts.
+* Wins are calculated by counting the number of board slots the current player has in a row and seeing if it's equal to whichever side of the board is smaller. The winner always starts.
 
 * If playing on a 4x8 board, players must get 4 in a row vertically/diagonally and 8 laterally.
 
@@ -135,7 +113,7 @@
   
   ![ALT text][illegalMoveWarning]
 
-* Players are permitted four illegal moves per game. Any player that exceeds four illegal moves will forfeit their current turn, as well as all subsequent turns resulting in an illegal move.
+* Players are permitted four illegal moves per game. Any player that exceeds four illegal moves will forfeit their current turn and all subsequent turns resulting in an illegal move.
   
   ![ALT text][forfeitMoves]
 
@@ -145,7 +123,7 @@
 
 ---
 
-### *Dynamic Boards::*
+### *Dynamic Boards:*
 
   * *Limitations:*
 
@@ -171,19 +149,19 @@
 
 ---
 
-### *Displays complete chronological match history::*
+### *Displays complete chronological match history:*
   
    ![ALT text][chronoMatchHist]
 
 ---
 
-### *Can automatically set the board in a winning configuration to test different board sizes::*
+### *Can automatically set the board in a winning configuration to test different board sizes:*
 
   ![ALT text][testBoard]
 
 ---
 
-### *Debug commands::*
+### *Debug commands:*
 
   * *setL {value}:* used to set the board in a lateral win config starting at {value}.
   
@@ -203,7 +181,7 @@
 
 ---
 
-### *Limitations::*
+### *Limitations:*
 
 * Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
 
