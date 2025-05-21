@@ -10,13 +10,11 @@
 
 ## *Downloading*
 
-#### *Requirements*
+### *Requirements*
 
 * must have ***git installed locally*** if you're going to use `git clone`
 
----
-  
-#### *Cloning from GitHub*
+### *Cloning from GitHub*
 
 * `cd` <*full-path/where git should clone the repo*>
 
@@ -24,9 +22,7 @@
 
   ![ALT text][gitCloneCommand]
 
-  ---
-
-#### *Using the Zip provided by GitHub*
+### *Using the Zip provided by GitHub*
 
 * Click on the green code button
 
@@ -47,14 +43,12 @@
 * Windows
 
 * Linux
----
 
 ### *Requirements*
 
 1. Must have ***cmake installed*** if you plan on following my ***cmake build instructions*** or using the ***CMakeLists.txt*** provided by the repository
 
 1. Must be able to run C++ files on your machine
----
 
 ### *Generating build files*
 
@@ -77,8 +71,6 @@
 * ***ANY DIRECTORY:*** `cmake` -S <*full-path/CLI-TicTacToe/*> -B <*full-path/CLI-TicTacToe/<*build directory*>*>
 
   ![ALT text][buildFromAnyDir]
-
----
 
 ### *Building source*
 
@@ -160,21 +152,15 @@
 
   ![ALT text][25x45Board]
 
----
-
-#### *Displays complete chronological match history*
+### *Complete chronological match history*
   
    ![ALT text][chronoMatchHist]
 
----
-
-#### *Can automatically set the board in a winning configuration to test different board sizes*
+### *Automatic board configurations*
 
   ![ALT text][testBoard]
 
----
-
-#### *Debug commands*
+### *Debug commands*
 
   * *setL {value}:* used to set the board in a lateral win config starting at {value}.
   
@@ -194,7 +180,7 @@
 
 ---
 
-### *Limitations*
+## *Limitations*
 
 * Board max size: 55x55: due to it being the biggest I can display in my local command prompt, as well as my naive algorithms being too slow once past 1000x1000
 
