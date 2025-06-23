@@ -10,16 +10,15 @@ class Board
 {
 public:
   explicit Board(int row = 3, int column = 3);
-  ~Board() = default;
 
+  /* 
+    * Deleting the copy ctor and assignment operator 
+    * is enough to also disable move semantics
+  */
   Board(const Board&) = delete;
-  Board(const Board&&) = delete;
 
   Board&
   operator=(const Board&) = delete;
-
-  Board&
-  operator=(const Board&&) = delete;
 
   //Table Logic
   void

@@ -24,16 +24,15 @@ class TicTacToe
 
 public:
   TicTacToe();
-  ~TicTacToe() = default;
 
+  /* 
+    * Deleting the copy ctor and assignment operator 
+    * is enough to also disable move semantics
+  */
   TicTacToe(const TicTacToe&) = delete;
-  TicTacToe(const TicTacToe&&) = delete;
 
   TicTacToe&
   operator=(const TicTacToe&) = delete;
-
-  TicTacToe&
-  operator=(const TicTacToe&&) = delete;
 
 private:
 #ifdef BOARD_DEBUG

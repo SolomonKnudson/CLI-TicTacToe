@@ -10,7 +10,6 @@ class Player
 
 public:
   explicit Player(char mark = ' ', std::string_view name = "");
-  ~Player() = default;
 
   //Move Logic
   int
