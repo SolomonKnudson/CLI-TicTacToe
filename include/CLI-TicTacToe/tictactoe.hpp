@@ -1,6 +1,5 @@
 #ifndef CLI_TICTACTOE_TICTACTOE_H
 #define CLI_TICTACTOE_TICTACTOE_H
-
 #include <CLI-TicTacToe/board.hpp>
 #include <CLI-TicTacToe/player.hpp>
 

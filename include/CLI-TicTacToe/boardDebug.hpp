@@ -1,7 +1,6 @@
 #ifndef CLI_TICTACTOE_BOARD_DEBUG_H
 #define CLI_TICTACTOE_BOARD_DEBUG_H
 #include <CLI-TicTacToe/board.hpp>
-#include <vector>
 
 namespace BoardDebug
 {
