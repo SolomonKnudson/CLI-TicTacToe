@@ -80,10 +80,8 @@ public:
   void
   resetBoard();
 
-#ifdef BOARD_DEBUG
   void
   setWinCase(BoardTypes::WinCase winCase);
-#endif
 
 private:
   //Methods to help with display formatting

@@ -136,7 +136,6 @@ Board::_isDiagonalWinEvenBoard(const char playerMark) const
     *NOTE: if rows < columns, columns - rows = only diagonal cases(Column Based)
     *ex. 4x8: Diagonal cases: column: 0, 1, 2, 3, 4 index based!
     *10x11: Diagonal cases: column: 0, 1
-    *
 */
 bool
 Board::_isDiagonalWinLopsidedRow(const char playerMark) const
